@@ -49,13 +49,25 @@ export function Footer() {
           <h3 className="text-sm font-semibold">Contato</h3>
           <ul className="text-muted-foreground mt-4 space-y-3 text-sm">
             <li className="flex items-center gap-2">
-              <Mail className="text-brand-orange size-4" /> contato@cytrixdata.com
+              <Mail className="text-brand-orange size-4" />
+              <a href="mailto:comercial@cytrix.com.br" className="hover:text-foreground">
+                comercial@cytrix.com.br
+              </a>
+            </li>
+            <li className="flex items-start gap-2">
+              <MapPin className="text-brand-orange mt-0.5 size-4 shrink-0" />
+              <span>Avenida Vicente Machado, 520 - Centro, Curitiba - PR, CEP 80.420-010</span>
             </li>
             <li className="flex items-center gap-2">
-              <MapPin className="text-brand-orange size-4" /> São Paulo, Brasil
-            </li>
-            <li className="flex items-center gap-2">
-              <Linkedin className="text-brand-orange size-4" /> /cytrix-data
+              <Linkedin className="text-brand-orange size-4" />
+              <a
+                href="https://www.linkedin.com/company/cytrix-data-consulting"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-foreground"
+              >
+                /cytrix-data-consulting
+              </a>
             </li>
           </ul>
         </div>
