@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import logo from "@/assets/cytrix-logo.png";
 
 const links = [
   { to: "/", label: "Início" },
@@ -17,11 +18,13 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-border/70 bg-background/80 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5">
-        <Link to="/" className="flex items-center gap-2.5">
-          <span className="bg-gradient-brand inline-block size-7 rounded-md" />
-          <span className="font-display text-sm font-bold tracking-tight">
-            CYTRIX <span className="text-muted-foreground font-medium">Data Consulting</span>
-          </span>
+        <Link to="/" className="flex items-center">
+          <img
+            src={logo}
+            alt="Cytrix Data Consulting"
+            className="h-9 w-auto md:h-10"
+            loading="eager"
+          />
         </Link>
 
         <nav className="hidden items-center gap-7 md:flex">
