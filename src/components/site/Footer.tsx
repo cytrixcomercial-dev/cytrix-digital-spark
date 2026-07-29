@@ -54,6 +54,17 @@ export function Footer() {
                 comercial@cytrix.com.br
               </a>
             </li>
+            <li className="flex items-center gap-2">
+              <Phone className="text-brand-orange size-4" />
+              <a
+                href="https://wa.me/5541996890003"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-foreground"
+              >
+                +55 41 99689-0003
+              </a>
+            </li>
             <li className="flex items-start gap-2">
               <MapPin className="text-brand-orange mt-0.5 size-4 shrink-0" />
               <span>Avenida Vicente Machado, 520 - Centro, Curitiba - PR, CEP 80.420-010</span>
