@@ -1,15 +1,18 @@
 import { Link } from "@tanstack/react-router";
 import { Mail, Linkedin, MapPin } from "lucide-react";
+import logo from "@/assets/cytrix-logo.png";
 
 export function Footer() {
   return (
     <footer className="border-border/70 bg-surface/40 border-t">
       <div className="mx-auto grid max-w-6xl gap-10 px-5 py-14 md:grid-cols-4">
         <div className="md:col-span-2">
-          <div className="flex items-center gap-2.5">
-            <span className="bg-gradient-brand inline-block size-7 rounded-md" />
-            <span className="font-display text-sm font-bold">CYTRIX Data Consulting</span>
-          </div>
+          <img
+            src={logo}
+            alt="Cytrix Data Consulting"
+            className="h-11 w-auto"
+            loading="lazy"
+          />
           <p className="text-muted-foreground mt-4 max-w-sm text-sm leading-relaxed">
             Consultoria de dados e inteligência artificial para empresas que querem decidir com
             base em informação confiável.
