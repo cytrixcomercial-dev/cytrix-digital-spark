@@ -10,33 +10,63 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as EquipeDeDadosRouteImport } from './routes/equipe-de-dados'
+import { Route as MetodoRouteImport } from './routes/metodo'
+import { Route as SolucoesRouteImport } from './routes/solucoes'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EquipeDeDadosRoute = EquipeDeDadosRouteImport.update({
+  id: '/equipe-de-dados',
+  path: '/equipe-de-dados',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MetodoRoute = MetodoRouteImport.update({
+  id: '/metodo',
+  path: '/metodo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SolucoesRoute = SolucoesRouteImport.update({
+  id: '/solucoes',
+  path: '/solucoes',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/equipe-de-dados': typeof EquipeDeDadosRoute
+  '/metodo': typeof MetodoRoute
+  '/solucoes': typeof SolucoesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/equipe-de-dados': typeof EquipeDeDadosRoute
+  '/metodo': typeof MetodoRoute
+  '/solucoes': typeof SolucoesRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/equipe-de-dados': typeof EquipeDeDadosRoute
+  '/metodo': typeof MetodoRoute
+  '/solucoes': typeof SolucoesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/equipe-de-dados' | '/metodo' | '/solucoes'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/equipe-de-dados' | '/metodo' | '/solucoes'
+  id: '__root__' | '/' | '/equipe-de-dados' | '/metodo' | '/solucoes'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  EquipeDeDadosRoute: typeof EquipeDeDadosRoute
+  MetodoRoute: typeof MetodoRoute
+  SolucoesRoute: typeof SolucoesRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +78,35 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/equipe-de-dados': {
+      id: '/equipe-de-dados'
+      path: '/equipe-de-dados'
+      fullPath: '/equipe-de-dados'
+      preLoaderRoute: typeof EquipeDeDadosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/metodo': {
+      id: '/metodo'
+      path: '/metodo'
+      fullPath: '/metodo'
+      preLoaderRoute: typeof MetodoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/solucoes': {
+      id: '/solucoes'
+      path: '/solucoes'
+      fullPath: '/solucoes'
+      preLoaderRoute: typeof SolucoesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  EquipeDeDadosRoute: EquipeDeDadosRoute,
+  MetodoRoute: MetodoRoute,
+  SolucoesRoute: SolucoesRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
