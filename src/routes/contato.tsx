@@ -2,10 +2,12 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { toast } from "sonner";
+import { useServerFn } from "@tanstack/react-start";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { sendContactMessage } from "@/lib/contact.functions";
 
 export const Route = createFileRoute("/contato")({
   head: () => ({
@@ -28,6 +30,8 @@ export const Route = createFileRoute("/contato")({
 
 function ContatoPage() {
   const [sending, setSending] = useState(false);
+  const [sent, setSent] = useState(false);
+  const submit = useServerFn(sendContactMessage);
 
   return (
     <>
@@ -47,14 +51,30 @@ function ContatoPage() {
       <section className="mx-auto grid max-w-6xl gap-12 px-5 py-20 md:grid-cols-[1.4fr_1fr]">
         <form
           className="card-tech space-y-5 p-8"
-          onSubmit={(e) => {
+          onSubmit={async (e) => {
             e.preventDefault();
+            const form = e.currentTarget;
+            const fd = new FormData(form);
             setSending(true);
-            setTimeout(() => {
-              setSending(false);
-              (e.target as HTMLFormElement).reset();
+            try {
+              await submit({
+                data: {
+                  nome: String(fd.get("nome") ?? ""),
+                  empresa: String(fd.get("empresa") ?? ""),
+                  email: String(fd.get("email") ?? ""),
+                  telefone: String(fd.get("telefone") ?? ""),
+                  mensagem: String(fd.get("mensagem") ?? ""),
+                },
+              });
+              form.reset();
+              setSent(true);
               toast.success("Mensagem enviada! Entraremos em contato em breve.");
-            }, 600);
+            } catch (error) {
+              console.error(error);
+              toast.error("Não foi possível enviar. Tente novamente em instantes.");
+            } finally {
+              setSending(false);
+            }
           }}
         >
           <div className="grid gap-5 sm:grid-cols-2">
@@ -90,6 +110,15 @@ function ContatoPage() {
           <Button type="submit" size="lg" disabled={sending}>
             {sending ? "Enviando..." : "Enviar mensagem"}
           </Button>
+          {sent && (
+            <p
+              role="status"
+              className="border-border/70 bg-surface/60 text-muted-foreground rounded-lg border p-4 text-sm"
+            >
+              Recebemos sua mensagem — nossa equipe responde em até um dia útil nos e-mails
+              cadastrados.
+            </p>
+          )}
         </form>
 
         <aside className="space-y-6">
