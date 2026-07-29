@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ContatoRouteImport } from './routes/contato'
 import { Route as EquipeDeDadosRouteImport } from './routes/equipe-de-dados'
 import { Route as MetodoRouteImport } from './routes/metodo'
 import { Route as SolucoesRouteImport } from './routes/solucoes'
@@ -17,6 +18,11 @@ import { Route as SolucoesRouteImport } from './routes/solucoes'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContatoRoute = ContatoRouteImport.update({
+  id: '/contato',
+  path: '/contato',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EquipeDeDadosRoute = EquipeDeDadosRouteImport.update({
@@ -37,12 +43,14 @@ const SolucoesRoute = SolucoesRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/contato': typeof ContatoRoute
   '/equipe-de-dados': typeof EquipeDeDadosRoute
   '/metodo': typeof MetodoRoute
   '/solucoes': typeof SolucoesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/contato': typeof ContatoRoute
   '/equipe-de-dados': typeof EquipeDeDadosRoute
   '/metodo': typeof MetodoRoute
   '/solucoes': typeof SolucoesRoute
@@ -50,20 +58,23 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/contato': typeof ContatoRoute
   '/equipe-de-dados': typeof EquipeDeDadosRoute
   '/metodo': typeof MetodoRoute
   '/solucoes': typeof SolucoesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/equipe-de-dados' | '/metodo' | '/solucoes'
+  fullPaths: '/' | '/contato' | '/equipe-de-dados' | '/metodo' | '/solucoes'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/equipe-de-dados' | '/metodo' | '/solucoes'
-  id: '__root__' | '/' | '/equipe-de-dados' | '/metodo' | '/solucoes'
+  to: '/' | '/contato' | '/equipe-de-dados' | '/metodo' | '/solucoes'
+  id:
+    '__root__' | '/' | '/contato' | '/equipe-de-dados' | '/metodo' | '/solucoes'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ContatoRoute: typeof ContatoRoute
   EquipeDeDadosRoute: typeof EquipeDeDadosRoute
   MetodoRoute: typeof MetodoRoute
   SolucoesRoute: typeof SolucoesRoute
@@ -76,6 +87,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contato': {
+      id: '/contato'
+      path: '/contato'
+      fullPath: '/contato'
+      preLoaderRoute: typeof ContatoRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/equipe-de-dados': {
@@ -104,6 +122,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ContatoRoute: ContatoRoute,
   EquipeDeDadosRoute: EquipeDeDadosRoute,
   MetodoRoute: MetodoRoute,
   SolucoesRoute: SolucoesRoute,
