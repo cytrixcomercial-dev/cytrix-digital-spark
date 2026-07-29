@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Mail, Linkedin, MapPin } from "lucide-react";
+import { Mail, Linkedin, MapPin, Phone } from "lucide-react";
 import logo from "@/assets/cytrix-logo.png";
 
 export function Footer() {
@@ -52,6 +52,17 @@ export function Footer() {
               <Mail className="text-brand-orange size-4" />
               <a href="mailto:comercial@cytrix.com.br" className="hover:text-foreground">
                 comercial@cytrix.com.br
+              </a>
+            </li>
+            <li className="flex items-center gap-2">
+              <Phone className="text-brand-orange size-4" />
+              <a
+                href="https://wa.me/5541996890003"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-foreground"
+              >
+                +55 41 99689-0003
               </a>
             </li>
             <li className="flex items-start gap-2">
