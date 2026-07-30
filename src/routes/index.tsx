@@ -77,9 +77,9 @@ function Index() {
         <div className="mx-auto grid max-w-6xl items-center gap-14 px-5 py-20 md:grid-cols-2 md:py-28">
           <div>
             <p className="eyebrow">Consultoria de dados</p>
-            <h1 className="mt-5 text-4xl leading-[1.08] font-bold md:text-5xl lg:text-6xl">
-              Dados e IA aplicados à <span className="text-gradient-brand">operação</span> do seu
-              negócio
+            <h1 className="mt-5 text-3xl leading-[1.1] font-bold uppercase md:text-4xl lg:text-5xl">
+              Consultoria consultiva estratégica de{" "}
+              <span className="text-gradient-brand">dados e IA</span>
             </h1>
             <p className="text-muted-foreground mt-6 max-w-lg text-base leading-relaxed md:text-lg">
               A Cytrix Data Consulting ajuda empresas a organizar dados, integrar sistemas e criar
