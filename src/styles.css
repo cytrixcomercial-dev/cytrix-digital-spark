@@ -225,3 +225,50 @@
     transform: translateY(-3px);
   }
 }
+
+@keyframes connector-dash {
+  from {
+    stroke-dashoffset: 320;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes connector-pulse {
+  0%,
+  100% {
+    opacity: 0.35;
+    r: 3;
+  }
+  50% {
+    opacity: 1;
+    r: 5.5;
+  }
+}
+
+.connector-flow {
+  stroke-dasharray: 26 294;
+  animation: connector-dash 3.6s linear infinite;
+  filter: drop-shadow(0 0 6px color-mix(in oklab, var(--brand-orange) 70%, transparent));
+}
+
+.connector-flow-delay-1 {
+  animation-delay: 1.2s;
+}
+
+.connector-flow-delay-2 {
+  animation-delay: 2.4s;
+}
+
+.connector-node {
+  animation: connector-pulse 2.8s ease-in-out infinite;
+  filter: drop-shadow(0 0 5px color-mix(in oklab, var(--brand-purple) 80%, transparent));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .connector-flow,
+  .connector-node {
+    animation: none;
+  }
+}
