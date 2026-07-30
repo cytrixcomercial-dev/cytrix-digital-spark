@@ -85,8 +85,29 @@ export function Footer() {
           </ul>
         </div>
       </div>
-      <div className="border-border/70 text-muted-foreground border-t px-5 py-5 text-center text-xs">
-        © {new Date().getFullYear()} Cytrix Data Consulting. Todos os direitos reservados.
+      <div className="border-border/70 border-t px-5 py-5">
+        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 text-center md:flex-row md:text-left">
+          <p className="text-muted-foreground text-xs">
+            © {new Date().getFullYear()} Cytrix Data Consulting. Todos os direitos reservados.
+          </p>
+          <nav className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-xs">
+            <Link
+              to="/politica-de-privacidade"
+              className="text-muted-foreground hover:text-foreground"
+            >
+              Política de Privacidade
+            </Link>
+            <Link
+              to="/politica-de-cookies"
+              className="text-muted-foreground hover:text-foreground"
+            >
+              Política de Cookies
+            </Link>
+            <Link to="/termos-de-uso" className="text-muted-foreground hover:text-foreground">
+              Termos de Uso
+            </Link>
+          </nav>
+        </div>
       </div>
     </footer>
   );
