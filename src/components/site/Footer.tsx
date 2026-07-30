@@ -93,17 +93,17 @@ export function Footer() {
           <nav className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-xs">
             <Link
               to="/politica-de-privacidade"
-              className="text-muted-foreground hover:text-foreground"
+              className="text-muted-foreground hover:text-brand-orange transition-colors"
             >
               Política de Privacidade
             </Link>
             <Link
               to="/politica-de-cookies"
-              className="text-muted-foreground hover:text-foreground"
+              className="text-muted-foreground hover:text-brand-orange transition-colors"
             >
               Política de Cookies
             </Link>
-            <Link to="/termos-de-uso" className="text-muted-foreground hover:text-foreground">
+            <Link to="/termos-de-uso" className="text-muted-foreground hover:text-brand-orange transition-colors">
               Termos de Uso
             </Link>
           </nav>
