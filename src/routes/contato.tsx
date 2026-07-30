@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Linkedin, Mail, MapPin, Phone } from "lucide-react";
 import { toast } from "sonner";
 import { useServerFn } from "@tanstack/react-start";
 import { Button } from "@/components/ui/button";
@@ -126,13 +126,36 @@ function ContatoPage() {
             <h2 className="text-base font-semibold">Canais diretos</h2>
             <ul className="text-muted-foreground mt-4 space-y-3 text-sm">
               <li className="flex items-center gap-2.5">
-                <Mail className="text-brand-orange size-4" /> contato@cytrixdata.com
+                <Mail className="text-brand-orange size-4" />
+                <a href="mailto:comercial@cytrix.com.br" className="hover:text-foreground transition-colors">
+                  comercial@cytrix.com.br
+                </a>
               </li>
               <li className="flex items-center gap-2.5">
-                <Phone className="text-brand-orange size-4" /> +55 (11) 4000-0000
+                <Phone className="text-brand-orange size-4" />
+                <a
+                  href="https://wa.me/5541996890003"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-foreground transition-colors"
+                >
+                  +55 41 99689-0003
+                </a>
+              </li>
+              <li className="flex items-start gap-2.5">
+                <MapPin className="text-brand-orange mt-0.5 size-4 shrink-0" />
+                <span>Avenida Vicente Machado, 520 - Centro, Curitiba - PR, CEP 80.420-010</span>
               </li>
               <li className="flex items-center gap-2.5">
-                <MapPin className="text-brand-orange size-4" /> São Paulo — SP, Brasil
+                <Linkedin className="text-brand-orange size-4" />
+                <a
+                  href="https://www.linkedin.com/company/cytrix-data-consulting"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-foreground transition-colors"
+                >
+                  /cytrix-data-consulting
+                </a>
               </li>
             </ul>
           </div>
