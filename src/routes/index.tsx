@@ -95,13 +95,13 @@ function Index() {
               </Button>
             </div>
 
-            <dl className="mt-12 grid grid-cols-2 gap-x-6 gap-y-5 sm:grid-cols-4">
+            <dl className="mt-12 grid grid-cols-4 gap-x-4 gap-y-5 sm:gap-x-6">
               {metrics.map((m) => (
-                <div key={m.label}>
-                  <dt className="text-muted-foreground font-mono text-[0.7rem] tracking-widest uppercase">
+                <div key={m.label} className="flex flex-col justify-end">
+                  <dt className="text-muted-foreground font-mono text-[0.65rem] tracking-widest uppercase sm:text-[0.7rem]">
                     {m.label}
                   </dt>
-                  <dd className="font-display mt-1 text-xl font-bold">{m.value}</dd>
+                  <dd className="font-display mt-1 text-lg font-bold sm:text-xl">{m.value}</dd>
                 </div>
               ))}
             </dl>
