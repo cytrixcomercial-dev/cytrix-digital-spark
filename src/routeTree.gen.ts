@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AgentesDeIaRouteImport } from './routes/agentes-de-ia'
 import { Route as ContatoRouteImport } from './routes/contato'
 import { Route as EquipeDeDadosRouteImport } from './routes/equipe-de-dados'
 import { Route as MetodoRouteImport } from './routes/metodo'
@@ -21,6 +22,11 @@ import { Route as TermosDeUsoRouteImport } from './routes/termos-de-uso'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AgentesDeIaRoute = AgentesDeIaRouteImport.update({
+  id: '/agentes-de-ia',
+  path: '/agentes-de-ia',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContatoRoute = ContatoRouteImport.update({
@@ -61,6 +67,7 @@ const TermosDeUsoRoute = TermosDeUsoRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/agentes-de-ia': typeof AgentesDeIaRoute
   '/contato': typeof ContatoRoute
   '/equipe-de-dados': typeof EquipeDeDadosRoute
   '/metodo': typeof MetodoRoute
@@ -71,6 +78,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/agentes-de-ia': typeof AgentesDeIaRoute
   '/contato': typeof ContatoRoute
   '/equipe-de-dados': typeof EquipeDeDadosRoute
   '/metodo': typeof MetodoRoute
@@ -82,6 +90,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/agentes-de-ia': typeof AgentesDeIaRoute
   '/contato': typeof ContatoRoute
   '/equipe-de-dados': typeof EquipeDeDadosRoute
   '/metodo': typeof MetodoRoute
@@ -94,6 +103,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/agentes-de-ia'
     | '/contato'
     | '/equipe-de-dados'
     | '/metodo'
@@ -104,6 +114,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/agentes-de-ia'
     | '/contato'
     | '/equipe-de-dados'
     | '/metodo'
@@ -114,6 +125,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/agentes-de-ia'
     | '/contato'
     | '/equipe-de-dados'
     | '/metodo'
@@ -125,6 +137,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AgentesDeIaRoute: typeof AgentesDeIaRoute
   ContatoRoute: typeof ContatoRoute
   EquipeDeDadosRoute: typeof EquipeDeDadosRoute
   MetodoRoute: typeof MetodoRoute
@@ -141,6 +154,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/agentes-de-ia': {
+      id: '/agentes-de-ia'
+      path: '/agentes-de-ia'
+      fullPath: '/agentes-de-ia'
+      preLoaderRoute: typeof AgentesDeIaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contato': {
@@ -197,6 +217,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AgentesDeIaRoute: AgentesDeIaRoute,
   ContatoRoute: ContatoRoute,
   EquipeDeDadosRoute: EquipeDeDadosRoute,
   MetodoRoute: MetodoRoute,
