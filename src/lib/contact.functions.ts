@@ -4,7 +4,7 @@ import { blockedFreeDomains } from "./email-corporate";
 
 const contactSchema = z.object({
   nome: z.string().trim().min(1, "Informe seu nome").max(100),
-  empresa: z.string().trim().max(120).optional().or(z.literal("")),
+  empresa: z.string().trim().min(1, "Informe o nome da empresa").max(120),
   email: z
     .string()
     .trim()
@@ -17,7 +17,7 @@ const contactSchema = z.object({
       },
       { message: "Utilize um e-mail corporativo (Gmail, Hotmail, etc. não são aceitos)." }
     ),
-  telefone: z.string().trim().max(40).optional().or(z.literal("")),
+  telefone: z.string().trim().min(1, "Informe o telefone").max(40),
   mensagem: z.string().trim().min(10, "Descreva melhor o desafio").max(2000),
 });
 

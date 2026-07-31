@@ -84,31 +84,43 @@ function ContatoPage() {
             }
           }}
         >
+          <p className="text-muted-foreground text-xs">* campos obrigatórios</p>
+
           <div className="grid gap-5 sm:grid-cols-2">
             <div className="space-y-2">
-              <Label htmlFor="nome">Nome</Label>
+              <Label htmlFor="nome">
+                Nome <span aria-hidden="true" className="text-brand-orange">*</span>
+              </Label>
               <Input id="nome" name="nome" required placeholder="Seu nome" />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="empresa">Empresa</Label>
-              <Input id="empresa" name="empresa" placeholder="Nome da empresa" />
+              <Label htmlFor="empresa">
+                Empresa <span aria-hidden="true" className="text-brand-orange">*</span>
+              </Label>
+              <Input id="empresa" name="empresa" required placeholder="Nome da empresa" />
             </div>
           </div>
           <div className="grid gap-5 sm:grid-cols-2">
             <div className="space-y-2">
-              <Label htmlFor="email">E-mail corporativo</Label>
+              <Label htmlFor="email">
+                E-mail corporativo <span aria-hidden="true" className="text-brand-orange">*</span>
+              </Label>
               <Input id="email" name="email" type="email" required placeholder="voce@empresa.com" />
               <p className="text-muted-foreground text-xs">
                 Não aceitamos e-mails gratuitos (Gmail, Hotmail, etc.).
               </p>
             </div>
             <div className="space-y-2">
-              <Label htmlFor="telefone">Telefone</Label>
-              <Input id="telefone" name="telefone" placeholder="(11) 99999-0000" />
+              <Label htmlFor="telefone">
+                Telefone <span aria-hidden="true" className="text-brand-orange">*</span>
+              </Label>
+              <Input id="telefone" name="telefone" required placeholder="(11) 99999-0000" />
             </div>
           </div>
           <div className="space-y-2">
-            <Label htmlFor="mensagem">Como podemos ajudar?</Label>
+            <Label htmlFor="mensagem">
+              Como podemos ajudar? <span aria-hidden="true" className="text-brand-orange">*</span>
+            </Label>
             <Textarea
               id="mensagem"
               name="mensagem"
