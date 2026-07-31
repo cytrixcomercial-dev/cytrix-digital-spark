@@ -39,11 +39,10 @@ function ContatoPage() {
         <div className="mx-auto max-w-6xl px-5 py-20 md:py-24">
           <p className="eyebrow">Contato</p>
           <h1 className="mt-5 max-w-3xl text-4xl font-bold md:text-5xl">
-            Solicite seu <span className="text-gradient-brand">diagnóstico</span> de dados
+            Vamos transformar <span className="text-gradient-brand">diagnóstico</span> em plano de ação?
           </h1>
           <p className="text-muted-foreground mt-6 max-w-2xl text-base leading-relaxed md:text-lg">
-            Conte um pouco sobre o seu cenário. Respondemos em até um dia útil com os próximos
-            passos.
+            Aponte os próximos passos da sua operação. Nossa equipe integra contexto, tecnologia e viabilidade para construir uma estratégia factível sob medida para você.
           </p>
         </div>
       </section>
