@@ -107,7 +107,7 @@ function ContatoPage() {
             />
           </div>
           <Button type="submit" size="lg" disabled={sending}>
-            {sending ? "Enviando..." : "Enviar mensagem"}
+            {sending ? "Enviando..." : "Quero um diagnóstico estratégico"}
           </Button>
           {sent && (
             <p
