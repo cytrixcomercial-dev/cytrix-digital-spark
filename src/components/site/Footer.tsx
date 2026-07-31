@@ -42,6 +42,14 @@ export function Footer() {
             </li>
             <li>
               <Link
+                to="/agentes-de-ia"
+                className="text-muted-foreground hover:text-brand-orange transition-colors"
+              >
+                Agentes de IA
+              </Link>
+            </li>
+            <li>
+              <Link
                 to="/equipe-de-dados"
                 className="text-muted-foreground hover:text-brand-orange transition-colors"
               >
