@@ -143,9 +143,9 @@ function AgentesPage() {
           contexto, baixa visibilidade ou demora de resposta.
         </p>
 
-        <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3 items-stretch">
           {agents.map((a) => (
-            <article key={a.name} className="card-tech flex flex-col p-8">
+            <article key={a.name} className="card-tech flex h-full flex-col p-8">
               <div className="flex items-center gap-3">
                 <span className="bg-gradient-brand text-primary-foreground flex size-11 items-center justify-center rounded-full font-display text-base font-semibold">
                   {a.name.slice(0, 2).toUpperCase()}
@@ -175,9 +175,9 @@ function AgentesPage() {
                 ))}
               </div>
 
-              <div className="mt-6 pt-2">
+              <div className="mt-auto pt-6">
                 <Button asChild size="sm" variant="outline" className="w-full">
-                  <Link to="/contato">Experimentar {a.name}</Link>
+                  <Link to="/contato">Saiba mais</Link>
                 </Button>
               </div>
             </article>
