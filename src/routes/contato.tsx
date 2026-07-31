@@ -55,13 +55,20 @@ function ContatoPage() {
             e.preventDefault();
             const form = e.currentTarget;
             const fd = new FormData(form);
+            const email = String(fd.get("email") ?? "");
+
+            if (!isCorporateEmail(email)) {
+              toast.error("Por favor, informe um e-mail corporativo.");
+              return;
+            }
+
             setSending(true);
             try {
               await submit({
                 data: {
                   nome: String(fd.get("nome") ?? ""),
                   empresa: String(fd.get("empresa") ?? ""),
-                  email: String(fd.get("email") ?? ""),
+                  email,
                   telefone: String(fd.get("telefone") ?? ""),
                   mensagem: String(fd.get("mensagem") ?? ""),
                 },
