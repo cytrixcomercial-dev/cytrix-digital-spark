@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { sendContactMessage } from "@/lib/contact.functions";
+import { isCorporateEmail } from "@/lib/email-corporate";
 
 export const Route = createFileRoute("/contato")({
   head: () => ({
@@ -54,13 +55,20 @@ function ContatoPage() {
             e.preventDefault();
             const form = e.currentTarget;
             const fd = new FormData(form);
+            const email = String(fd.get("email") ?? "");
+
+            if (!isCorporateEmail(email)) {
+              toast.error("Por favor, informe um e-mail corporativo.");
+              return;
+            }
+
             setSending(true);
             try {
               await submit({
                 data: {
                   nome: String(fd.get("nome") ?? ""),
                   empresa: String(fd.get("empresa") ?? ""),
-                  email: String(fd.get("email") ?? ""),
+                  email,
                   telefone: String(fd.get("telefone") ?? ""),
                   mensagem: String(fd.get("mensagem") ?? ""),
                 },
@@ -88,8 +96,11 @@ function ContatoPage() {
           </div>
           <div className="grid gap-5 sm:grid-cols-2">
             <div className="space-y-2">
-              <Label htmlFor="email">E-mail</Label>
+              <Label htmlFor="email">E-mail corporativo</Label>
               <Input id="email" name="email" type="email" required placeholder="voce@empresa.com" />
+              <p className="text-muted-foreground text-xs">
+                Não aceitamos e-mails gratuitos (Gmail, Hotmail, etc.).
+              </p>
             </div>
             <div className="space-y-2">
               <Label htmlFor="telefone">Telefone</Label>
