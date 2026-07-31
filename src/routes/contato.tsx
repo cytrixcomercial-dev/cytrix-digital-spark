@@ -89,8 +89,11 @@ function ContatoPage() {
           </div>
           <div className="grid gap-5 sm:grid-cols-2">
             <div className="space-y-2">
-              <Label htmlFor="email">E-mail</Label>
+              <Label htmlFor="email">E-mail corporativo</Label>
               <Input id="email" name="email" type="email" required placeholder="voce@empresa.com" />
+              <p className="text-muted-foreground text-xs">
+                Não aceitamos e-mails gratuitos (Gmail, Hotmail, etc.).
+              </p>
             </div>
             <div className="space-y-2">
               <Label htmlFor="telefone">Telefone</Label>
