@@ -1,7 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowRight,
-  Bot,
   Boxes,
   Database,
   LayoutDashboard,
@@ -9,7 +8,6 @@ import {
   Plug,
   RefreshCw,
   Sparkles,
-  Workflow,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CtaSection } from "@/components/site/CtaSection";
