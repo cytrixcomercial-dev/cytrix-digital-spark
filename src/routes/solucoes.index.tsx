@@ -23,7 +23,7 @@ export const Route = createFileRoute("/solucoes/")({
     pageHead({
       path: "/solucoes",
       title: "Soluções de IA e dados que entram em produção — Cytrix",
-      description: "Agentes de IA, automação, integração de sistemas e dados organizados: soluções da Cytrix Data Consulting desenhadas para gerar resultado na operação real.",
+      description: "Agentes de IA, automação, integração de sistemas e dados organizados: soluções da Cytrix desenhadas para gerar resultado na operação real.",
       ogTitle: "Soluções de IA e dados que entram em produção — Cytrix",
       ogDescription: "Do desafio operacional à solução em produção: IA, automação e dados com método e governança.",
     }),
