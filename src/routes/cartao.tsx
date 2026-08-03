@@ -34,10 +34,10 @@ function CartaoPage() {
         </h1>
 
         <p className="text-muted-foreground mx-auto mt-5 max-w-md text-sm leading-relaxed">
-          Somos uma consultoria de Dados &amp; IA focada em resultado.
-          Organizamos dados, integramos sistemas e automatizamos processos.
-          Criamos agentes autônomos e painéis que orientam decisões.
-          Entregamos operações mais ágeis, previsíveis e escaláveis.
+          A Cytrix Data Consulting potencializa negócios com automação inteligente,
+          unificação de ecossistemas digitais e agentes autônomos de IA.
+          Transformamos dados em decisões rápidas, integradas e escaláveis.
+          Resultado: uma operação mais ágil, conectada e preparada para crescer.
         </p>
 
         <div className="border-border/70 bg-surface/50 mx-auto mt-10 max-w-md rounded-2xl border p-6 text-left">
