@@ -143,7 +143,7 @@ export function Header() {
         <div className="border-t border-border/70 md:hidden">
           <nav className="mx-auto flex max-w-6xl flex-col gap-1 px-5 py-3">
             {mainLinks.map((l) =>
-              l.children ? (
+              "children" in l ? (
                 <div key={l.to}>
                   <button
                     type="button"
@@ -170,7 +170,7 @@ export function Header() {
                       >
                         Ver todas as soluções
                       </Link>
-                      {l.children.map((c) => (
+                      {l.children.map((c: NavLink) => (
                         <Link
                           key={c.to}
                           to={c.to}
