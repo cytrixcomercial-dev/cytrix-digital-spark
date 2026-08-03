@@ -13,7 +13,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { CtaSection } from "@/components/site/CtaSection";
 import { AiDataBackground } from "@/components/site/AiDataBackground";
-import heroImage from "@/assets/hero-data.jpg";
+import heroImage from "@/assets/hero-ai-agents.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -126,58 +126,11 @@ function Index() {
             <div className="relative overflow-hidden rounded-lg">
               <img
                 src={heroImage}
-                alt="Rede de dados conectados representando a plataforma analítica da Cytrix"
+                alt="Dados e agentes autônomos de IA operando painéis analíticos da Cytrix Data Consulting"
                 width={1280}
                 height={960}
                 className="block w-full rounded-lg"
               />
-              <svg
-                viewBox="0 0 400 300"
-                preserveAspectRatio="none"
-                aria-hidden="true"
-                className="pointer-events-none absolute inset-0 h-full w-full"
-              >
-                <g stroke="var(--brand-blue)" strokeWidth="1.2" fill="none" opacity="0.65">
-                  <path d="M40 240 L120 170 L210 200 L300 120 L370 60" />
-                  <path d="M40 90 L130 60 L210 200 L320 230" />
-                  <path d="M130 60 L300 120" />
-                </g>
-                <g stroke="var(--brand-orange)" strokeWidth="2" fill="none" strokeLinecap="round">
-                  <path
-                    className="connector-flow"
-                    d="M40 240 L120 170 L210 200 L300 120 L370 60"
-                  />
-                  <path
-                    className="connector-flow connector-flow-delay-1"
-                    d="M40 90 L130 60 L210 200 L320 230"
-                  />
-                  <path
-                    className="connector-flow connector-flow-delay-2"
-                    d="M130 60 L300 120"
-                  />
-                </g>
-                <g fill="var(--brand-purple)">
-                  {[
-                    [40, 240],
-                    [120, 170],
-                    [210, 200],
-                    [300, 120],
-                    [370, 60],
-                    [40, 90],
-                    [130, 60],
-                    [320, 230],
-                  ].map(([cx, cy], i) => (
-                    <circle
-                      key={`${cx}-${cy}`}
-                      cx={cx}
-                      cy={cy}
-                      r="4"
-                      className="connector-node"
-                      style={{ animationDelay: `${i * 0.35}s` }}
-                    />
-                  ))}
-                </g>
-              </svg>
             </div>
           </div>
         </div>
