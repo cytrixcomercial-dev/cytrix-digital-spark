@@ -13,7 +13,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { CtaSection } from "@/components/site/CtaSection";
 import { AiDataBackground } from "@/components/site/AiDataBackground";
-import heroImage from "@/assets/hero-data.jpg";
+import heroImage from "@/assets/hero-ai-agents.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
