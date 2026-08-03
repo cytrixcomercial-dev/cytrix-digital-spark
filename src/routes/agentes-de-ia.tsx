@@ -135,7 +135,7 @@ function AgentesPage() {
         </div>
       </section>
 
-      <section id="agentes" className="mx-auto max-w-6xl px-5 py-20">
+      <section id="agentes" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-20">
         <p className="eyebrow">Casos de uso</p>
         <h2 className="mt-4 text-3xl font-bold md:text-4xl">Agentes com uma missão clara</h2>
         <p className="text-muted-foreground mt-4 max-w-2xl text-sm leading-relaxed md:text-base">
