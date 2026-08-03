@@ -32,7 +32,7 @@ const dictionaries: Record<LanguageCode, Dict> = {
     "nav.home": "Home",
     "nav.about": "About Us",
     "nav.solutions": "Solutions",
-    "nav.method": "Method",
+    "nav.method": "Methodology",
     "nav.dataTeam": "Data Team",
     "nav.contact": "Contact",
     "nav.allSolutions": "See all solutions",
