@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link, useLocation } from "@tanstack/react-router";
 import { useState, useRef, useEffect } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -33,6 +33,11 @@ export function Header() {
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const { t } = useLanguage();
+  const location = useLocation();
+  const currentPath = location.pathname;
+
+  const isActive = (to: string, exact = false) =>
+    exact ? currentPath === to : currentPath === to || currentPath.startsWith(`${to}/`);
   const label = (l: { label: string; key?: string }) => (l.key ? t(l.key) : l.label);
 
   useEffect(() => {
@@ -73,7 +78,9 @@ export function Header() {
                 <button
                   type="button"
                   onClick={() => toggleDropdown(l.label)}
-                  className="flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                  className={`flex items-center gap-1 text-sm transition-colors hover:text-brand-orange ${
+                    isActive(l.to) ? "font-semibold text-brand-blue" : "text-muted-foreground"
+                  }`}
                   aria-expanded={openDropdown === l.label}
                   aria-haspopup="menu"
                 >
@@ -81,7 +88,7 @@ export function Header() {
                   <ChevronDown
                     className={`size-3.5 transition-transform ${
                       openDropdown === l.label ? "rotate-180" : ""
-                    }`}
+                    } ${isActive(l.to) ? "text-brand-blue" : ""}`}
                   />
                 </button>
                 {openDropdown === l.label && (
@@ -91,7 +98,9 @@ export function Header() {
                         <Link
                           to={l.to}
                           onClick={() => setOpenDropdown(null)}
-                          className="block rounded-md px-3 py-2 text-sm text-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
+                          className={`block rounded-md px-3 py-2 text-sm transition-colors hover:bg-accent hover:text-brand-orange ${
+                            isActive(l.to) ? "font-semibold text-brand-blue" : "text-foreground"
+                          }`}
                           role="menuitem"
                         >
                           {t("nav.allSolutions")}
@@ -103,7 +112,9 @@ export function Header() {
                           <Link
                             to={c.to}
                             onClick={() => setOpenDropdown(null)}
-                            className="block rounded-md px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
+                            className={`block rounded-md px-3 py-2 text-sm transition-colors hover:bg-accent hover:text-brand-orange ${
+                              isActive(c.to) ? "font-semibold text-brand-blue" : "text-muted-foreground"
+                            }`}
                             role="menuitem"
                           >
                             {label(c)}
@@ -118,8 +129,9 @@ export function Header() {
               <Link
                 key={l.to}
                 to={l.to}
-                className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-                activeProps={{ className: "text-sm text-foreground" }}
+                className={`text-sm transition-colors hover:text-brand-orange ${
+                  isActive(l.to, l.to === "/") ? "font-semibold text-brand-blue" : "text-muted-foreground"
+                }`}
                 activeOptions={{ exact: l.to === "/" }}
               >
                 {label(l)}
@@ -155,14 +167,16 @@ export function Header() {
                   <button
                     type="button"
                     onClick={() => toggleMobileSubmenu(l.label)}
-                    className="flex w-full items-center justify-between py-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                    className={`flex w-full items-center justify-between py-2 text-sm transition-colors hover:text-brand-orange ${
+                      isActive(l.to) ? "font-semibold text-brand-blue" : "text-muted-foreground"
+                    }`}
                     aria-expanded={mobileExpanded === l.label}
                   >
                     {label(l)}
                     <ChevronDown
                       className={`size-3.5 transition-transform ${
                         mobileExpanded === l.label ? "rotate-180" : ""
-                      }`}
+                      } ${isActive(l.to) ? "text-brand-blue" : ""}`}
                     />
                   </button>
                   {mobileExpanded === l.label && (
@@ -173,7 +187,9 @@ export function Header() {
                           setMobileOpen(false);
                           setMobileExpanded(null);
                         }}
-                        className="block py-2 text-sm text-foreground transition-colors hover:text-brand-orange"
+                        className={`block py-2 text-sm transition-colors hover:text-brand-orange ${
+                          isActive(l.to) ? "font-semibold text-brand-blue" : "text-foreground"
+                        }`}
                       >
                         {t("nav.allSolutions")}
                       </Link>
@@ -185,7 +201,9 @@ export function Header() {
                             setMobileOpen(false);
                             setMobileExpanded(null);
                           }}
-                          className="block py-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                          className={`block py-2 text-sm transition-colors hover:text-brand-orange ${
+                            isActive(c.to) ? "font-semibold text-brand-blue" : "text-muted-foreground"
+                          }`}
                         >
                           {label(c)}
                         </Link>
@@ -198,7 +216,9 @@ export function Header() {
                   key={l.to}
                   to={l.to}
                   onClick={() => setMobileOpen(false)}
-                  className="py-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                  className={`py-2 text-sm transition-colors hover:text-brand-orange ${
+                    isActive(l.to, l.to === "/") ? "font-semibold text-brand-blue" : "text-muted-foreground"
+                  }`}
                 >
                   {label(l)}
                 </Link>
