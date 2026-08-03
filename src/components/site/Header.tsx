@@ -3,26 +3,28 @@ import { useState, useRef, useEffect } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/cytrix-logo.png";
+import { LanguageSwitcher } from "@/components/site/LanguageSwitcher";
+import { useLanguage } from "@/lib/i18n";
 
-type NavLink = { to: string; label: string };
-type NavDropdown = { to: string; label: string; children: readonly NavLink[] };
+type NavLink = { to: string; label: string; key?: string };
+type NavDropdown = { to: string; label: string; key?: string; children: readonly NavLink[] };
 
 const solutions: readonly NavLink[] = [
   { to: "/solucoes/data-consulting", label: "Data Consulting" },
   { to: "/solucoes/business-intelligence", label: "Business Intelligence (BI)" },
   { to: "/solucoes/bi-data-quality", label: "BI Data Quality" },
-  { to: "/agentes-de-ia", label: "Agentes autônomos de IA" },
+  { to: "/agentes-de-ia", label: "Agentes autônomos de IA", key: "nav.aiAgents" },
   { to: "/solucoes/bi-platform", label: "BI Platform" },
   { to: "/solucoes/bi-ia-outsourcing", label: "BI & IA Outsourcing" },
 ] as const;
 
 const mainLinks: readonly (NavLink | NavDropdown)[] = [
-  { to: "/", label: "Home" },
-  { to: "/quem-somos", label: "Quem Somos" },
-  { to: "/solucoes", label: "Soluções", children: solutions },
-  { to: "/metodo", label: "Método" },
-  { to: "/equipe-de-dados", label: "Equipe de Dados" },
-  { to: "/contato", label: "Contato" },
+  { to: "/", label: "Home", key: "nav.home" },
+  { to: "/quem-somos", label: "Quem Somos", key: "nav.about" },
+  { to: "/solucoes", label: "Soluções", key: "nav.solutions", children: solutions },
+  { to: "/metodo", label: "Método", key: "nav.method" },
+  { to: "/equipe-de-dados", label: "Equipe de Dados", key: "nav.dataTeam" },
+  { to: "/contato", label: "Contato", key: "nav.contact" },
 ] as const;
 
 export function Header() {
@@ -30,6 +32,8 @@ export function Header() {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const { t } = useLanguage();
+  const label = (l: { label: string; key?: string }) => (l.key ? t(l.key) : l.label);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
