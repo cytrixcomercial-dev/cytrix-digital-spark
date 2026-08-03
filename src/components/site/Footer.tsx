@@ -162,14 +162,14 @@ export function Footer() {
           <div className="border-border/70 bg-surface/60 mt-6 inline-flex flex-col items-center rounded-xl border p-3">
             <img
               src={contatoQr}
-              alt="QR Code com os contatos da Cytrix Data Consulting: telefone, WhatsApp, e-mails, endereço e LinkedIn"
+              alt="QR Code que abre o cartão digital da Cytrix Data Consulting com apresentação e contatos"
               width={144}
               height={144}
               loading="lazy"
               className="size-36 rounded-md bg-white p-1.5"
             />
             <span className="text-muted-foreground mt-2 max-w-[9rem] text-center text-[11px] leading-tight">
-              Escaneie e salve todos os nossos contatos
+              Aponte a câmera do celular e conheça a Cytrix
             </span>
           </div>
         </div>
