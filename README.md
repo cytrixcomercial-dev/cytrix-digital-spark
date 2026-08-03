@@ -1,14 +1,16 @@
-# Welcome to your Lovable project
+# Cytrix Data Consulting_Site Novo Agosto 2026
+
+Preciso que crie um site para a empresa Cytrix Data Consuting com a mesma estrutura do site da empresa https://rcostaconsulting.com.br/ utilize para o site a tipografia para sites de tecnologia e cores Azul, laranja, preto, roxo
 
 This project was built with [Lovable](https://lovable.dev).
 
 ## Build with Lovable
 
-Open your project in the [Lovable editor](https://lovable.dev) and keep building.
+Continue developing this project in the [Lovable editor](https://lovable.dev/projects/06e41034-2559-4fbe-be9d-e7c5e5ff6e42).
 
 - **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: connect the project to GitHub and every change made in Lovable is committed straight to your repository.
-- **Full ownership**: this code is yours. Push to your repository and your changes sync back into Lovable, ready for your next prompt.
+- **Stay in sync**: every change made in Lovable is committed straight to this repository.
+- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
 
 ## Development
 
@@ -20,10 +22,3 @@ cd <repository-name>
 npm i
 npm run dev
 ```
-
-## Built with
-
-- TanStack Start
-- TypeScript
-- React
-- Tailwind CSS
