@@ -108,7 +108,7 @@ export function Footer() {
                 to="/equipe-de-dados"
                 className="text-muted-foreground hover:text-brand-orange transition-colors"
               >
-                Equipe de Dados
+                Equipe de dados e IA
               </Link>
             </li>
             <li>
