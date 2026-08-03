@@ -187,8 +187,8 @@ export function Header() {
                           setMobileOpen(false);
                           setMobileExpanded(null);
                         }}
-                        className={`block py-2 text-sm transition-colors hover:text-brand-orange ${
-                          isActive(l.to) ? "font-semibold text-brand-blue" : "text-foreground"
+                        className={`block py-2 text-sm text-white transition-colors hover:text-brand-orange ${
+                          isActive(l.to) ? "font-semibold text-brand-blue" : ""
                         }`}
                       >
                         {t("nav.allSolutions")}
@@ -201,8 +201,8 @@ export function Header() {
                             setMobileOpen(false);
                             setMobileExpanded(null);
                           }}
-                          className={`block py-2 text-sm transition-colors hover:text-brand-orange ${
-                            isActive(c.to) ? "font-semibold text-brand-blue" : "text-muted-foreground"
+                          className={`block py-2 text-sm text-white transition-colors hover:text-brand-orange ${
+                            isActive(c.to) ? "font-semibold text-brand-blue" : ""
                           }`}
                         >
                           {label(c)}
