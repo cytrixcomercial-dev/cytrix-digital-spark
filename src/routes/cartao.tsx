@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Mail, Linkedin, MapPin, Phone, Globe } from "lucide-react";
+import { Mail, Linkedin, MapPin, Phone, Globe, ContactRound } from "lucide-react";
 import { pageHead } from "@/lib/seo";
 import logo from "@/assets/cytrix-logo.png";
 
@@ -39,6 +39,15 @@ function CartaoPage() {
           Transformamos dados em decisões rápidas, integradas e escaláveis.
           Resultado: uma operação mais ágil, conectada e preparada para crescer.
         </p>
+
+        <a
+          href="/api/public/cytrix-contact.vcf"
+          className="bg-primary text-primary-foreground hover:bg-primary/90 mx-auto mt-7 inline-flex items-center justify-center gap-2 rounded-md px-5 py-3 text-sm font-semibold transition-colors"
+          download
+        >
+          <ContactRound className="size-4" />
+          Salvar contato no celular
+        </a>
 
         <div className="border-border/70 bg-surface/50 mx-auto mt-10 max-w-md rounded-2xl border p-6 text-left">
           <h2 className="text-sm font-semibold">Contatos</h2>
