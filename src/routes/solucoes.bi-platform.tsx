@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { pageHead } from "@/lib/seo";
 import {
   Layers,
   Cloud,
@@ -11,24 +12,14 @@ import { ServicePage } from "@/components/site/ServicePage";
 import imgEcossistema from "@/assets/solucoes-ecossistema.jpg";
 
 export const Route = createFileRoute("/solucoes/bi-platform")({
-  head: () => ({
-    meta: [
-      { title: "BI Platform — Cytrix Data Consulting" },
-      {
-        name: "description",
-        content:
-          "Implantação, configuração e gestão de plataformas de BI modernas, escaláveis e integradas ao seu ecossistema.",
-      },
-      { property: "og:title", content: "BI Platform — Cytrix Data Consulting" },
-      {
-        property: "og:description",
-        content:
-          "Plataforma de BI sob medida: stack, segurança, governança e adoção pelo negócio.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
+  head: () =>
+    pageHead({
+      path: "/solucoes/bi-platform",
+      title: "BI Platform — Cytrix Data Consulting",
+      description: "Implantação, configuração e gestão de plataformas de BI modernas, escaláveis e integradas ao seu ecossistema.",
+      ogTitle: "BI Platform — Cytrix Data Consulting",
+      ogDescription: "Plataforma de BI sob medida: stack, segurança, governança e adoção pelo negócio.",
+    }),
   component: BiPlatformPage,
 });
 

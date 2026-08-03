@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { pageHead } from "@/lib/seo";
 import { useState } from "react";
 import { Linkedin, Mail, MapPin, Phone } from "lucide-react";
 import { toast } from "sonner";
@@ -11,21 +12,14 @@ import { sendContactMessage } from "@/lib/contact.functions";
 import { isCorporateEmail } from "@/lib/email-corporate";
 
 export const Route = createFileRoute("/contato")({
-  head: () => ({
-    meta: [
-      { title: "Contato — Cytrix Data Consulting" },
-      {
-        name: "description",
-        content:
-          "Fale com a Cytrix Data Consulting e solicite um diagnóstico de dados para a sua operação.",
-      },
-      { property: "og:title", content: "Contato — Cytrix Data Consulting" },
-      {
-        property: "og:description",
-        content: "Solicite um diagnóstico de dados e IA para sua empresa.",
-      },
-    ],
-  }),
+  head: () =>
+    pageHead({
+      path: "/contato",
+      title: "Contato — Cytrix Data Consulting",
+      description: "Fale com a Cytrix Data Consulting e solicite um diagnóstico de dados para a sua operação.",
+      ogTitle: "Contato — Cytrix Data Consulting",
+      ogDescription: "Solicite um diagnóstico de dados e IA para sua empresa.",
+    }),
   component: ContatoPage,
 });
 

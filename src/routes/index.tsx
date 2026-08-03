@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { pageHead } from "@/lib/seo";
 import {
   GitBranch,
   LineChart,
@@ -22,21 +23,14 @@ import heroSlide3 from "@/assets/hero-slide-3-bi.jpg";
 import heroSlide4 from "@/assets/hero-slide-4-dados.jpg";
 
 export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "Cytrix Data Consulting — Dados e IA para sua operação" },
-      {
-        name: "description",
-        content:
-          "A Cytrix Data Consulting estrutura dados, automatiza processos e aplica IA para tornar a operação da sua empresa mais produtiva e escalável.",
-      },
-      { property: "og:title", content: "Cytrix Data Consulting — Dados e IA para sua operação" },
-      {
-        property: "og:description",
-        content: "Engenharia de dados, analytics, governança e agentes de IA sob medida.",
-      },
-    ],
-  }),
+  head: () =>
+    pageHead({
+      path: "/",
+      title: "Cytrix Data Consulting — Dados e IA para sua operação",
+      description: "A Cytrix Data Consulting estrutura dados, automatiza processos e aplica IA para tornar a operação da sua empresa mais produtiva e escalável.",
+      ogTitle: "Cytrix Data Consulting — Dados e IA para sua operação",
+      ogDescription: "Engenharia de dados, analytics, governança e agentes de IA sob medida.",
+    }),
   component: Index,
 });
 

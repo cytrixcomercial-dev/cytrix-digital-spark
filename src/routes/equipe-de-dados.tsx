@@ -1,22 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { pageHead } from "@/lib/seo";
 import { CtaSection } from "@/components/site/CtaSection";
 
 export const Route = createFileRoute("/equipe-de-dados")({
-  head: () => ({
-    meta: [
-      { title: "Equipe de Dados — Cytrix Data Consulting" },
-      {
-        name: "description",
-        content:
-          "Um time sob demanda de engenheiros de dados, analistas, especialistas em IA e governança à disposição da sua operação.",
-      },
-      { property: "og:title", content: "Equipe de Dados — Cytrix Data Consulting" },
-      {
-        property: "og:description",
-        content: "Squad de dados sob demanda, sem o custo de montar um time interno.",
-      },
-    ],
-  }),
+  head: () =>
+    pageHead({
+      path: "/equipe-de-dados",
+      title: "Equipe de Dados — Cytrix Data Consulting",
+      description: "Um time sob demanda de engenheiros de dados, analistas, especialistas em IA e governança à disposição da sua operação.",
+      ogTitle: "Equipe de Dados — Cytrix Data Consulting",
+      ogDescription: "Squad de dados sob demanda, sem o custo de montar um time interno.",
+    }),
   component: EquipePage,
 });
 
