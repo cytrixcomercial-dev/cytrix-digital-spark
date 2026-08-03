@@ -123,8 +123,9 @@ export function Header() {
               <Link
                 key={l.to}
                 to={l.to}
-                className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-                activeProps={{ className: "text-sm text-foreground" }}
+                className={`text-sm transition-colors hover:text-brand-orange ${
+                  isActive(l.to, l.to === "/") ? "font-semibold text-brand-blue" : "text-muted-foreground"
+                }`}
                 activeOptions={{ exact: l.to === "/" }}
               >
                 {label(l)}
