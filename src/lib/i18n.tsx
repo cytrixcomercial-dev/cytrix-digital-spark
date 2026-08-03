@@ -60,7 +60,7 @@ const dictionaries: Record<LanguageCode, Dict> = {
     "nav.home": "Inicio",
     "nav.about": "Quiénes Somos",
     "nav.solutions": "Soluciones",
-    "nav.method": "Método",
+    "nav.method": "Metodología",
     "nav.dataTeam": "Equipo de Datos",
     "nav.contact": "Contacto",
     "nav.allSolutions": "Ver todas las soluciones",
