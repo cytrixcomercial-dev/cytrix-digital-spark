@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Mail, Linkedin, MapPin, Phone } from "lucide-react";
 import logo from "@/assets/cytrix-logo.png";
+import contatoQr from "@/assets/cytrix-contato-qr.png";
 
 export function Footer() {
   return (
@@ -157,6 +158,20 @@ export function Footer() {
               </a>
             </li>
           </ul>
+
+          <div className="border-border/70 bg-surface/60 mt-6 inline-flex flex-col items-center rounded-xl border p-3">
+            <img
+              src={contatoQr}
+              alt="QR Code com os contatos da Cytrix Data Consulting: telefone, WhatsApp, e-mails, endereço e LinkedIn"
+              width={144}
+              height={144}
+              loading="lazy"
+              className="size-36 rounded-md bg-white p-1.5"
+            />
+            <span className="text-muted-foreground mt-2 max-w-[9rem] text-center text-[11px] leading-tight">
+              Escaneie e salve todos os nossos contatos
+            </span>
+          </div>
         </div>
       </div>
       <div className="border-border/70 border-t px-5 py-5">
