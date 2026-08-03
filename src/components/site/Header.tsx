@@ -4,7 +4,10 @@ import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/cytrix-logo.png";
 
-const solutions = [
+type NavLink = { to: string; label: string };
+type NavDropdown = { to: string; label: string; children: readonly NavLink[] };
+
+const solutions: readonly NavLink[] = [
   { to: "/solucoes/data-consulting", label: "Data Consulting" },
   { to: "/solucoes/business-intelligence", label: "Business Intelligence (BI)" },
   { to: "/solucoes/bi-data-quality", label: "BI Data Quality" },
@@ -13,7 +16,7 @@ const solutions = [
   { to: "/solucoes/bi-ia-outsourcing", label: "BI & IA Outsourcing" },
 ] as const;
 
-const mainLinks = [
+const mainLinks: readonly (NavLink | NavDropdown)[] = [
   { to: "/", label: "Home" },
   { to: "/quem-somos", label: "Quem Somos" },
   { to: "/solucoes", label: "Soluções", children: solutions },
