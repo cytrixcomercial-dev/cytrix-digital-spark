@@ -82,9 +82,10 @@ function Index() {
               negócio
             </h1>
             <p className="text-muted-foreground mt-6 max-w-lg text-base leading-relaxed md:text-lg">
-              A Cytrix Data Consulting ajuda empresas a organizar dados, integrar sistemas e criar
-              soluções de inteligência artificial para uma operação mais produtiva, inteligente e
-              escalável.
+              Na Cytrix Data Consulting, potencializamos negócios por meio da automação inteligente de
+              fluxos, da unificação de ecossistemas digitais e da implementação de agentes autônomos
+              de IA. O resultado? Operações mais ágeis, insights mais precisos e um crescimento
+              verdadeiramente escalável. Solicite agora um diagnóstico gratuito de IA.
             </p>
             <div className="mt-9 flex flex-wrap gap-3">
               <Button asChild size="lg">
