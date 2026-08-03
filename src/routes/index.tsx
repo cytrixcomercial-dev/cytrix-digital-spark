@@ -76,7 +76,7 @@ function Index() {
       <section className="glow-top border-border/70 border-b">
         <div className="mx-auto grid max-w-6xl items-center gap-14 px-5 py-20 md:grid-cols-2 md:py-28">
           <div>
-            <p className="eyebrow">Consultoria de dados</p>
+            <p className="eyebrow">CONSULTORIA CONSULTIVA</p>
             <h1 className="mt-5 text-4xl leading-[1.08] font-bold md:text-5xl lg:text-6xl">
               Dados e IA aplicados à <span className="text-gradient-brand">operação</span> do seu
               negócio
