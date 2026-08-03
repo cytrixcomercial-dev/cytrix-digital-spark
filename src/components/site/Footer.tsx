@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Mail, Linkedin, MapPin, Phone } from "lucide-react";
 import logo from "@/assets/cytrix-logo.png";
-import contatoQr from "@/assets/cytrix-contato-qr.png";
+import contatoQr from "@/assets/cytrix-vcard-qr.png.asset.json";
 
 export function Footer() {
   return (
@@ -161,15 +161,15 @@ export function Footer() {
 
           <div className="border-border/70 bg-surface/60 mt-6 inline-flex flex-col items-center rounded-xl border p-3">
             <img
-              src={contatoQr}
-              alt="QR Code que abre o cartão digital da Cytrix Data Consulting com apresentação e contatos"
+              src={contatoQr.url}
+              alt="QR Code para adicionar o vCard completo da Cytrix Data Consulting aos contatos do celular"
               width={160}
               height={160}
               loading="lazy"
               className="size-40 rounded-md bg-white p-2"
             />
             <span className="text-muted-foreground mt-2 max-w-[10rem] text-center text-[11px] leading-tight">
-              Aponte a câmera do celular e conheça a Cytrix
+              Aponte a câmera e salve o contato completo da Cytrix
             </span>
           </div>
         </div>
