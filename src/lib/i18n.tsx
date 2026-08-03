@@ -1,12 +1,12 @@
 import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
 
 export const LANGUAGES = [
-  { code: "pt-BR", label: "Português (Brasil)", short: "PT-BR", flag: "🇧🇷", htmlLang: "pt-BR" },
-  { code: "en-US", label: "English (US)", short: "EN-US", flag: "🇺🇸", htmlLang: "en-US" },
-  { code: "en-GB", label: "English (UK)", short: "EN-GB", flag: "🇬🇧", htmlLang: "en-GB" },
-  { code: "es", label: "Español", short: "ES", flag: "🇪🇸", htmlLang: "es" },
-  { code: "pt-PT", label: "Português (Portugal)", short: "PT-PT", flag: "🇵🇹", htmlLang: "pt-PT" },
-  { code: "fr", label: "Français", short: "FR", flag: "🇫🇷", htmlLang: "fr" },
+  { code: "pt-BR", label: "Português (Brasil)", short: "PT-BR", flag: "br", htmlLang: "pt-BR" },
+  { code: "en-US", label: "English (US)", short: "EN-US", flag: "us", htmlLang: "en-US" },
+  { code: "en-GB", label: "English (UK)", short: "EN-GB", flag: "gb", htmlLang: "en-GB" },
+  { code: "es", label: "Español", short: "ES", flag: "es", htmlLang: "es" },
+  { code: "pt-PT", label: "Português (Portugal)", short: "PT-PT", flag: "pt", htmlLang: "pt-PT" },
+  { code: "fr", label: "Français", short: "FR", flag: "fr", htmlLang: "fr" },
 ] as const;
 
 export type LanguageCode = (typeof LANGUAGES)[number]["code"];

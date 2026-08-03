@@ -2,6 +2,20 @@ import { useEffect, useRef, useState } from "react";
 import { Check, Globe } from "lucide-react";
 import { LANGUAGES, useLanguage, type LanguageCode } from "@/lib/i18n";
 
+function Flag({ code, label, className = "" }: { code: string; label: string; className?: string }) {
+  return (
+    <img
+      src={`https://flagcdn.com/w40/${code}.png`}
+      srcSet={`https://flagcdn.com/w80/${code}.png 2x`}
+      width={20}
+      height={15}
+      alt={label}
+      loading="lazy"
+      className={`h-[15px] w-5 shrink-0 rounded-[2px] object-cover ring-1 ring-border/60 ${className}`}
+    />
+  );
+}
+
 export function LanguageSwitcher({ variant = "desktop" }: { variant?: "desktop" | "mobile" }) {
   const { language, setLanguage, t } = useLanguage();
   const [open, setOpen] = useState(false);
@@ -18,7 +32,7 @@ export function LanguageSwitcher({ variant = "desktop" }: { variant?: "desktop" 
 
   if (variant === "mobile") {
     return (
-      <div className="mt-2 border-t border-border/70 pt-3">
+      <div className="mt-2 border-t border-border/70 pt-3" data-no-translate>
         <p className="mb-2 text-xs font-medium uppercase tracking-wide text-muted-foreground">
           {t("lang.label")}
         </p>
@@ -34,7 +48,7 @@ export function LanguageSwitcher({ variant = "desktop" }: { variant?: "desktop" 
                   : "border-border/70 text-muted-foreground hover:text-foreground"
               }`}
             >
-              <span aria-hidden>{l.flag}</span>
+              <Flag code={l.flag} label={l.label} />
               {l.short}
             </button>
           ))}
@@ -44,7 +58,7 @@ export function LanguageSwitcher({ variant = "desktop" }: { variant?: "desktop" 
   }
 
   return (
-    <div className="relative" ref={ref}>
+    <div className="relative" ref={ref} data-no-translate>
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
@@ -54,7 +68,7 @@ export function LanguageSwitcher({ variant = "desktop" }: { variant?: "desktop" 
         className="flex items-center gap-1.5 rounded-md border border-border/70 px-2 py-1.5 text-xs text-muted-foreground transition-colors hover:text-foreground"
       >
         <Globe className="size-3.5" />
-        <span aria-hidden>{current.flag}</span>
+        <Flag code={current.flag} label={current.label} />
         <span className="hidden lg:inline">{current.short}</span>
       </button>
       {open && (
@@ -73,7 +87,7 @@ export function LanguageSwitcher({ variant = "desktop" }: { variant?: "desktop" 
                     l.code === language ? "text-foreground" : "text-muted-foreground"
                   }`}
                 >
-                  <span aria-hidden>{l.flag}</span>
+                  <Flag code={l.flag} label={l.label} />
                   <span className="flex-1">{l.label}</span>
                   {l.code === language && <Check className="size-3.5" />}
                 </button>

@@ -15,6 +15,7 @@ import { Footer } from "@/components/site/Footer";
 import { BackToTop } from "@/components/site/BackToTop";
 import { Toaster } from "@/components/ui/sonner";
 import { LanguageProvider } from "@/lib/i18n";
+import { AutoTranslate } from "@/lib/auto-translate";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
 function NotFoundComponent() {
@@ -173,6 +174,7 @@ function RootComponent() {
           <Footer />
           <Toaster />
           <BackToTop />
+          <AutoTranslate />
         </div>
       </LanguageProvider>
     </QueryClientProvider>
