@@ -161,7 +161,7 @@ export function Footer() {
 
           <div className="border-border/70 bg-surface/60 mt-6 inline-flex flex-col items-center rounded-xl border p-3">
             <img
-              src={contatoQr}
+              src={contatoQr.url}
               alt="QR Code para adicionar o vCard completo da Cytrix Data Consulting aos contatos do celular"
               width={160}
               height={160}
