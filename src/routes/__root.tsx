@@ -143,6 +143,7 @@ function RootComponent() {
         </main>
         <Footer />
         <Toaster />
+        <BackToTop />
       </div>
     </QueryClientProvider>
   );
