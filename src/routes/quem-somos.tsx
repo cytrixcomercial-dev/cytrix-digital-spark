@@ -35,7 +35,7 @@ const chapters = [
   {
     icon: Puzzle,
     title: "A ruptura",
-    text: "Foi para romper com esse ciclo que criamos a Cytrix. Não nascemos para entregar telas coloridas. Nascemos para construir arquiteturas de decisão que realmente funcionam — ecossistemas onde Inteligência Artificial, Business Intelligence e automação se conectam para gerar resultados tangíveis, não apenas relatórios bonitos.",
+    text: "Foi para romper com esse ciclo que criamos a Cytrix Data Consulting. Não nascemos para entregar telas coloridas. Nascemos para construir arquiteturas de decisão que realmente funcionam — ecossistemas onde Inteligência Artificial, Business Intelligence e automação se conectam para gerar resultados tangíveis, não apenas relatórios bonitos.",
   },
   {
     icon: Network,
@@ -60,7 +60,7 @@ const commitments = [
   {
     icon: Lock,
     title: "Governança total",
-    text: "Nossos parceiros atuam com e-mails @cytrix.com.br, NDAs rigorosos e proteção comercial — o cliente sempre tem um único ponto de contato: a Cytrix.",
+    text: "Nossos parceiros atuam com e-mails @cytrix.com.br, NDAs rigorosos e proteção comercial — o cliente sempre tem um único ponto de contato: a Cytrix Data Consulting.",
   },
   {
     icon: Rocket,
@@ -209,7 +209,7 @@ function QuemSomosPage() {
             <blockquote className="max-w-4xl">
               <p className="text-xl font-medium leading-relaxed md:text-2xl">
                 Se você está cansado de gastar com ferramentas que não entregam resultado… se quer
-                parar de apostar e começar a decidir com dados… a Cytrix é sua parceira estratégica.
+                parar de apostar e começar a decidir com dados… a Cytrix Data Consulting é sua parceira estratégica.
               </p>
               <footer className="text-muted-foreground mt-6 text-sm">
                 Afinal, informação sem direção não é inteligência. É apenas barulho. E você merece
@@ -218,7 +218,7 @@ function QuemSomosPage() {
             </blockquote>
             <div className="mt-8">
               <p className="font-display text-2xl font-bold tracking-tight">
-                CYTRIX <span className="text-brand-orange">|</span> Data Consulting
+                CYTRIX {"\u00a0"}<span className="text-brand-orange">|</span> Data Consulting
               </p>
               <p className="text-muted-foreground mt-2 text-sm">
                 Transformamos tecnologia em vantagem competitiva. Em decisão. Em resultado.
