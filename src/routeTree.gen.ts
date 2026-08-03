@@ -28,6 +28,7 @@ import { Route as SolucoesBiIaOutsourcingRouteImport } from './routes/solucoes.b
 import { Route as SolucoesBiPlatformRouteImport } from './routes/solucoes.bi-platform'
 import { Route as SolucoesBusinessIntelligenceRouteImport } from './routes/solucoes.business-intelligence'
 import { Route as SolucoesDataConsultingRouteImport } from './routes/solucoes.data-consulting'
+import { Route as ApiPublicCytrixContactDotvcfRouteImport } from './routes/api/public/cytrix-contact[.]vcf'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -126,6 +127,12 @@ const SolucoesDataConsultingRoute = SolucoesDataConsultingRouteImport.update({
   path: '/data-consulting',
   getParentRoute: () => SolucoesRoute,
 } as any)
+const ApiPublicCytrixContactDotvcfRoute =
+  ApiPublicCytrixContactDotvcfRouteImport.update({
+    id: '/api/public/cytrix-contact.vcf',
+    path: '/api/public/cytrix-contact.vcf',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -147,6 +154,7 @@ export interface FileRoutesByFullPath {
   '/solucoes/business-intelligence': typeof SolucoesBusinessIntelligenceRoute
   '/solucoes/data-consulting': typeof SolucoesDataConsultingRoute
   '/solucoes/': typeof SolucoesIndexRoute
+  '/api/public/cytrix-contact.vcf': typeof ApiPublicCytrixContactDotvcfRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -167,6 +175,7 @@ export interface FileRoutesByTo {
   '/solucoes/business-intelligence': typeof SolucoesBusinessIntelligenceRoute
   '/solucoes/data-consulting': typeof SolucoesDataConsultingRoute
   '/solucoes': typeof SolucoesIndexRoute
+  '/api/public/cytrix-contact.vcf': typeof ApiPublicCytrixContactDotvcfRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -189,6 +198,7 @@ export interface FileRoutesById {
   '/solucoes/business-intelligence': typeof SolucoesBusinessIntelligenceRoute
   '/solucoes/data-consulting': typeof SolucoesDataConsultingRoute
   '/solucoes/': typeof SolucoesIndexRoute
+  '/api/public/cytrix-contact.vcf': typeof ApiPublicCytrixContactDotvcfRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -212,6 +222,7 @@ export interface FileRouteTypes {
     | '/solucoes/business-intelligence'
     | '/solucoes/data-consulting'
     | '/solucoes/'
+    | '/api/public/cytrix-contact.vcf'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -232,6 +243,7 @@ export interface FileRouteTypes {
     | '/solucoes/business-intelligence'
     | '/solucoes/data-consulting'
     | '/solucoes'
+    | '/api/public/cytrix-contact.vcf'
   id:
     | '__root__'
     | '/'
@@ -253,6 +265,7 @@ export interface FileRouteTypes {
     | '/solucoes/business-intelligence'
     | '/solucoes/data-consulting'
     | '/solucoes/'
+    | '/api/public/cytrix-contact.vcf'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -269,6 +282,7 @@ export interface RootRouteChildren {
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SolucoesRoute: typeof SolucoesRouteWithChildren
   TermosDeUsoRoute: typeof TermosDeUsoRoute
+  ApiPublicCytrixContactDotvcfRoute: typeof ApiPublicCytrixContactDotvcfRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -406,6 +420,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SolucoesDataConsultingRouteImport
       parentRoute: typeof SolucoesRoute
     }
+    '/api/public/cytrix-contact.vcf': {
+      id: '/api/public/cytrix-contact.vcf'
+      path: '/api/public/cytrix-contact.vcf'
+      fullPath: '/api/public/cytrix-contact.vcf'
+      preLoaderRoute: typeof ApiPublicCytrixContactDotvcfRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -445,7 +466,18 @@ const rootRouteChildren: RootRouteChildren = {
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   SolucoesRoute: SolucoesRouteWithChildren,
   TermosDeUsoRoute: TermosDeUsoRoute,
+  ApiPublicCytrixContactDotvcfRoute: ApiPublicCytrixContactDotvcfRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
