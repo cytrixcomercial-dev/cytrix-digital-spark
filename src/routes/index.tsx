@@ -13,7 +13,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { CtaSection } from "@/components/site/CtaSection";
 import { AiDataBackground } from "@/components/site/AiDataBackground";
-import heroImage from "@/assets/hero-ai-agents.jpg";
+import heroBanner from "@/assets/hero-office-team.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -87,15 +87,27 @@ function Index() {
   return (
     <>
       <AiDataBackground />
-      <section className="glow-top border-border/70 border-b">
-        <div className="mx-auto grid max-w-6xl items-center gap-14 px-5 py-20 md:grid-cols-2 md:py-28">
-          <div>
+      <section className="glow-top border-border/70 relative isolate overflow-hidden border-b">
+        <div className="absolute inset-0 -z-10">
+          <img
+            src={heroBanner}
+            alt="Equipe da Cytrix Data Consulting trabalhando em escritório com painéis de dados e agentes de IA"
+            width={1920}
+            height={1088}
+            className="hero-banner-img h-full w-full object-cover"
+          />
+          <div className="from-background via-background/85 to-background/40 absolute inset-0 bg-gradient-to-r" />
+          <div className="from-background absolute inset-0 bg-gradient-to-t via-transparent to-transparent" />
+          <div className="hero-banner-sweep pointer-events-none absolute inset-0" />
+        </div>
+        <div className="mx-auto max-w-6xl px-5 py-24 md:py-36">
+          <div className="max-w-2xl">
             <p className="eyebrow">CONSULTORIA CONSULTIVA</p>
             <h1 className="mt-5 text-4xl leading-[1.08] font-bold md:text-5xl lg:text-6xl">
               Curadoria de Dados e IA aplicados à <span className="text-gradient-brand">operação</span> do seu
               negócio
             </h1>
-            <p className="text-muted-foreground mt-6 max-w-lg text-base leading-relaxed md:text-lg">
+            <p className="text-muted-foreground mt-6 max-w-xl text-base leading-relaxed md:text-lg">
               Na Cytrix Data Consulting, potencializamos negócios por meio da automação inteligente de
               fluxos, da unificação de ecossistemas digitais e da implementação de agentes autônomos
               de IA. O resultado? Operações mais ágeis, insights mais precisos e um crescimento
@@ -110,7 +122,7 @@ function Index() {
               </Button>
             </div>
 
-            <dl className="mt-12 grid grid-cols-4 gap-x-4 gap-y-5 sm:gap-x-6">
+            <dl className="mt-12 grid max-w-2xl grid-cols-4 gap-x-4 gap-y-5 sm:gap-x-6">
               {metrics.map((m) => (
                 <div key={m.label} className="flex flex-col justify-end">
                   <dt className="text-muted-foreground font-mono text-[0.65rem] tracking-widest uppercase sm:text-[0.7rem]">
@@ -120,18 +132,6 @@ function Index() {
                 </div>
               ))}
             </dl>
-          </div>
-
-          <div className="card-tech overflow-hidden p-2">
-            <div className="relative overflow-hidden rounded-lg">
-              <img
-                src={heroImage}
-                alt="Dados e agentes autônomos de IA operando painéis analíticos da Cytrix Data Consulting"
-                width={1280}
-                height={960}
-                className="block w-full rounded-lg"
-              />
-            </div>
           </div>
         </div>
       </section>
