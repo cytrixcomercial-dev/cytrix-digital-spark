@@ -22,6 +22,44 @@ export function Footer() {
         </div>
 
         <div>
+          <h3 className="text-sm font-semibold">Institucional</h3>
+          <ul className="mt-4 space-y-2 text-sm">
+            <li>
+              <Link
+                to="/politica-de-privacidade"
+                className="text-muted-foreground hover:text-brand-orange transition-colors"
+              >
+                Política de Privacidade
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/politica-de-cookies"
+                className="text-muted-foreground hover:text-brand-orange transition-colors"
+              >
+                Política de Cookies
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/termos-de-uso"
+                className="text-muted-foreground hover:text-brand-orange transition-colors"
+              >
+                Termos de Uso
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/seja-um-representante-comercial"
+                className="text-muted-foreground hover:text-brand-orange transition-colors"
+              >
+                Seja um Representante Comercial
+              </Link>
+            </li>
+          </ul>
+        </div>
+
+        <div>
           <h3 className="text-sm font-semibold">Navegação</h3>
           <ul className="mt-4 space-y-2 text-sm">
             <li>
@@ -78,44 +116,6 @@ export function Footer() {
                 className="text-muted-foreground hover:text-brand-orange transition-colors"
               >
                 Contato
-              </Link>
-            </li>
-          </ul>
-        </div>
-
-        <div>
-          <h3 className="text-sm font-semibold">Institucional</h3>
-          <ul className="mt-4 space-y-2 text-sm">
-            <li>
-              <Link
-                to="/politica-de-privacidade"
-                className="text-muted-foreground hover:text-brand-orange transition-colors"
-              >
-                Política de Privacidade
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/politica-de-cookies"
-                className="text-muted-foreground hover:text-brand-orange transition-colors"
-              >
-                Política de Cookies
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/termos-de-uso"
-                className="text-muted-foreground hover:text-brand-orange transition-colors"
-              >
-                Termos de Uso
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/seja-um-representante-comercial"
-                className="text-muted-foreground hover:text-brand-orange transition-colors"
-              >
-                Seja um Representante Comercial
               </Link>
             </li>
           </ul>
