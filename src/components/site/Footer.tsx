@@ -14,10 +14,10 @@ export function Footer() {
             loading="lazy"
           />
           <p className="text-muted-foreground mt-4 max-w-sm text-sm leading-relaxed">
-            Na Cytrix, não entregamos tecnologia isolada. Entregamos um ecossistema de decisão —
-            com automação, integração de sistemas e agentes de IA — que transforma processos em
-            eficiência e dados em vantagem competitiva. Resultado: uma empresa mais ágil, conectada
-            e preparada para crescer sem depender de ferramentas desconectadas.
+            Na Cytrix Data Consulting, não entregamos tecnologia isolada. Entregamos um ecossistema
+            de decisão — com automação, integração de sistemas e agentes de IA — que transforma
+            processos em eficiência e dados em vantagem competitiva. Resultado: uma empresa mais
+            ágil, conectada e preparada para crescer sem depender de ferramentas desconectadas.
           </p>
         </div>
 
