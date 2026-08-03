@@ -47,7 +47,7 @@ function MetodoPage() {
     <>
       <section className="glow-top border-border/70 border-b">
         <div className="mx-auto max-w-6xl px-5 py-20 md:py-24">
-          <p className="eyebrow">Método</p>
+          <p className="eyebrow">MÉTODOL</p>
           <h1 className="mt-5 max-w-3xl text-4xl font-bold md:text-5xl">
             Um caminho <span className="text-gradient-brand">previsível</span> para dados que
             geram resultado
