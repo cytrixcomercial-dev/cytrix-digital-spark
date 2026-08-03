@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CtaSection } from "@/components/site/CtaSection";
+import { AiDataBackground } from "@/components/site/AiDataBackground";
 import heroImage from "@/assets/hero-data.jpg";
 
 export const Route = createFileRoute("/")({
@@ -85,6 +86,7 @@ const metrics = [
 function Index() {
   return (
     <>
+      <AiDataBackground />
       <section className="glow-top border-border/70 border-b">
         <div className="mx-auto grid max-w-6xl items-center gap-14 px-5 py-20 md:grid-cols-2 md:py-28">
           <div>
