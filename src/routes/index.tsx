@@ -1,12 +1,14 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
-  Bot,
-  Database,
   GitBranch,
   LineChart,
   ShieldCheck,
   Workflow,
   ArrowRight,
+  Headset,
+  Network,
+  Target,
+  FileSearch,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CtaSection } from "@/components/site/CtaSection";
@@ -42,24 +44,34 @@ const pains = [
 
 const solutions = [
   {
-    icon: Database,
-    title: "Engenharia e arquitetura de dados",
-    text: "Pipelines, data warehouse e modelagem que consolidam suas fontes em uma base única e confiável.",
-  },
-  {
-    icon: LineChart,
-    title: "Analytics e dashboards inteligentes",
-    text: "Painéis em tempo real com indicadores que a diretoria e a operação realmente usam para decidir.",
-  },
-  {
-    icon: Bot,
-    title: "Agentes de IA aplicados ao negócio",
-    text: "Atendimento, triagem e análise assistida por IA, com contexto dos seus próprios dados.",
+    icon: Headset,
+    title: "Agentes Autônomos para Experiência do Cliente",
+    text: "Atendimento omnichannel com IA contextual. Nossos agentes gerenciam chamados, classificam prioridades e interagem via WhatsApp com linguagem natural e empática, garantindo suporte contínuo e qualificado 24 horas por dia.",
   },
   {
     icon: Workflow,
-    title: "Automação e integração de sistemas",
-    text: "ERPs, CRMs, APIs e sistemas legados conectados em fluxos automatizados de ponta a ponta.",
+    title: "Orquestração Inteligente de Workflows",
+    text: "Elimine tarefas manuais e repetitivas. Projetamos fluxos de automação complexos com ferramentas de ponta (n8n e iPaaS), conectando dados, sistemas e equipes para que sua operação rode com máxima eficiência e mínima intervenção humana.",
+  },
+  {
+    icon: Network,
+    title: "Camada Unificadora de Dados e Sistemas Legados",
+    text: "Quebre barreiras entre ERPs, CRMs, bancos de dados e APIs. Criamos uma infraestrutura de integração robusta que centraliza suas fontes de informação, permitindo que todos os departamentos operem a partir de uma base única e confiável.",
+  },
+  {
+    icon: LineChart,
+    title: "Painéis Estratégicos com Forecasting Preditivo",
+    text: "Vá além da visualização estática. Desenvolvemos dashboards interativos alimentados por modelos de IA que monitoram indicadores em tempo real, detectam anomalias e geram previsões operacionais precisas para antecipar cenários.",
+  },
+  {
+    icon: Target,
+    title: "Qualificação Inteligente de Leads e Oportunidades",
+    text: "Maximize seu funil comercial. Implementamos agentes de IA que analisam perfis de clientes, pontuam leads com base em comportamento histórico e sugerem rotas de abordagem personalizadas, acelerando o ciclo de vendas com dados concretos.",
+  },
+  {
+    icon: FileSearch,
+    title: "Extração Cognitiva e Processamento de Documentos",
+    text: "Converta dados não estruturados em ativos estratégicos. Utilizamos visão computacional e NLP (Processamento de Linguagem Natural) para extrair informações de contratos, notas fiscais e formulários com alto grau de precisão e governança.",
   },
 ];
 
@@ -203,15 +215,15 @@ function Index() {
             entraves reais do cotidiano operacional da sua empresa.
           </p>
 
-          <div className="mt-12 grid gap-5 md:grid-cols-2">
+          <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {solutions.map((s) => (
-              <article key={s.title} className="card-tech p-8">
+              <article key={s.title} className="card-tech flex h-full flex-col p-8">
                 <s.icon className="text-brand-blue size-6" />
                 <h3 className="mt-5 text-lg font-semibold">{s.title}</h3>
                 <p className="text-muted-foreground mt-3 text-sm leading-relaxed">{s.text}</p>
                 <Link
                   to="/solucoes"
-                  className="text-brand-orange mt-5 inline-flex items-center gap-1.5 text-sm font-medium"
+                  className="text-brand-orange mt-auto inline-flex items-center gap-1.5 pt-5 text-sm font-medium"
                 >
                   Saiba mais <ArrowRight className="size-4" />
                 </Link>
