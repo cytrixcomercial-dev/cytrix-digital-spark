@@ -19,6 +19,7 @@ import { Route as PoliticaDePrivacidadeRouteImport } from './routes/politica-de-
 import { Route as QuemSomosRouteImport } from './routes/quem-somos'
 import { Route as SolucoesRouteImport } from './routes/solucoes'
 import { Route as TermosDeUsoRouteImport } from './routes/termos-de-uso'
+import { Route as SolucoesIndexRouteImport } from './routes/solucoes.index'
 import { Route as SolucoesBiDataQualityRouteImport } from './routes/solucoes.bi-data-quality'
 import { Route as SolucoesBiIaOutsourcingRouteImport } from './routes/solucoes.bi-ia-outsourcing'
 import { Route as SolucoesBiPlatformRouteImport } from './routes/solucoes.bi-platform'
@@ -75,6 +76,11 @@ const TermosDeUsoRoute = TermosDeUsoRouteImport.update({
   path: '/termos-de-uso',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SolucoesIndexRoute = SolucoesIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => SolucoesRoute,
+} as any)
 const SolucoesBiDataQualityRoute = SolucoesBiDataQualityRouteImport.update({
   id: '/bi-data-quality',
   path: '/bi-data-quality',
@@ -118,6 +124,7 @@ export interface FileRoutesByFullPath {
   '/solucoes/bi-platform': typeof SolucoesBiPlatformRoute
   '/solucoes/business-intelligence': typeof SolucoesBusinessIntelligenceRoute
   '/solucoes/data-consulting': typeof SolucoesDataConsultingRoute
+  '/solucoes/': typeof SolucoesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -128,13 +135,13 @@ export interface FileRoutesByTo {
   '/politica-de-cookies': typeof PoliticaDeCookiesRoute
   '/politica-de-privacidade': typeof PoliticaDePrivacidadeRoute
   '/quem-somos': typeof QuemSomosRoute
-  '/solucoes': typeof SolucoesRouteWithChildren
   '/termos-de-uso': typeof TermosDeUsoRoute
   '/solucoes/bi-data-quality': typeof SolucoesBiDataQualityRoute
   '/solucoes/bi-ia-outsourcing': typeof SolucoesBiIaOutsourcingRoute
   '/solucoes/bi-platform': typeof SolucoesBiPlatformRoute
   '/solucoes/business-intelligence': typeof SolucoesBusinessIntelligenceRoute
   '/solucoes/data-consulting': typeof SolucoesDataConsultingRoute
+  '/solucoes': typeof SolucoesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -153,6 +160,7 @@ export interface FileRoutesById {
   '/solucoes/bi-platform': typeof SolucoesBiPlatformRoute
   '/solucoes/business-intelligence': typeof SolucoesBusinessIntelligenceRoute
   '/solucoes/data-consulting': typeof SolucoesDataConsultingRoute
+  '/solucoes/': typeof SolucoesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -172,6 +180,7 @@ export interface FileRouteTypes {
     | '/solucoes/bi-platform'
     | '/solucoes/business-intelligence'
     | '/solucoes/data-consulting'
+    | '/solucoes/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -182,13 +191,13 @@ export interface FileRouteTypes {
     | '/politica-de-cookies'
     | '/politica-de-privacidade'
     | '/quem-somos'
-    | '/solucoes'
     | '/termos-de-uso'
     | '/solucoes/bi-data-quality'
     | '/solucoes/bi-ia-outsourcing'
     | '/solucoes/bi-platform'
     | '/solucoes/business-intelligence'
     | '/solucoes/data-consulting'
+    | '/solucoes'
   id:
     | '__root__'
     | '/'
@@ -206,6 +215,7 @@ export interface FileRouteTypes {
     | '/solucoes/bi-platform'
     | '/solucoes/business-intelligence'
     | '/solucoes/data-consulting'
+    | '/solucoes/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -293,6 +303,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TermosDeUsoRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/solucoes/': {
+      id: '/solucoes/'
+      path: '/'
+      fullPath: '/solucoes/'
+      preLoaderRoute: typeof SolucoesIndexRouteImport
+      parentRoute: typeof SolucoesRoute
+    }
     '/solucoes/bi-data-quality': {
       id: '/solucoes/bi-data-quality'
       path: '/bi-data-quality'
@@ -337,6 +354,7 @@ interface SolucoesRouteChildren {
   SolucoesBiPlatformRoute: typeof SolucoesBiPlatformRoute
   SolucoesBusinessIntelligenceRoute: typeof SolucoesBusinessIntelligenceRoute
   SolucoesDataConsultingRoute: typeof SolucoesDataConsultingRoute
+  SolucoesIndexRoute: typeof SolucoesIndexRoute
 }
 
 const SolucoesRouteChildren: SolucoesRouteChildren = {
@@ -345,6 +363,7 @@ const SolucoesRouteChildren: SolucoesRouteChildren = {
   SolucoesBiPlatformRoute: SolucoesBiPlatformRoute,
   SolucoesBusinessIntelligenceRoute: SolucoesBusinessIntelligenceRoute,
   SolucoesDataConsultingRoute: SolucoesDataConsultingRoute,
+  SolucoesIndexRoute: SolucoesIndexRoute,
 }
 
 const SolucoesRouteWithChildren = SolucoesRoute._addFileChildren(
