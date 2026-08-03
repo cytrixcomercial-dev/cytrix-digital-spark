@@ -33,6 +33,11 @@ export function Header() {
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const { t } = useLanguage();
+  const location = useLocation();
+  const currentPath = location.pathname;
+
+  const isActive = (to: string, exact = false) =>
+    exact ? currentPath === to : currentPath === to || currentPath.startsWith(`${to}/`);
   const label = (l: { label: string; key?: string }) => (l.key ? t(l.key) : l.label);
 
   useEffect(() => {
