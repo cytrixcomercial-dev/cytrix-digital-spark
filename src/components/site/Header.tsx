@@ -187,7 +187,7 @@ export function Header() {
                           setMobileOpen(false);
                           setMobileExpanded(null);
                         }}
-                        className={`block py-2 text-sm text-white transition-colors hover:text-brand-orange ${
+                        className={`block rounded-md px-2 py-2 text-sm text-white transition-colors hover:bg-brand-orange hover:text-white ${
                           isActive(l.to) ? "font-semibold text-brand-blue" : ""
                         }`}
                       >
@@ -201,7 +201,7 @@ export function Header() {
                             setMobileOpen(false);
                             setMobileExpanded(null);
                           }}
-                          className={`block py-2 text-sm text-white transition-colors hover:text-brand-orange ${
+                          className={`block rounded-md px-2 py-2 text-sm text-white transition-colors hover:bg-brand-orange hover:text-white ${
                             isActive(c.to) ? "font-semibold text-brand-blue" : ""
                           }`}
                         >
