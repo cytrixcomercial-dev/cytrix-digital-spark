@@ -160,7 +160,7 @@ export function Footer() {
         </div>
       </div>
       <div className="border-border/70 border-t px-5 py-5">
-        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 text-center md:flex-row md:text-left">
+        <div className="mx-auto max-w-6xl text-center">
           <p className="text-muted-foreground text-xs">
             © {new Date().getFullYear()} Cytrix Data Consulting. Todos os direitos reservados.
             Site desenvolvido por Cytrix Technologies Ltda — CNPJ 50.445.596.0001-01.
