@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   GitBranch,
@@ -9,11 +10,16 @@ import {
   Network,
   Target,
   FileSearch,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CtaSection } from "@/components/site/CtaSection";
 import { AiDataBackground } from "@/components/site/AiDataBackground";
-import heroBanner from "@/assets/hero-office-team.jpg";
+import heroSlide1 from "@/assets/hero-slide-1-office.jpg";
+import heroSlide2 from "@/assets/hero-slide-2-ia.jpg";
+import heroSlide3 from "@/assets/hero-slide-3-bi.jpg";
+import heroSlide4 from "@/assets/hero-slide-4-dados.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -83,23 +89,101 @@ const metrics = [
   { label: "Monitoramento", value: "24/7" },
 ];
 
+const heroSlides = [
+  {
+    src: heroSlide1,
+    alt: "Equipe da Cytrix Data Consulting trabalhando em escritório com painéis de dados e dashboards",
+  },
+  {
+    src: heroSlide2,
+    alt: "Agentes autônomos de IA e redes neurais conectados em um ecossistema digital",
+  },
+  {
+    src: heroSlide3,
+    alt: "Dashboards de Business Intelligence com indicadores e análises preditivas",
+  },
+  {
+    src: heroSlide4,
+    alt: "Engenharia de dados com pipelines, nuvem e infraestrutura de dados",
+  },
+];
+
+function HeroCarousel() {
+  const [active, setActive] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActive((prev) => (prev + 1) % heroSlides.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const goPrev = () => setActive((prev) => (prev - 1 + heroSlides.length) % heroSlides.length);
+  const goNext = () => setActive((prev) => (prev + 1) % heroSlides.length);
+
+  return (
+    <div className="hero-carousel absolute inset-0 -z-10">
+      {heroSlides.map((slide, idx) => (
+        <div
+          key={slide.alt}
+          className={`hero-carousel-slide absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+            idx === active ? "opacity-100" : "opacity-0"
+          }`}
+        >
+          <img
+            src={slide.src}
+            alt={slide.alt}
+            width={1920}
+            height={1080}
+            className="hero-banner-img h-full w-full object-cover"
+            loading={idx === 0 ? "eager" : "lazy"}
+          />
+        </div>
+      ))}
+      <div className="from-background via-background/85 to-background/40 absolute inset-0 bg-gradient-to-r" />
+      <div className="from-background absolute inset-0 bg-gradient-to-t via-transparent to-transparent" />
+      <div className="hero-banner-sweep pointer-events-none absolute inset-0" />
+
+      <button
+        type="button"
+        onClick={goPrev}
+        aria-label="Imagem anterior"
+        className="absolute top-1/2 left-4 z-20 -translate-y-1/2 rounded-full border border-white/10 bg-black/30 p-2 text-white/80 backdrop-blur-sm transition hover:bg-black/50 hover:text-white"
+      >
+        <ChevronLeft className="size-5" />
+      </button>
+      <button
+        type="button"
+        onClick={goNext}
+        aria-label="Próxima imagem"
+        className="absolute top-1/2 right-4 z-20 -translate-y-1/2 rounded-full border border-white/10 bg-black/30 p-2 text-white/80 backdrop-blur-sm transition hover:bg-black/50 hover:text-white"
+      >
+        <ChevronRight className="size-5" />
+      </button>
+
+      <div className="absolute bottom-6 left-1/2 z-20 flex -translate-x-1/2 gap-2">
+        {heroSlides.map((_, idx) => (
+          <button
+            key={idx}
+            type="button"
+            onClick={() => setActive(idx)}
+            aria-label={`Ir para imagem ${idx + 1}`}
+            className={`h-1.5 rounded-full transition-all duration-300 ${
+              idx === active ? "w-8 bg-brand-orange" : "w-4 bg-white/40 hover:bg-white/70"
+            }`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function Index() {
   return (
     <>
       <AiDataBackground />
       <section className="glow-top border-border/70 relative isolate overflow-hidden border-b">
-        <div className="absolute inset-0 -z-10">
-          <img
-            src={heroBanner}
-            alt="Equipe da Cytrix Data Consulting trabalhando em escritório com painéis de dados e agentes de IA"
-            width={1920}
-            height={1088}
-            className="hero-banner-img h-full w-full object-cover"
-          />
-          <div className="from-background via-background/85 to-background/40 absolute inset-0 bg-gradient-to-r" />
-          <div className="from-background absolute inset-0 bg-gradient-to-t via-transparent to-transparent" />
-          <div className="hero-banner-sweep pointer-events-none absolute inset-0" />
-        </div>
+        <HeroCarousel />
         <div className="mx-auto max-w-6xl px-5 py-24 md:py-36">
           <div className="max-w-2xl">
             <p className="eyebrow">CONSULTORIA CONSULTIVA</p>
