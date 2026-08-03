@@ -13,6 +13,7 @@ import appCss from "../styles.css?url";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { BackToTop } from "@/components/site/BackToTop";
+import { WhatsAppButton } from "@/components/site/WhatsAppButton";
 import { Toaster } from "@/components/ui/sonner";
 import { LanguageProvider } from "@/lib/i18n";
 import { AutoTranslate } from "@/lib/auto-translate";
@@ -174,6 +175,7 @@ function RootComponent() {
           <Footer />
           <Toaster />
           <BackToTop />
+          <WhatsAppButton />
           <AutoTranslate />
         </div>
       </LanguageProvider>
