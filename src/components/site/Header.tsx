@@ -77,7 +77,7 @@ export function Header() {
                   aria-expanded={openDropdown === l.label}
                   aria-haspopup="menu"
                 >
-                  {l.label}
+                  {label(l)}
                   <ChevronDown
                     className={`size-3.5 transition-transform ${
                       openDropdown === l.label ? "rotate-180" : ""
@@ -94,7 +94,7 @@ export function Header() {
                           className="block rounded-md px-3 py-2 text-sm text-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
                           role="menuitem"
                         >
-                          Ver todas as soluções
+                          {t("nav.allSolutions")}
                         </Link>
                       </li>
                       <li className="my-1.5 h-px bg-border/70" />
@@ -106,7 +106,7 @@ export function Header() {
                             className="block rounded-md px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
                             role="menuitem"
                           >
-                            {c.label}
+                            {label(c)}
                           </Link>
                         </li>
                       ))}
@@ -122,18 +122,21 @@ export function Header() {
                 activeProps={{ className: "text-sm text-foreground" }}
                 activeOptions={{ exact: l.to === "/" }}
               >
-                {l.label}
+                {label(l)}
               </Link>
             )
           )}
         </nav>
 
         <div className="flex items-center gap-2">
+          <div className="hidden md:block">
+            <LanguageSwitcher />
+          </div>
           <Button asChild size="sm" className="hidden md:inline-flex">
-            <Link to="/contato">Solicitar diagnóstico</Link>
+            <Link to="/contato">{t("cta.diagnostic")}</Link>
           </Button>
           <button
-            aria-label={mobileOpen ? "Fechar menu" : "Abrir menu"}
+            aria-label={mobileOpen ? t("menu.close") : t("menu.open")}
             className="text-foreground md:hidden"
             onClick={() => setMobileOpen((v) => !v)}
           >
@@ -155,7 +158,7 @@ export function Header() {
                     className="flex w-full items-center justify-between py-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
                     aria-expanded={mobileExpanded === l.label}
                   >
-                    {l.label}
+                    {label(l)}
                     <ChevronDown
                       className={`size-3.5 transition-transform ${
                         mobileExpanded === l.label ? "rotate-180" : ""
@@ -172,7 +175,7 @@ export function Header() {
                         }}
                         className="block py-2 text-sm text-foreground transition-colors hover:text-brand-orange"
                       >
-                        Ver todas as soluções
+                        {t("nav.allSolutions")}
                       </Link>
                       {l.children.map((c: NavLink) => (
                         <Link
@@ -184,7 +187,7 @@ export function Header() {
                           }}
                           className="block py-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
                         >
-                          {c.label}
+                          {label(c)}
                         </Link>
                       ))}
                     </div>
@@ -197,10 +200,11 @@ export function Header() {
                   onClick={() => setMobileOpen(false)}
                   className="py-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
                 >
-                  {l.label}
+                  {label(l)}
                 </Link>
               )
             )}
+            <LanguageSwitcher variant="mobile" />
           </nav>
         </div>
       )}
