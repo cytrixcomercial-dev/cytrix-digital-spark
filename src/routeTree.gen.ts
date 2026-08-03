@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AgentesDeIaRouteImport } from './routes/agentes-de-ia'
+import { Route as CartaoRouteImport } from './routes/cartao'
 import { Route as ContatoRouteImport } from './routes/contato'
 import { Route as EquipeDeDadosRouteImport } from './routes/equipe-de-dados'
 import { Route as MetodoRouteImport } from './routes/metodo'
@@ -36,6 +37,11 @@ const IndexRoute = IndexRouteImport.update({
 const AgentesDeIaRoute = AgentesDeIaRouteImport.update({
   id: '/agentes-de-ia',
   path: '/agentes-de-ia',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CartaoRoute = CartaoRouteImport.update({
+  id: '/cartao',
+  path: '/cartao',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContatoRoute = ContatoRouteImport.update({
@@ -124,6 +130,7 @@ const SolucoesDataConsultingRoute = SolucoesDataConsultingRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/agentes-de-ia': typeof AgentesDeIaRoute
+  '/cartao': typeof CartaoRoute
   '/contato': typeof ContatoRoute
   '/equipe-de-dados': typeof EquipeDeDadosRoute
   '/metodo': typeof MetodoRoute
@@ -144,6 +151,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/agentes-de-ia': typeof AgentesDeIaRoute
+  '/cartao': typeof CartaoRoute
   '/contato': typeof ContatoRoute
   '/equipe-de-dados': typeof EquipeDeDadosRoute
   '/metodo': typeof MetodoRoute
@@ -164,6 +172,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/agentes-de-ia': typeof AgentesDeIaRoute
+  '/cartao': typeof CartaoRoute
   '/contato': typeof ContatoRoute
   '/equipe-de-dados': typeof EquipeDeDadosRoute
   '/metodo': typeof MetodoRoute
@@ -186,6 +195,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/agentes-de-ia'
+    | '/cartao'
     | '/contato'
     | '/equipe-de-dados'
     | '/metodo'
@@ -206,6 +216,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/agentes-de-ia'
+    | '/cartao'
     | '/contato'
     | '/equipe-de-dados'
     | '/metodo'
@@ -225,6 +236,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/agentes-de-ia'
+    | '/cartao'
     | '/contato'
     | '/equipe-de-dados'
     | '/metodo'
@@ -246,6 +258,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AgentesDeIaRoute: typeof AgentesDeIaRoute
+  CartaoRoute: typeof CartaoRoute
   ContatoRoute: typeof ContatoRoute
   EquipeDeDadosRoute: typeof EquipeDeDadosRoute
   MetodoRoute: typeof MetodoRoute
@@ -272,6 +285,13 @@ declare module '@tanstack/react-router' {
       path: '/agentes-de-ia'
       fullPath: '/agentes-de-ia'
       preLoaderRoute: typeof AgentesDeIaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cartao': {
+      id: '/cartao'
+      path: '/cartao'
+      fullPath: '/cartao'
+      preLoaderRoute: typeof CartaoRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contato': {
@@ -414,6 +434,7 @@ const SolucoesRouteWithChildren = SolucoesRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AgentesDeIaRoute: AgentesDeIaRoute,
+  CartaoRoute: CartaoRoute,
   ContatoRoute: ContatoRoute,
   EquipeDeDadosRoute: EquipeDeDadosRoute,
   MetodoRoute: MetodoRoute,
