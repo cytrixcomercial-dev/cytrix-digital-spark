@@ -175,6 +175,7 @@ function RootComponent() {
           <Footer />
           <Toaster />
           <BackToTop />
+          <WhatsAppButton />
           <AutoTranslate />
         </div>
       </LanguageProvider>
