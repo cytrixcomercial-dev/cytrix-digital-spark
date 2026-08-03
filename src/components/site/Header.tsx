@@ -23,7 +23,7 @@ const mainLinks: readonly (NavLink | NavDropdown)[] = [
   { to: "/quem-somos", label: "Quem Somos", key: "nav.about" },
   { to: "/solucoes", label: "Soluções", key: "nav.solutions", children: solutions },
   { to: "/metodo", label: "Método", key: "nav.method" },
-  { to: "/equipe-de-dados", label: "Equipe de Dados", key: "nav.dataTeam" },
+  { to: "/equipe-de-dados", label: "Equipe de dados e IA", key: "nav.dataTeam" },
   { to: "/contato", label: "Contato", key: "nav.contact" },
 ] as const;
 
