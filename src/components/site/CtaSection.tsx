@@ -2,9 +2,9 @@ import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 
 export function CtaSection({
-  eyebrow = "Primeiro passo",
-  title = "Descubra onde os dados podem gerar resultado na sua operação",
-  text = "Mapeamos fontes, processos e indicadores para identificar aplicações reais de dados e IA com impacto operacional e financeiro.",
+  eyebrow = "FASE EXPLORATÓRIA",
+  title = "Visualize onde seus dados, potencializados por IA, geram mais resultados",
+  text = "Empregamos modelos preditivos para rastrear origens de dados, workflows e indicadores, detectando usos estratégicos da IA que maximizam a eficiência e impulsionam a performance financeira do negócio.",
 }: {
   eyebrow?: string;
   title?: string;
