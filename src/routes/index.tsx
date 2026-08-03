@@ -92,7 +92,7 @@ function Index() {
           <div>
             <p className="eyebrow">CONSULTORIA CONSULTIVA</p>
             <h1 className="mt-5 text-4xl leading-[1.08] font-bold md:text-5xl lg:text-6xl">
-              Curadoria deDados e IA aplicados à <span className="text-gradient-brand">operação</span> do seu
+              Curadoria de Dados e IA aplicados à <span className="text-gradient-brand">operação</span> do seu
               negócio
             </h1>
             <p className="text-muted-foreground mt-6 max-w-lg text-base leading-relaxed md:text-lg">

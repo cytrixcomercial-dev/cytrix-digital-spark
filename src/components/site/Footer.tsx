@@ -26,6 +26,22 @@ export function Footer() {
           <ul className="mt-4 space-y-2 text-sm">
             <li>
               <Link
+                to="/"
+                className="text-muted-foreground hover:text-brand-orange transition-colors"
+              >
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/quem-somos"
+                className="text-muted-foreground hover:text-brand-orange transition-colors"
+              >
+                Quem Somos
+              </Link>
+            </li>
+            <li>
+              <Link
                 to="/solucoes"
                 className="text-muted-foreground hover:text-brand-orange transition-colors"
               >

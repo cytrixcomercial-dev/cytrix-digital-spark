@@ -16,8 +16,15 @@ import { Route as EquipeDeDadosRouteImport } from './routes/equipe-de-dados'
 import { Route as MetodoRouteImport } from './routes/metodo'
 import { Route as PoliticaDeCookiesRouteImport } from './routes/politica-de-cookies'
 import { Route as PoliticaDePrivacidadeRouteImport } from './routes/politica-de-privacidade'
+import { Route as QuemSomosRouteImport } from './routes/quem-somos'
 import { Route as SolucoesRouteImport } from './routes/solucoes'
 import { Route as TermosDeUsoRouteImport } from './routes/termos-de-uso'
+import { Route as SolucoesIndexRouteImport } from './routes/solucoes.index'
+import { Route as SolucoesBiDataQualityRouteImport } from './routes/solucoes.bi-data-quality'
+import { Route as SolucoesBiIaOutsourcingRouteImport } from './routes/solucoes.bi-ia-outsourcing'
+import { Route as SolucoesBiPlatformRouteImport } from './routes/solucoes.bi-platform'
+import { Route as SolucoesBusinessIntelligenceRouteImport } from './routes/solucoes.business-intelligence'
+import { Route as SolucoesDataConsultingRouteImport } from './routes/solucoes.data-consulting'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -54,6 +61,11 @@ const PoliticaDePrivacidadeRoute = PoliticaDePrivacidadeRouteImport.update({
   path: '/politica-de-privacidade',
   getParentRoute: () => rootRouteImport,
 } as any)
+const QuemSomosRoute = QuemSomosRouteImport.update({
+  id: '/quem-somos',
+  path: '/quem-somos',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SolucoesRoute = SolucoesRouteImport.update({
   id: '/solucoes',
   path: '/solucoes',
@@ -64,6 +76,37 @@ const TermosDeUsoRoute = TermosDeUsoRouteImport.update({
   path: '/termos-de-uso',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SolucoesIndexRoute = SolucoesIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => SolucoesRoute,
+} as any)
+const SolucoesBiDataQualityRoute = SolucoesBiDataQualityRouteImport.update({
+  id: '/bi-data-quality',
+  path: '/bi-data-quality',
+  getParentRoute: () => SolucoesRoute,
+} as any)
+const SolucoesBiIaOutsourcingRoute = SolucoesBiIaOutsourcingRouteImport.update({
+  id: '/bi-ia-outsourcing',
+  path: '/bi-ia-outsourcing',
+  getParentRoute: () => SolucoesRoute,
+} as any)
+const SolucoesBiPlatformRoute = SolucoesBiPlatformRouteImport.update({
+  id: '/bi-platform',
+  path: '/bi-platform',
+  getParentRoute: () => SolucoesRoute,
+} as any)
+const SolucoesBusinessIntelligenceRoute =
+  SolucoesBusinessIntelligenceRouteImport.update({
+    id: '/business-intelligence',
+    path: '/business-intelligence',
+    getParentRoute: () => SolucoesRoute,
+  } as any)
+const SolucoesDataConsultingRoute = SolucoesDataConsultingRouteImport.update({
+  id: '/data-consulting',
+  path: '/data-consulting',
+  getParentRoute: () => SolucoesRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -73,8 +116,15 @@ export interface FileRoutesByFullPath {
   '/metodo': typeof MetodoRoute
   '/politica-de-cookies': typeof PoliticaDeCookiesRoute
   '/politica-de-privacidade': typeof PoliticaDePrivacidadeRoute
-  '/solucoes': typeof SolucoesRoute
+  '/quem-somos': typeof QuemSomosRoute
+  '/solucoes': typeof SolucoesRouteWithChildren
   '/termos-de-uso': typeof TermosDeUsoRoute
+  '/solucoes/bi-data-quality': typeof SolucoesBiDataQualityRoute
+  '/solucoes/bi-ia-outsourcing': typeof SolucoesBiIaOutsourcingRoute
+  '/solucoes/bi-platform': typeof SolucoesBiPlatformRoute
+  '/solucoes/business-intelligence': typeof SolucoesBusinessIntelligenceRoute
+  '/solucoes/data-consulting': typeof SolucoesDataConsultingRoute
+  '/solucoes/': typeof SolucoesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -84,8 +134,14 @@ export interface FileRoutesByTo {
   '/metodo': typeof MetodoRoute
   '/politica-de-cookies': typeof PoliticaDeCookiesRoute
   '/politica-de-privacidade': typeof PoliticaDePrivacidadeRoute
-  '/solucoes': typeof SolucoesRoute
+  '/quem-somos': typeof QuemSomosRoute
   '/termos-de-uso': typeof TermosDeUsoRoute
+  '/solucoes/bi-data-quality': typeof SolucoesBiDataQualityRoute
+  '/solucoes/bi-ia-outsourcing': typeof SolucoesBiIaOutsourcingRoute
+  '/solucoes/bi-platform': typeof SolucoesBiPlatformRoute
+  '/solucoes/business-intelligence': typeof SolucoesBusinessIntelligenceRoute
+  '/solucoes/data-consulting': typeof SolucoesDataConsultingRoute
+  '/solucoes': typeof SolucoesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -96,8 +152,15 @@ export interface FileRoutesById {
   '/metodo': typeof MetodoRoute
   '/politica-de-cookies': typeof PoliticaDeCookiesRoute
   '/politica-de-privacidade': typeof PoliticaDePrivacidadeRoute
-  '/solucoes': typeof SolucoesRoute
+  '/quem-somos': typeof QuemSomosRoute
+  '/solucoes': typeof SolucoesRouteWithChildren
   '/termos-de-uso': typeof TermosDeUsoRoute
+  '/solucoes/bi-data-quality': typeof SolucoesBiDataQualityRoute
+  '/solucoes/bi-ia-outsourcing': typeof SolucoesBiIaOutsourcingRoute
+  '/solucoes/bi-platform': typeof SolucoesBiPlatformRoute
+  '/solucoes/business-intelligence': typeof SolucoesBusinessIntelligenceRoute
+  '/solucoes/data-consulting': typeof SolucoesDataConsultingRoute
+  '/solucoes/': typeof SolucoesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -109,8 +172,15 @@ export interface FileRouteTypes {
     | '/metodo'
     | '/politica-de-cookies'
     | '/politica-de-privacidade'
+    | '/quem-somos'
     | '/solucoes'
     | '/termos-de-uso'
+    | '/solucoes/bi-data-quality'
+    | '/solucoes/bi-ia-outsourcing'
+    | '/solucoes/bi-platform'
+    | '/solucoes/business-intelligence'
+    | '/solucoes/data-consulting'
+    | '/solucoes/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -120,8 +190,14 @@ export interface FileRouteTypes {
     | '/metodo'
     | '/politica-de-cookies'
     | '/politica-de-privacidade'
-    | '/solucoes'
+    | '/quem-somos'
     | '/termos-de-uso'
+    | '/solucoes/bi-data-quality'
+    | '/solucoes/bi-ia-outsourcing'
+    | '/solucoes/bi-platform'
+    | '/solucoes/business-intelligence'
+    | '/solucoes/data-consulting'
+    | '/solucoes'
   id:
     | '__root__'
     | '/'
@@ -131,8 +207,15 @@ export interface FileRouteTypes {
     | '/metodo'
     | '/politica-de-cookies'
     | '/politica-de-privacidade'
+    | '/quem-somos'
     | '/solucoes'
     | '/termos-de-uso'
+    | '/solucoes/bi-data-quality'
+    | '/solucoes/bi-ia-outsourcing'
+    | '/solucoes/bi-platform'
+    | '/solucoes/business-intelligence'
+    | '/solucoes/data-consulting'
+    | '/solucoes/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -143,7 +226,8 @@ export interface RootRouteChildren {
   MetodoRoute: typeof MetodoRoute
   PoliticaDeCookiesRoute: typeof PoliticaDeCookiesRoute
   PoliticaDePrivacidadeRoute: typeof PoliticaDePrivacidadeRoute
-  SolucoesRoute: typeof SolucoesRoute
+  QuemSomosRoute: typeof QuemSomosRoute
+  SolucoesRoute: typeof SolucoesRouteWithChildren
   TermosDeUsoRoute: typeof TermosDeUsoRoute
 }
 
@@ -198,6 +282,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PoliticaDePrivacidadeRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/quem-somos': {
+      id: '/quem-somos'
+      path: '/quem-somos'
+      fullPath: '/quem-somos'
+      preLoaderRoute: typeof QuemSomosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/solucoes': {
       id: '/solucoes'
       path: '/solucoes'
@@ -212,8 +303,72 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TermosDeUsoRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/solucoes/': {
+      id: '/solucoes/'
+      path: '/'
+      fullPath: '/solucoes/'
+      preLoaderRoute: typeof SolucoesIndexRouteImport
+      parentRoute: typeof SolucoesRoute
+    }
+    '/solucoes/bi-data-quality': {
+      id: '/solucoes/bi-data-quality'
+      path: '/bi-data-quality'
+      fullPath: '/solucoes/bi-data-quality'
+      preLoaderRoute: typeof SolucoesBiDataQualityRouteImport
+      parentRoute: typeof SolucoesRoute
+    }
+    '/solucoes/bi-ia-outsourcing': {
+      id: '/solucoes/bi-ia-outsourcing'
+      path: '/bi-ia-outsourcing'
+      fullPath: '/solucoes/bi-ia-outsourcing'
+      preLoaderRoute: typeof SolucoesBiIaOutsourcingRouteImport
+      parentRoute: typeof SolucoesRoute
+    }
+    '/solucoes/bi-platform': {
+      id: '/solucoes/bi-platform'
+      path: '/bi-platform'
+      fullPath: '/solucoes/bi-platform'
+      preLoaderRoute: typeof SolucoesBiPlatformRouteImport
+      parentRoute: typeof SolucoesRoute
+    }
+    '/solucoes/business-intelligence': {
+      id: '/solucoes/business-intelligence'
+      path: '/business-intelligence'
+      fullPath: '/solucoes/business-intelligence'
+      preLoaderRoute: typeof SolucoesBusinessIntelligenceRouteImport
+      parentRoute: typeof SolucoesRoute
+    }
+    '/solucoes/data-consulting': {
+      id: '/solucoes/data-consulting'
+      path: '/data-consulting'
+      fullPath: '/solucoes/data-consulting'
+      preLoaderRoute: typeof SolucoesDataConsultingRouteImport
+      parentRoute: typeof SolucoesRoute
+    }
   }
 }
+
+interface SolucoesRouteChildren {
+  SolucoesBiDataQualityRoute: typeof SolucoesBiDataQualityRoute
+  SolucoesBiIaOutsourcingRoute: typeof SolucoesBiIaOutsourcingRoute
+  SolucoesBiPlatformRoute: typeof SolucoesBiPlatformRoute
+  SolucoesBusinessIntelligenceRoute: typeof SolucoesBusinessIntelligenceRoute
+  SolucoesDataConsultingRoute: typeof SolucoesDataConsultingRoute
+  SolucoesIndexRoute: typeof SolucoesIndexRoute
+}
+
+const SolucoesRouteChildren: SolucoesRouteChildren = {
+  SolucoesBiDataQualityRoute: SolucoesBiDataQualityRoute,
+  SolucoesBiIaOutsourcingRoute: SolucoesBiIaOutsourcingRoute,
+  SolucoesBiPlatformRoute: SolucoesBiPlatformRoute,
+  SolucoesBusinessIntelligenceRoute: SolucoesBusinessIntelligenceRoute,
+  SolucoesDataConsultingRoute: SolucoesDataConsultingRoute,
+  SolucoesIndexRoute: SolucoesIndexRoute,
+}
+
+const SolucoesRouteWithChildren = SolucoesRoute._addFileChildren(
+  SolucoesRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
@@ -223,7 +378,8 @@ const rootRouteChildren: RootRouteChildren = {
   MetodoRoute: MetodoRoute,
   PoliticaDeCookiesRoute: PoliticaDeCookiesRoute,
   PoliticaDePrivacidadeRoute: PoliticaDePrivacidadeRoute,
-  SolucoesRoute: SolucoesRoute,
+  QuemSomosRoute: QuemSomosRoute,
+  SolucoesRoute: SolucoesRouteWithChildren,
   TermosDeUsoRoute: TermosDeUsoRoute,
 }
 export const routeTree = rootRouteImport
