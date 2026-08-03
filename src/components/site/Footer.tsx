@@ -5,7 +5,7 @@ import logo from "@/assets/cytrix-logo.png";
 export function Footer() {
   return (
     <footer className="border-border/70 bg-surface/40 border-t">
-      <div className="mx-auto grid max-w-6xl gap-10 px-5 py-14 md:grid-cols-4">
+      <div className="mx-auto grid max-w-6xl gap-10 px-5 py-14 md:grid-cols-5">
         <div className="md:col-span-2">
           <img
             src={logo}
@@ -84,6 +84,44 @@ export function Footer() {
         </div>
 
         <div>
+          <h3 className="text-sm font-semibold">Institucional</h3>
+          <ul className="mt-4 space-y-2 text-sm">
+            <li>
+              <Link
+                to="/politica-de-privacidade"
+                className="text-muted-foreground hover:text-brand-orange transition-colors"
+              >
+                Política de Privacidade
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/politica-de-cookies"
+                className="text-muted-foreground hover:text-brand-orange transition-colors"
+              >
+                Política de Cookies
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/termos-de-uso"
+                className="text-muted-foreground hover:text-brand-orange transition-colors"
+              >
+                Termos de Uso
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/seja-um-representante-comercial"
+                className="text-muted-foreground hover:text-brand-orange transition-colors"
+              >
+                Seja um Representante Comercial
+              </Link>
+            </li>
+          </ul>
+        </div>
+
+        <div>
           <h3 className="text-sm font-semibold">Contato</h3>
           <ul className="text-muted-foreground mt-4 space-y-3 text-sm">
             <li className="flex items-center gap-2">
@@ -127,23 +165,6 @@ export function Footer() {
             © {new Date().getFullYear()} Cytrix Data Consulting. Todos os direitos reservados.
             Site desenvolvido por Cytrix Technologies Ltda — CNPJ 50.445.596.0001-01.
           </p>
-          <nav className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-xs">
-            <Link
-              to="/politica-de-privacidade"
-              className="text-muted-foreground hover:text-brand-orange transition-colors"
-            >
-              Política de Privacidade
-            </Link>
-            <Link
-              to="/politica-de-cookies"
-              className="text-muted-foreground hover:text-brand-orange transition-colors"
-            >
-              Política de Cookies
-            </Link>
-            <Link to="/termos-de-uso" className="text-muted-foreground hover:text-brand-orange transition-colors">
-              Termos de Uso
-            </Link>
-          </nav>
         </div>
       </div>
     </footer>
