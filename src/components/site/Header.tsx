@@ -167,14 +167,16 @@ export function Header() {
                   <button
                     type="button"
                     onClick={() => toggleMobileSubmenu(l.label)}
-                    className="flex w-full items-center justify-between py-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                    className={`flex w-full items-center justify-between py-2 text-sm transition-colors hover:text-brand-orange ${
+                      isActive(l.to) ? "font-semibold text-brand-blue" : "text-muted-foreground"
+                    }`}
                     aria-expanded={mobileExpanded === l.label}
                   >
                     {label(l)}
                     <ChevronDown
                       className={`size-3.5 transition-transform ${
                         mobileExpanded === l.label ? "rotate-180" : ""
-                      }`}
+                      } ${isActive(l.to) ? "text-brand-blue" : ""}`}
                     />
                   </button>
                   {mobileExpanded === l.label && (
@@ -185,7 +187,9 @@ export function Header() {
                           setMobileOpen(false);
                           setMobileExpanded(null);
                         }}
-                        className="block py-2 text-sm text-foreground transition-colors hover:text-brand-orange"
+                        className={`block py-2 text-sm transition-colors hover:text-brand-orange ${
+                          isActive(l.to) ? "font-semibold text-brand-blue" : "text-foreground"
+                        }`}
                       >
                         {t("nav.allSolutions")}
                       </Link>
@@ -197,7 +201,9 @@ export function Header() {
                             setMobileOpen(false);
                             setMobileExpanded(null);
                           }}
-                          className="block py-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                          className={`block py-2 text-sm transition-colors hover:text-brand-orange ${
+                            isActive(c.to) ? "font-semibold text-brand-blue" : "text-muted-foreground"
+                          }`}
                         >
                           {label(c)}
                         </Link>
@@ -210,7 +216,9 @@ export function Header() {
                   key={l.to}
                   to={l.to}
                   onClick={() => setMobileOpen(false)}
-                  className="py-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                  className={`py-2 text-sm transition-colors hover:text-brand-orange ${
+                    isActive(l.to, l.to === "/") ? "font-semibold text-brand-blue" : "text-muted-foreground"
+                  }`}
                 >
                   {label(l)}
                 </Link>
