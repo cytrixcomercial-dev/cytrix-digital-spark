@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Mail, Linkedin, MapPin, Phone } from "lucide-react";
+import { Mail, Linkedin, MapPin, Phone, Download } from "lucide-react";
 import logo from "@/assets/cytrix-logo.png";
 import contatoQr from "@/assets/cytrix-vcard-qr.png.asset.json";
 
