@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Mail, Linkedin, MapPin, Phone } from "lucide-react";
+import { Mail, Linkedin, MapPin, Phone, Download } from "lucide-react";
 import logo from "@/assets/cytrix-logo.png";
 import contatoQr from "@/assets/cytrix-vcard-qr.png.asset.json";
 
@@ -171,6 +171,14 @@ export function Footer() {
             <span className="text-muted-foreground mt-2 max-w-[10rem] text-center text-[11px] leading-tight">
               Aponte a câmera e salve o contato completo da Cytrix
             </span>
+            <a
+              href="/api/public/cytrix-contact.vcf"
+              download="cytrix-data-consulting.vcf"
+              className="border-border/70 bg-surface hover:border-brand-orange hover:text-brand-orange mt-3 inline-flex items-center gap-2 rounded-md border px-3 py-2 text-[11px] font-semibold transition-colors"
+            >
+              <Download className="size-3.5" />
+              Baixar vCard (.vcf)
+            </a>
           </div>
         </div>
       </div>
