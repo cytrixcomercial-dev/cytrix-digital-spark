@@ -1,24 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { pageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/politica-de-cookies")({
-  head: () => ({
-    meta: [
-      { title: "Política de Cookies — Cytrix Data Consulting" },
-      {
-        name: "description",
-        content:
-          "Política de Cookies da Cytrix Data Consulting: saiba como utilizamos cookies e tecnologias semelhantes.",
-      },
-      { property: "og:title", content: "Política de Cookies — Cytrix Data Consulting" },
-      {
-        property: "og:description",
-        content:
-          "Saiba como a Cytrix Data Consulting utiliza cookies e tecnologias semelhantes neste site.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
+  head: () =>
+    pageHead({
+      path: "/politica-de-cookies",
+      title: "Política de Cookies — Cytrix Data Consulting",
+      description: "Política de Cookies da Cytrix Data Consulting: saiba como utilizamos cookies e tecnologias semelhantes.",
+      ogTitle: "Política de Cookies — Cytrix Data Consulting",
+      ogDescription: "Saiba como a Cytrix Data Consulting utiliza cookies e tecnologias semelhantes neste site.",
+    }),
   component: PoliticaCookiesPage,
 });
 

@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { pageHead } from "@/lib/seo";
 import {
   Database,
   GitBranch,
@@ -11,24 +12,14 @@ import { ServicePage } from "@/components/site/ServicePage";
 import imgDados from "@/assets/solucoes-dados.jpg";
 
 export const Route = createFileRoute("/solucoes/data-consulting")({
-  head: () => ({
-    meta: [
-      { title: "Data Consulting — Cytrix Data Consulting" },
-      {
-        name: "description",
-        content:
-          "Estratégia, arquitetura e governança de dados para empresas que querem transformar informação em vantagem competitiva.",
-      },
-      { property: "og:title", content: "Data Consulting — Cytrix Data Consulting" },
-      {
-        property: "og:description",
-        content:
-          "Consultoria especializada em dados: modelagem, pipelines, data warehouse e governança.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
+  head: () =>
+    pageHead({
+      path: "/solucoes/data-consulting",
+      title: "Data Consulting — Cytrix Data Consulting",
+      description: "Estratégia, arquitetura e governança de dados para empresas que querem transformar informação em vantagem competitiva.",
+      ogTitle: "Data Consulting — Cytrix Data Consulting",
+      ogDescription: "Consultoria especializada em dados: modelagem, pipelines, data warehouse e governança.",
+    }),
   component: DataConsultingPage,
 });
 

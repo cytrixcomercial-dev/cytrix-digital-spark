@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { pageHead } from "@/lib/seo";
 import {
   Users,
   Headset,
@@ -11,24 +12,14 @@ import { ServicePage } from "@/components/site/ServicePage";
 import imgAtendimento from "@/assets/solucoes-atendimento.jpg";
 
 export const Route = createFileRoute("/solucoes/bi-ia-outsourcing")({
-  head: () => ({
-    meta: [
-      { title: "BI & IA Outsourcing — Cytrix Data Consulting" },
-      {
-        name: "description",
-        content:
-          "Equipe especializada de dados e IA alocada no seu negócio para acelerar entregas sem aumentar a estrutura fixa.",
-      },
-      { property: "og:title", content: "BI & IA Outsourcing — Cytrix Data Consulting" },
-      {
-        property: "og:description",
-        content:
-          "Outsourcing de especialistas em BI, dados e IA para impulsionar projetos com agilidade.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
+  head: () =>
+    pageHead({
+      path: "/solucoes/bi-ia-outsourcing",
+      title: "BI & IA Outsourcing — Cytrix Data Consulting",
+      description: "Equipe especializada de dados e IA alocada no seu negócio para acelerar entregas sem aumentar a estrutura fixa.",
+      ogTitle: "BI & IA Outsourcing — Cytrix Data Consulting",
+      ogDescription: "Outsourcing de especialistas em BI, dados e IA para impulsionar projetos com agilidade.",
+    }),
   component: BiIaOutsourcingPage,
 });
 

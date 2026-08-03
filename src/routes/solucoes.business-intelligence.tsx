@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { pageHead } from "@/lib/seo";
 import {
   LayoutDashboard,
   LineChart,
@@ -11,24 +12,14 @@ import { ServicePage } from "@/components/site/ServicePage";
 import imgEcossistema from "@/assets/solucoes-ecossistema.jpg";
 
 export const Route = createFileRoute("/solucoes/business-intelligence")({
-  head: () => ({
-    meta: [
-      { title: "Business Intelligence (BI) — Cytrix Data Consulting" },
-      {
-        name: "description",
-        content:
-          "Painéis executivos, dashboards operacionais e indicadores em tempo real para decisões mais rápidas e assertivas.",
-      },
-      { property: "og:title", content: "Business Intelligence (BI) — Cytrix Data Consulting" },
-      {
-        property: "og:description",
-        content:
-          "Visualização de dados, KPIs e analytics que colocam o negócio no controle da operação.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
+  head: () =>
+    pageHead({
+      path: "/solucoes/business-intelligence",
+      title: "Business Intelligence (BI) — Cytrix Data Consulting",
+      description: "Painéis executivos, dashboards operacionais e indicadores em tempo real para decisões mais rápidas e assertivas.",
+      ogTitle: "Business Intelligence (BI) — Cytrix Data Consulting",
+      ogDescription: "Visualização de dados, KPIs e analytics que colocam o negócio no controle da operação.",
+    }),
   component: BusinessIntelligencePage,
 });
 

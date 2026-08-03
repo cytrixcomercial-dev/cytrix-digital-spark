@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { pageHead } from "@/lib/seo";
 import { useState } from "react";
 import { toast } from "sonner";
 import { useServerFn } from "@tanstack/react-start";
@@ -10,27 +11,14 @@ import { sendContactMessage } from "@/lib/contact.functions";
 import { isCorporateEmail } from "@/lib/email-corporate";
 
 export const Route = createFileRoute("/seja-um-representante-comercial")({
-  head: () => ({
-    meta: [
-      { title: "Seja um Representante Comercial — Cytrix Data Consulting" },
-      {
-        name: "description",
-        content:
-          "Torne-se representante comercial da Cytrix Data Consulting e leve soluções de dados, BI e IA para o seu mercado.",
-      },
-      {
-        property: "og:title",
-        content: "Seja um Representante Comercial — Cytrix Data Consulting",
-      },
-      {
-        property: "og:description",
-        content:
-          "Represente a Cytrix Data Consulting na sua região e construa oportunidades com dados, BI e agentes de IA.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
+  head: () =>
+    pageHead({
+      path: "/seja-um-representante-comercial",
+      title: "Seja um Representante Comercial — Cytrix Data Consulting",
+      description: "Torne-se representante comercial da Cytrix Data Consulting e leve soluções de dados, BI e IA para o seu mercado.",
+      ogTitle: "Seja um Representante Comercial — Cytrix Data Consulting",
+      ogDescription: "Represente a Cytrix Data Consulting na sua região e construa oportunidades com dados, BI e agentes de IA.",
+    }),
   component: SejaRepresentantePage,
 });
 

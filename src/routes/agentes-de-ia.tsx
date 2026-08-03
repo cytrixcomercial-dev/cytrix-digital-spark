@@ -1,24 +1,17 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { pageHead } from "@/lib/seo";
 import { CtaSection } from "@/components/site/CtaSection";
 import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/agentes-de-ia")({
-  head: () => ({
-    meta: [
-      { title: "Agentes de IA — Cytrix Data Consulting" },
-      {
-        name: "description",
-        content:
-          "Vitrine viva de agentes de IA em operação: comercial, financeiro, TI, atendimento, operações e dados, com casos de uso e integrações reais.",
-      },
-      { property: "og:title", content: "Agentes de IA — Cytrix Data Consulting" },
-      {
-        property: "og:description",
-        content:
-          "Agentes digitais com papel, caso de uso e integrações — IA operacional conectada aos sistemas da empresa.",
-      },
-    ],
-  }),
+  head: () =>
+    pageHead({
+      path: "/agentes-de-ia",
+      title: "Agentes de IA — Cytrix Data Consulting",
+      description: "Vitrine viva de agentes de IA em operação: comercial, financeiro, TI, atendimento, operações e dados, com casos de uso e integrações reais.",
+      ogTitle: "Agentes de IA — Cytrix Data Consulting",
+      ogDescription: "Agentes digitais com papel, caso de uso e integrações — IA operacional conectada aos sistemas da empresa.",
+    }),
   component: AgentesPage,
 });
 

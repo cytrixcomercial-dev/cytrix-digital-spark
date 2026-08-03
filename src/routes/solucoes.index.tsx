@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { pageHead } from "@/lib/seo";
 import {
   ArrowRight,
   Boxes,
@@ -18,24 +19,14 @@ import imgDados from "@/assets/solucoes-dados.jpg";
 import imgEcossistema from "@/assets/solucoes-ecossistema.jpg";
 
 export const Route = createFileRoute("/solucoes/")({
-  head: () => ({
-    meta: [
-      { title: "Soluções de IA e dados que entram em produção — Cytrix" },
-      {
-        name: "description",
-        content:
-          "Agentes de IA, automação, integração de sistemas e dados organizados: soluções da Cytrix Data Consulting desenhadas para gerar resultado na operação real.",
-      },
-      { property: "og:title", content: "Soluções de IA e dados que entram em produção — Cytrix" },
-      {
-        property: "og:description",
-        content:
-          "Do desafio operacional à solução em produção: IA, automação e dados com método e governança.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
+  head: () =>
+    pageHead({
+      path: "/solucoes",
+      title: "Soluções de IA e dados que entram em produção — Cytrix",
+      description: "Agentes de IA, automação, integração de sistemas e dados organizados: soluções da Cytrix Data Consulting desenhadas para gerar resultado na operação real.",
+      ogTitle: "Soluções de IA e dados que entram em produção — Cytrix",
+      ogDescription: "Do desafio operacional à solução em produção: IA, automação e dados com método e governança.",
+    }),
   component: SolucoesIndexPage,
 });
 

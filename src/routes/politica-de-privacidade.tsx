@@ -1,24 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { pageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/politica-de-privacidade")({
-  head: () => ({
-    meta: [
-      { title: "Política de Privacidade — Cytrix Data Consulting" },
-      {
-        name: "description",
-        content:
-          "Política de Privacidade da Cytrix Data Consulting: entenda como coletamos, usamos e protegemos seus dados.",
-      },
-      { property: "og:title", content: "Política de Privacidade — Cytrix Data Consulting" },
-      {
-        property: "og:description",
-        content:
-          "Entenda como a Cytrix Data Consulting coleta, usa e protege seus dados pessoais.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
+  head: () =>
+    pageHead({
+      path: "/politica-de-privacidade",
+      title: "Política de Privacidade — Cytrix Data Consulting",
+      description: "Política de Privacidade da Cytrix Data Consulting: entenda como coletamos, usamos e protegemos seus dados.",
+      ogTitle: "Política de Privacidade — Cytrix Data Consulting",
+      ogDescription: "Entenda como a Cytrix Data Consulting coleta, usa e protege seus dados pessoais.",
+    }),
   component: PoliticaPrivacidadePage,
 });
 

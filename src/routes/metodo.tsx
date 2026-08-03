@@ -1,22 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { pageHead } from "@/lib/seo";
 import { CtaSection } from "@/components/site/CtaSection";
 
 export const Route = createFileRoute("/metodo")({
-  head: () => ({
-    meta: [
-      { title: "Método Cytrix — Diagnóstico, arquitetura e escala" },
-      {
-        name: "description",
-        content:
-          "Conheça o método da Cytrix Data Consulting: diagnóstico, arquitetura, implementação, governança e escala em ciclos curtos.",
-      },
-      { property: "og:title", content: "Método Cytrix — Diagnóstico, arquitetura e escala" },
-      {
-        property: "og:description",
-        content: "Cinco etapas para transformar dados em resultado operacional.",
-      },
-    ],
-  }),
+  head: () =>
+    pageHead({
+      path: "/metodo",
+      title: "Método Cytrix — Diagnóstico, arquitetura e escala",
+      description: "Conheça o método da Cytrix Data Consulting: diagnóstico, arquitetura, implementação, governança e escala em ciclos curtos.",
+      ogTitle: "Método Cytrix — Diagnóstico, arquitetura e escala",
+      ogDescription: "Cinco etapas para transformar dados em resultado operacional.",
+    }),
   component: MetodoPage,
 });
 

@@ -1,28 +1,19 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { pageHead } from "@/lib/seo";
 import { ArrowRight, Lightbulb, Puzzle, Network, TrendingUp, Lock, Rocket } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CtaSection } from "@/components/site/CtaSection";
 import { AiDataBackground } from "@/components/site/AiDataBackground";
 
 export const Route = createFileRoute("/quem-somos")({
-  head: () => ({
-    meta: [
-      { title: "Quem Somos — Cytrix Data Consulting" },
-      {
-        name: "description",
-        content:
-          "Conheça a história da Cytrix Data Consulting: como nascemos em Curitiba para transformar dados, IA e automação em resultados reais para empresas.",
-      },
-      { property: "og:title", content: "Quem Somos — Cytrix Data Consulting" },
-      {
-        property: "og:description",
-        content:
-          "Da constatação à arquitetura de decisão: a trajetória da Cytrix Data Consulting.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
+  head: () =>
+    pageHead({
+      path: "/quem-somos",
+      title: "Quem Somos — Cytrix Data Consulting",
+      description: "Conheça a história da Cytrix Data Consulting: como nascemos em Curitiba para transformar dados, IA e automação em resultados reais para empresas.",
+      ogTitle: "Quem Somos — Cytrix Data Consulting",
+      ogDescription: "Da constatação à arquitetura de decisão: a trajetória da Cytrix Data Consulting.",
+    }),
   component: QuemSomosPage,
 });
 

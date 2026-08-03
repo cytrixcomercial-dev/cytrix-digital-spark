@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { pageHead } from "@/lib/seo";
 import {
   ShieldCheck,
   Search,
@@ -11,24 +12,14 @@ import { ServicePage } from "@/components/site/ServicePage";
 import imgIntegracao from "@/assets/solucoes-integracao.jpg";
 
 export const Route = createFileRoute("/solucoes/bi-data-quality")({
-  head: () => ({
-    meta: [
-      { title: "BI Data Quality — Cytrix Data Consulting" },
-      {
-        name: "description",
-        content:
-          "Garanta a confiabilidade dos seus dados com regras de qualidade, monitoramento contínuo e governança aplicada.",
-      },
-      { property: "og:title", content: "BI Data Quality — Cytrix Data Consulting" },
-      {
-        property: "og:description",
-        content:
-          "Qualidade de dados, profiling, validação e governança para decisões sem surpresas.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
+  head: () =>
+    pageHead({
+      path: "/solucoes/bi-data-quality",
+      title: "BI Data Quality — Cytrix Data Consulting",
+      description: "Garanta a confiabilidade dos seus dados com regras de qualidade, monitoramento contínuo e governança aplicada.",
+      ogTitle: "BI Data Quality — Cytrix Data Consulting",
+      ogDescription: "Qualidade de dados, profiling, validação e governança para decisões sem surpresas.",
+    }),
   component: BiDataQualityPage,
 });
 

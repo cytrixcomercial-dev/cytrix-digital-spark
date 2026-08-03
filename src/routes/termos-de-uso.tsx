@@ -1,24 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { pageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/termos-de-uso")({
-  head: () => ({
-    meta: [
-      { title: "Termos de Uso — Cytrix Data Consulting" },
-      {
-        name: "description",
-        content:
-          "Termos de Uso da Cytrix Data Consulting: condições para acesso e uso deste site.",
-      },
-      { property: "og:title", content: "Termos de Uso — Cytrix Data Consulting" },
-      {
-        property: "og:description",
-        content:
-          "Leia os Termos de Uso que regem o acesso e a utilização do site da Cytrix Data Consulting.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
+  head: () =>
+    pageHead({
+      path: "/termos-de-uso",
+      title: "Termos de Uso — Cytrix Data Consulting",
+      description: "Termos de Uso da Cytrix Data Consulting: condições para acesso e uso deste site.",
+      ogTitle: "Termos de Uso — Cytrix Data Consulting",
+      ogDescription: "Leia os Termos de Uso que regem o acesso e a utilização do site da Cytrix Data Consulting.",
+    }),
   component: TermosDeUsoPage,
 });
 
