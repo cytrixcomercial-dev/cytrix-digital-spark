@@ -9,11 +9,16 @@ import {
   Network,
   Target,
   FileSearch,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CtaSection } from "@/components/site/CtaSection";
 import { AiDataBackground } from "@/components/site/AiDataBackground";
-import heroBanner from "@/assets/hero-office-team.jpg";
+import heroSlide1 from "@/assets/hero-slide-1-office.jpg";
+import heroSlide2 from "@/assets/hero-slide-2-ia.jpg";
+import heroSlide3 from "@/assets/hero-slide-3-bi.jpg";
+import heroSlide4 from "@/assets/hero-slide-4-dados.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
