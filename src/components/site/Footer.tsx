@@ -109,6 +109,7 @@ export function Footer() {
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 text-center md:flex-row md:text-left">
           <p className="text-muted-foreground text-xs">
             © {new Date().getFullYear()} Cytrix Data Consulting. Todos os direitos reservados.
+            Site desenvolvido por Cytrix Technologies Ltda — CNPJ 50.445.596.0001-01.
           </p>
           <nav className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-xs">
             <Link
