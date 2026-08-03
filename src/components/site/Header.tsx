@@ -78,7 +78,9 @@ export function Header() {
                 <button
                   type="button"
                   onClick={() => toggleDropdown(l.label)}
-                  className="flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                  className={`flex items-center gap-1 text-sm transition-colors hover:text-brand-orange ${
+                    isActive(l.to) ? "font-semibold text-brand-blue" : "text-muted-foreground"
+                  }`}
                   aria-expanded={openDropdown === l.label}
                   aria-haspopup="menu"
                 >
@@ -86,7 +88,7 @@ export function Header() {
                   <ChevronDown
                     className={`size-3.5 transition-transform ${
                       openDropdown === l.label ? "rotate-180" : ""
-                    }`}
+                    } ${isActive(l.to) ? "text-brand-blue" : ""}`}
                   />
                 </button>
                 {openDropdown === l.label && (
