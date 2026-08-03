@@ -272,3 +272,164 @@
     animation: none;
   }
 }
+
+/* ---- Fundo animado de dados & IA (home) ---- */
+.ai-bg {
+  background:
+    radial-gradient(
+      circle at 20% 15%,
+      color-mix(in oklab, var(--brand-blue) 12%, transparent),
+      transparent 55%
+    ),
+    radial-gradient(
+      circle at 85% 70%,
+      color-mix(in oklab, var(--brand-purple) 12%, transparent),
+      transparent 55%
+    );
+}
+
+.ai-bg-grid {
+  background-image:
+    linear-gradient(
+      to right,
+      color-mix(in oklab, var(--brand-blue) 10%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      color-mix(in oklab, var(--brand-blue) 10%, transparent) 1px,
+      transparent 1px
+    );
+  background-size: 64px 64px;
+  mask-image: radial-gradient(circle at 50% 30%, black, transparent 78%);
+  animation: ai-grid-drift 26s linear infinite;
+}
+
+@keyframes ai-grid-drift {
+  from {
+    background-position:
+      0 0,
+      0 0;
+  }
+  to {
+    background-position:
+      64px 64px,
+      64px 64px;
+  }
+}
+
+.ai-bg-orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(90px);
+  opacity: 0.28;
+  animation: ai-orb-float 18s ease-in-out infinite;
+}
+
+.ai-bg-orb-blue {
+  width: 32rem;
+  height: 32rem;
+  top: -8rem;
+  left: -6rem;
+  background: var(--brand-blue);
+}
+
+.ai-bg-orb-purple {
+  width: 28rem;
+  height: 28rem;
+  bottom: -6rem;
+  right: -4rem;
+  background: var(--brand-purple);
+  animation-delay: 4s;
+}
+
+.ai-bg-orb-orange {
+  width: 20rem;
+  height: 20rem;
+  top: 45%;
+  left: 55%;
+  background: var(--brand-orange);
+  opacity: 0.16;
+  animation-delay: 8s;
+}
+
+@keyframes ai-orb-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(3rem, -2rem, 0) scale(1.12);
+  }
+}
+
+.ai-bg-rings {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: ai-ring-spin 40s linear infinite;
+}
+
+@keyframes ai-ring-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.ai-bg-bit {
+  position: absolute;
+  top: 100%;
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  color: color-mix(in oklab, var(--brand-blue) 60%, transparent);
+  animation: ai-bit-rise 14s linear infinite;
+}
+
+@keyframes ai-bit-rise {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  12% {
+    opacity: 0.75;
+  }
+  88% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-105vh);
+    opacity: 0;
+  }
+}
+
+.ai-bg-scan {
+  position: absolute;
+  inset-inline: 0;
+  height: 22rem;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    color-mix(in oklab, var(--brand-blue) 8%, transparent),
+    transparent
+  );
+  animation: ai-scan 12s ease-in-out infinite;
+}
+
+@keyframes ai-scan {
+  0%,
+  100% {
+    transform: translateY(-25vh);
+  }
+  50% {
+    transform: translateY(95vh);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ai-bg-grid,
+  .ai-bg-orb,
+  .ai-bg-rings,
+  .ai-bg-bit,
+  .ai-bg-scan {
+    animation: none;
+  }
+}
