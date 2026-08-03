@@ -3,26 +3,28 @@ import { useState, useRef, useEffect } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/cytrix-logo.png";
+import { LanguageSwitcher } from "@/components/site/LanguageSwitcher";
+import { useLanguage } from "@/lib/i18n";
 
-type NavLink = { to: string; label: string };
-type NavDropdown = { to: string; label: string; children: readonly NavLink[] };
+type NavLink = { to: string; label: string; key?: string };
+type NavDropdown = { to: string; label: string; key?: string; children: readonly NavLink[] };
 
 const solutions: readonly NavLink[] = [
   { to: "/solucoes/data-consulting", label: "Data Consulting" },
   { to: "/solucoes/business-intelligence", label: "Business Intelligence (BI)" },
   { to: "/solucoes/bi-data-quality", label: "BI Data Quality" },
-  { to: "/agentes-de-ia", label: "Agentes autônomos de IA" },
+  { to: "/agentes-de-ia", label: "Agentes autônomos de IA", key: "nav.aiAgents" },
   { to: "/solucoes/bi-platform", label: "BI Platform" },
   { to: "/solucoes/bi-ia-outsourcing", label: "BI & IA Outsourcing" },
 ] as const;
 
 const mainLinks: readonly (NavLink | NavDropdown)[] = [
-  { to: "/", label: "Home" },
-  { to: "/quem-somos", label: "Quem Somos" },
-  { to: "/solucoes", label: "Soluções", children: solutions },
-  { to: "/metodo", label: "Método" },
-  { to: "/equipe-de-dados", label: "Equipe de Dados" },
-  { to: "/contato", label: "Contato" },
+  { to: "/", label: "Home", key: "nav.home" },
+  { to: "/quem-somos", label: "Quem Somos", key: "nav.about" },
+  { to: "/solucoes", label: "Soluções", key: "nav.solutions", children: solutions },
+  { to: "/metodo", label: "Método", key: "nav.method" },
+  { to: "/equipe-de-dados", label: "Equipe de Dados", key: "nav.dataTeam" },
+  { to: "/contato", label: "Contato", key: "nav.contact" },
 ] as const;
 
 export function Header() {
@@ -30,6 +32,8 @@ export function Header() {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const { t } = useLanguage();
+  const label = (l: { label: string; key?: string }) => (l.key ? t(l.key) : l.label);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -73,7 +77,7 @@ export function Header() {
                   aria-expanded={openDropdown === l.label}
                   aria-haspopup="menu"
                 >
-                  {l.label}
+                  {label(l)}
                   <ChevronDown
                     className={`size-3.5 transition-transform ${
                       openDropdown === l.label ? "rotate-180" : ""
@@ -90,7 +94,7 @@ export function Header() {
                           className="block rounded-md px-3 py-2 text-sm text-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
                           role="menuitem"
                         >
-                          Ver todas as soluções
+                          {t("nav.allSolutions")}
                         </Link>
                       </li>
                       <li className="my-1.5 h-px bg-border/70" />
@@ -102,7 +106,7 @@ export function Header() {
                             className="block rounded-md px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
                             role="menuitem"
                           >
-                            {c.label}
+                            {label(c)}
                           </Link>
                         </li>
                       ))}
@@ -118,18 +122,21 @@ export function Header() {
                 activeProps={{ className: "text-sm text-foreground" }}
                 activeOptions={{ exact: l.to === "/" }}
               >
-                {l.label}
+                {label(l)}
               </Link>
             )
           )}
         </nav>
 
         <div className="flex items-center gap-2">
+          <div className="hidden md:block">
+            <LanguageSwitcher />
+          </div>
           <Button asChild size="sm" className="hidden md:inline-flex">
-            <Link to="/contato">Solicitar diagnóstico</Link>
+            <Link to="/contato">{t("cta.diagnostic")}</Link>
           </Button>
           <button
-            aria-label={mobileOpen ? "Fechar menu" : "Abrir menu"}
+            aria-label={mobileOpen ? t("menu.close") : t("menu.open")}
             className="text-foreground md:hidden"
             onClick={() => setMobileOpen((v) => !v)}
           >
@@ -151,7 +158,7 @@ export function Header() {
                     className="flex w-full items-center justify-between py-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
                     aria-expanded={mobileExpanded === l.label}
                   >
-                    {l.label}
+                    {label(l)}
                     <ChevronDown
                       className={`size-3.5 transition-transform ${
                         mobileExpanded === l.label ? "rotate-180" : ""
@@ -168,7 +175,7 @@ export function Header() {
                         }}
                         className="block py-2 text-sm text-foreground transition-colors hover:text-brand-orange"
                       >
-                        Ver todas as soluções
+                        {t("nav.allSolutions")}
                       </Link>
                       {l.children.map((c: NavLink) => (
                         <Link
@@ -180,7 +187,7 @@ export function Header() {
                           }}
                           className="block py-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
                         >
-                          {c.label}
+                          {label(c)}
                         </Link>
                       ))}
                     </div>
@@ -193,10 +200,11 @@ export function Header() {
                   onClick={() => setMobileOpen(false)}
                   className="py-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
                 >
-                  {l.label}
+                  {label(l)}
                 </Link>
               )
             )}
+            <LanguageSwitcher variant="mobile" />
           </nav>
         </div>
       )}
