@@ -64,7 +64,7 @@ export function Header() {
         {/* Desktop navigation */}
         <nav className="hidden items-center gap-6 md:flex" ref={dropdownRef}>
           {mainLinks.map((l) =>
-            l.children ? (
+            "children" in l ? (
               <div key={l.to} className="relative">
                 <button
                   type="button"
@@ -94,7 +94,7 @@ export function Header() {
                         </Link>
                       </li>
                       <li className="my-1.5 h-px bg-border/70" />
-                      {l.children.map((c) => (
+                      {l.children.map((c: NavLink) => (
                         <li key={c.to} role="none">
                           <Link
                             to={c.to}
