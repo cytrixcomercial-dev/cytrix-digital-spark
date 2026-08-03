@@ -76,7 +76,7 @@ function Index() {
       <section className="glow-top border-border/70 border-b">
         <div className="mx-auto grid max-w-6xl items-center gap-14 px-5 py-20 md:grid-cols-2 md:py-28">
           <div>
-            <p className="eyebrow">Consultoria de dados</p>
+            <p className="eyebrow">CONSULTORIA CONSULTIVA</p>
             <h1 className="mt-5 text-4xl leading-[1.08] font-bold md:text-5xl lg:text-6xl">
               Dados e IA aplicados à <span className="text-gradient-brand">operação</span> do seu
               negócio
@@ -189,18 +189,18 @@ function Index() {
 
       <section className="border-border/70 bg-surface/30 border-y">
         <div className="mx-auto max-w-6xl px-5 py-24">
-          <p className="eyebrow">Soluções conectadas</p>
+          <p className="eyebrow">SOLUÇÕES ORQUESTRADAS</p>
           <div className="mt-4 flex flex-wrap items-end justify-between gap-6">
             <h2 className="max-w-2xl text-3xl font-bold md:text-4xl">
-              Aplicamos dados onde eles geram resultado prático
+              Direcionamos IA & Dados para áreas que geram impacto real nos negócios.
             </h2>
             <Button asChild variant="outline">
               <Link to="/metodo">Conheça nosso método</Link>
             </Button>
           </div>
           <p className="text-muted-foreground mt-4 max-w-2xl text-base leading-relaxed">
-            Não vendemos hype. Entregamos soluções sob medida, com alta governança, que resolvem
-            gargalos reais do dia a dia da sua empresa.
+            Projetamos arquiteturas personalizadas, com governança rigorosa, que desbloqueiam
+            entraves reais do cotidiano operacional da sua empresa.
           </p>
 
           <div className="mt-12 grid gap-5 md:grid-cols-2">
