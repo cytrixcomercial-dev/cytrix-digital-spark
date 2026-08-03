@@ -98,8 +98,8 @@ export function Header() {
                         <Link
                           to={l.to}
                           onClick={() => setOpenDropdown(null)}
-                          className={`block rounded-md px-3 py-2 text-sm transition-colors hover:bg-accent hover:text-brand-orange ${
-                            isActive(l.to) ? "font-semibold text-brand-blue" : "text-foreground"
+                          className={`block rounded-md px-3 py-2 text-sm text-white transition-colors hover:bg-accent hover:text-brand-orange ${
+                            isActive(l.to) ? "font-semibold text-brand-blue" : ""
                           }`}
                           role="menuitem"
                         >
@@ -112,8 +112,8 @@ export function Header() {
                           <Link
                             to={c.to}
                             onClick={() => setOpenDropdown(null)}
-                            className={`block rounded-md px-3 py-2 text-sm transition-colors hover:bg-accent hover:text-brand-orange ${
-                              isActive(c.to) ? "font-semibold text-brand-blue" : "text-muted-foreground"
+                            className={`block rounded-md px-3 py-2 text-sm text-white transition-colors hover:bg-accent hover:text-brand-orange ${
+                              isActive(c.to) ? "font-semibold text-brand-blue" : ""
                             }`}
                             role="menuitem"
                           >
@@ -187,8 +187,8 @@ export function Header() {
                           setMobileOpen(false);
                           setMobileExpanded(null);
                         }}
-                        className={`block py-2 text-sm transition-colors hover:text-brand-orange ${
-                          isActive(l.to) ? "font-semibold text-brand-blue" : "text-foreground"
+                        className={`block py-2 text-sm text-white transition-colors hover:text-brand-orange ${
+                          isActive(l.to) ? "font-semibold text-brand-blue" : ""
                         }`}
                       >
                         {t("nav.allSolutions")}
@@ -201,8 +201,8 @@ export function Header() {
                             setMobileOpen(false);
                             setMobileExpanded(null);
                           }}
-                          className={`block py-2 text-sm transition-colors hover:text-brand-orange ${
-                            isActive(c.to) ? "font-semibold text-brand-blue" : "text-muted-foreground"
+                          className={`block py-2 text-sm text-white transition-colors hover:text-brand-orange ${
+                            isActive(c.to) ? "font-semibold text-brand-blue" : ""
                           }`}
                         >
                           {label(c)}
