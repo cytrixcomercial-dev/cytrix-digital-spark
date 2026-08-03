@@ -18,6 +18,7 @@ import { Route as PoliticaDeCookiesRouteImport } from './routes/politica-de-cook
 import { Route as PoliticaDePrivacidadeRouteImport } from './routes/politica-de-privacidade'
 import { Route as QuemSomosRouteImport } from './routes/quem-somos'
 import { Route as SejaUmRepresentanteComercialRouteImport } from './routes/seja-um-representante-comercial'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SolucoesRouteImport } from './routes/solucoes'
 import { Route as TermosDeUsoRouteImport } from './routes/termos-de-uso'
 import { Route as SolucoesIndexRouteImport } from './routes/solucoes.index'
@@ -73,6 +74,11 @@ const SejaUmRepresentanteComercialRoute =
     path: '/seja-um-representante-comercial',
     getParentRoute: () => rootRouteImport,
   } as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SolucoesRoute = SolucoesRouteImport.update({
   id: '/solucoes',
   path: '/solucoes',
@@ -125,6 +131,7 @@ export interface FileRoutesByFullPath {
   '/politica-de-privacidade': typeof PoliticaDePrivacidadeRoute
   '/quem-somos': typeof QuemSomosRoute
   '/seja-um-representante-comercial': typeof SejaUmRepresentanteComercialRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/solucoes': typeof SolucoesRouteWithChildren
   '/termos-de-uso': typeof TermosDeUsoRoute
   '/solucoes/bi-data-quality': typeof SolucoesBiDataQualityRoute
@@ -144,6 +151,7 @@ export interface FileRoutesByTo {
   '/politica-de-privacidade': typeof PoliticaDePrivacidadeRoute
   '/quem-somos': typeof QuemSomosRoute
   '/seja-um-representante-comercial': typeof SejaUmRepresentanteComercialRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/termos-de-uso': typeof TermosDeUsoRoute
   '/solucoes/bi-data-quality': typeof SolucoesBiDataQualityRoute
   '/solucoes/bi-ia-outsourcing': typeof SolucoesBiIaOutsourcingRoute
@@ -163,6 +171,7 @@ export interface FileRoutesById {
   '/politica-de-privacidade': typeof PoliticaDePrivacidadeRoute
   '/quem-somos': typeof QuemSomosRoute
   '/seja-um-representante-comercial': typeof SejaUmRepresentanteComercialRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/solucoes': typeof SolucoesRouteWithChildren
   '/termos-de-uso': typeof TermosDeUsoRoute
   '/solucoes/bi-data-quality': typeof SolucoesBiDataQualityRoute
@@ -184,6 +193,7 @@ export interface FileRouteTypes {
     | '/politica-de-privacidade'
     | '/quem-somos'
     | '/seja-um-representante-comercial'
+    | '/sitemap.xml'
     | '/solucoes'
     | '/termos-de-uso'
     | '/solucoes/bi-data-quality'
@@ -203,6 +213,7 @@ export interface FileRouteTypes {
     | '/politica-de-privacidade'
     | '/quem-somos'
     | '/seja-um-representante-comercial'
+    | '/sitemap.xml'
     | '/termos-de-uso'
     | '/solucoes/bi-data-quality'
     | '/solucoes/bi-ia-outsourcing'
@@ -221,6 +232,7 @@ export interface FileRouteTypes {
     | '/politica-de-privacidade'
     | '/quem-somos'
     | '/seja-um-representante-comercial'
+    | '/sitemap.xml'
     | '/solucoes'
     | '/termos-de-uso'
     | '/solucoes/bi-data-quality'
@@ -241,6 +253,7 @@ export interface RootRouteChildren {
   PoliticaDePrivacidadeRoute: typeof PoliticaDePrivacidadeRoute
   QuemSomosRoute: typeof QuemSomosRoute
   SejaUmRepresentanteComercialRoute: typeof SejaUmRepresentanteComercialRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SolucoesRoute: typeof SolucoesRouteWithChildren
   TermosDeUsoRoute: typeof TermosDeUsoRoute
 }
@@ -308,6 +321,13 @@ declare module '@tanstack/react-router' {
       path: '/seja-um-representante-comercial'
       fullPath: '/seja-um-representante-comercial'
       preLoaderRoute: typeof SejaUmRepresentanteComercialRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/solucoes': {
@@ -401,19 +421,10 @@ const rootRouteChildren: RootRouteChildren = {
   PoliticaDePrivacidadeRoute: PoliticaDePrivacidadeRoute,
   QuemSomosRoute: QuemSomosRoute,
   SejaUmRepresentanteComercialRoute: SejaUmRepresentanteComercialRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   SolucoesRoute: SolucoesRouteWithChildren,
   TermosDeUsoRoute: TermosDeUsoRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}

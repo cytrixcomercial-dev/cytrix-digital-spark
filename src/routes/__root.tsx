@@ -94,6 +94,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         content: "Consultoria de dados e IA aplicada à operação do seu negócio.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "Cytrix Data Consulting" },
+      { property: "og:locale", content: "pt_BR" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
@@ -108,6 +110,31 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: appCss,
       },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          name: "Cytrix Data Consulting",
+          legalName: "CYTRIX TECHNOLOGIES LTDA",
+          taxID: "50.445.596/0001-01",
+          description:
+            "Consultoria de dados e IA: engenharia de dados, business intelligence, governança e agentes autônomos de IA.",
+          email: "comercial@cytrix.com.br",
+          telephone: "+55 41 99689-0003",
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: "Avenida Vicente Machado, 520 - Centro",
+            addressLocality: "Curitiba",
+            addressRegion: "PR",
+            postalCode: "80420-010",
+            addressCountry: "BR",
+          },
+          sameAs: ["https://www.linkedin.com/company/cytrix-data-consulting"],
+        }),
+      },
     ],
   }),
   shellComponent: RootShell,
