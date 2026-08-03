@@ -84,22 +84,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Cytrix Data Consulting" },
-      {
-        name: "description",
-        content:
-          "Consultoria de dados e IA: engenharia de dados, analytics, governança e automação para empresas.",
-      },
       { name: "author", content: "Cytrix Data Consulting" },
-      { property: "og:title", content: "Cytrix Data Consulting" },
-      {
-        property: "og:description",
-        content: "Consultoria de dados e IA aplicada à operação do seu negócio.",
-      },
-      { property: "og:type", content: "website" },
-      { property: "og:site_name", content: "Cytrix Data Consulting" },
-      { property: "og:locale", content: "pt_BR" },
-      { name: "twitter:card", content: "summary_large_image" },
       { name: "theme-color", content: "#000000" },
       { name: "apple-mobile-web-app-capable", content: "yes" },
       { name: "apple-mobile-web-app-title", content: "Cytrix" },
@@ -165,7 +150,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="pt-BR">
       <head>
         <HeadContent />
       </head>
