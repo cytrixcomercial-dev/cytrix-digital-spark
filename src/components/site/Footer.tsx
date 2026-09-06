@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Mail, Linkedin, MapPin, Phone, Download } from "lucide-react";
-import logo from "@/assets/cytrix-logo.png";
+import logo from "@/assets/opriun-logo.png.asset.json";
 import contatoQr from "@/assets/cytrix-vcard-qr.png.asset.json";
 
 export function Footer() {
@@ -9,7 +9,7 @@ export function Footer() {
       <div className="mx-auto grid max-w-6xl gap-10 px-5 py-14 md:grid-cols-5">
         <div className="md:col-span-2">
           <img
-            src={logo}
+            src={logo.url}
             alt="Cytrix Data Consulting"
             className="h-11 w-auto"
             loading="lazy"
