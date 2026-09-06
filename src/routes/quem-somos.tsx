@@ -133,7 +133,7 @@ function QuemSomosPage() {
                   key={c.title}
                   className="grid items-start gap-6 md:grid-cols-[auto_1fr]"
                 >
-                  <div className="flex size-12 shrink-0 items-center justify-center rounded-lg bg-brand-blue/10 text-brand-blue">
+                  <div className="flex size-12 shrink-0 items-center justify-center rounded-lg bg-brand-orange/10 text-brand-orange">
                     <span className="font-mono text-lg font-bold">{String(idx + 1).padStart(2, "0")}</span>
                   </div>
                   <div>

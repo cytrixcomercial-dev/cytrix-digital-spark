@@ -213,7 +213,7 @@ function SolucoesIndexPage() {
             {capabilities.map((c, i) => (
               <article key={c.title} className="card-tech flex h-full flex-col p-8">
                 <div className="flex items-center justify-between">
-                  <c.icon className="text-brand-blue size-6" />
+                  <c.icon className="text-brand-orange size-6" />
                   <span className="text-muted-foreground font-mono text-xs">
                     {String(i + 1).padStart(2, "0")}
                   </span>
