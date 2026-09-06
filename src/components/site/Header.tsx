@@ -2,7 +2,7 @@ import { Link, useLocation } from "@tanstack/react-router";
 import { useState, useRef, useEffect } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import logo from "@/assets/cytrix-logo.png";
+import logo from "@/assets/opriun-logo.png.asset.json";
 import { LanguageSwitcher } from "@/components/site/LanguageSwitcher";
 import { useLanguage } from "@/lib/i18n";
 
@@ -63,7 +63,7 @@ export function Header() {
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5">
         <Link to="/" className="flex items-center">
           <img
-            src={logo}
+            src={logo.url}
             alt="Cytrix Data Consulting"
             className="h-9 w-auto md:h-10"
             loading="eager"
