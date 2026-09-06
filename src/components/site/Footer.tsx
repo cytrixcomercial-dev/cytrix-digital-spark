@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Mail, Linkedin, MapPin, Phone, Download } from "lucide-react";
-import logo from "@/assets/opriun-logo.png.asset.json";
+import logo from "@/assets/opriun-logo-light.png.asset.json";
 import contatoQr from "@/assets/cytrix-vcard-qr.png.asset.json";
 
 export function Footer() {

@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Mail, Linkedin, MapPin, Phone, Globe, ContactRound } from "lucide-react";
 import { pageHead } from "@/lib/seo";
-import logo from "@/assets/opriun-logo.png.asset.json";
+import logo from "@/assets/opriun-logo-light.png.asset.json";
 
 export const Route = createFileRoute("/cartao")({
   head: () =>
