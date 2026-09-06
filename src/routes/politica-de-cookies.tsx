@@ -5,10 +5,10 @@ export const Route = createFileRoute("/politica-de-cookies")({
   head: () =>
     pageHead({
       path: "/politica-de-cookies",
-      title: "Política de Cookies — Cytrix Data Consulting",
-      description: "Política de Cookies da Cytrix Data Consulting: saiba como utilizamos cookies e tecnologias semelhantes.",
-      ogTitle: "Política de Cookies — Cytrix Data Consulting",
-      ogDescription: "Saiba como a Cytrix Data Consulting utiliza cookies e tecnologias semelhantes neste site.",
+      title: "Política de Cookies — Opriun",
+      description: "Política de Cookies da Opriun: saiba como utilizamos cookies e tecnologias semelhantes.",
+      ogTitle: "Política de Cookies — Opriun",
+      ogDescription: "Saiba como a Opriun utiliza cookies e tecnologias semelhantes neste site.",
     }),
   component: PoliticaCookiesPage,
 });
@@ -23,7 +23,7 @@ function PoliticaCookiesPage() {
             Política de <span className="text-gradient-brand">Cookies</span>
           </h1>
           <p className="text-muted-foreground mt-6 max-w-2xl text-sm leading-relaxed">
-            Esta página explica como a Cytrix Data Consulting utiliza cookies e tecnologias
+            Esta página explica como a Opriun utiliza cookies e tecnologias
             semelhantes em seu site. As práticas descritas refletem a configuração atual da empresa e
             podem ser revisadas conforme novas ferramentas forem adotadas.
           </p>
@@ -76,7 +76,7 @@ function PoliticaCookiesPage() {
           <section className="mb-10">
             <h2 className="text-xl font-semibold">4. Cookies de terceiros</h2>
             <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
-              A Cytrix não utiliza cookies de publicidade comportamental ou remarketing de
+              A Opriun não utiliza cookies de publicidade comportamental ou remarketing de
               terceiros. Caso ferramentas de analytics ou chat sejam integradas no futuro, esta
               política será atualizada para refletir os novos provedores e finalidades.
             </p>

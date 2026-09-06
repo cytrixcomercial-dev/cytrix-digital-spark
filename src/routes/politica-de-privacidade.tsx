@@ -5,10 +5,10 @@ export const Route = createFileRoute("/politica-de-privacidade")({
   head: () =>
     pageHead({
       path: "/politica-de-privacidade",
-      title: "Política de Privacidade — Cytrix Data Consulting",
-      description: "Política de Privacidade da Cytrix Data Consulting: entenda como coletamos, usamos e protegemos seus dados.",
-      ogTitle: "Política de Privacidade — Cytrix Data Consulting",
-      ogDescription: "Entenda como a Cytrix Data Consulting coleta, usa e protege seus dados pessoais.",
+      title: "Política de Privacidade — Opriun",
+      description: "Política de Privacidade da Opriun: entenda como coletamos, usamos e protegemos seus dados.",
+      ogTitle: "Política de Privacidade — Opriun",
+      ogDescription: "Entenda como a Opriun coleta, usa e protege seus dados pessoais.",
     }),
   component: PoliticaPrivacidadePage,
 });
@@ -23,7 +23,7 @@ function PoliticaPrivacidadePage() {
             Política de <span className="text-gradient-brand">Privacidade</span>
           </h1>
           <p className="text-muted-foreground mt-6 max-w-2xl text-sm leading-relaxed">
-            Esta página é mantida pela Cytrix Data Consulting para responder dúvidas comuns sobre
+            Esta página é mantida pela Opriun para responder dúvidas comuns sobre
             segurança e privacidade. As informações aqui refletem as práticas atuais da empresa e
             podem ser atualizadas periodicamente.
           </p>
@@ -36,8 +36,8 @@ function PoliticaPrivacidadePage() {
             <h2 className="text-xl font-semibold">1. Quem somos</h2>
             <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
               A presente Política de Privacidade é aplicável às atividades da{" "}
-              <strong>CYTRIX TECHNOLOGIES LTDA</strong>, inscrita no CNPJ sob o nº{" "}
-              <strong>50.445.596.0001-01</strong>, doravante denominada Cytrix Data Consulting,
+              <strong>OPRIUN TECHNOLOGIES LTDA</strong>, inscrita no CNPJ sob o nº{" "}
+              <strong>50.445.596.0001-01</strong>, doravante denominada Opriun,
               responsável pela operação deste site.
             </p>
           </section>
@@ -79,7 +79,7 @@ function PoliticaPrivacidadePage() {
             <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
               O tratamento de dados pessoais é realizado com base no consentimento livre e
               informado, fornecido no momento do envio do formulário, e no legítimo interesse da
-              Cytrix em responder a solicitações comerciais. Você pode revogar seu consentimento a
+              Opriun em responder a solicitações comerciais. Você pode revogar seu consentimento a
               qualquer tempo, conforme descrito na seção de direitos do titular.
             </p>
           </section>
@@ -88,7 +88,7 @@ function PoliticaPrivacidadePage() {
             <h2 className="text-xl font-semibold">5. Armazenamento e retenção</h2>
             <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
               As mensagens de contato são armazenadas em banco de dados gerenciado pela plataforma de
-              hospedagem e backend utilizada pela Cytrix. Os dados são mantidos pelo tempo
+              hospedagem e backend utilizada pela Opriun. Os dados são mantidos pelo tempo
               estritamente necessário para atender à finalidade da solicitação ou para cumprir
               obrigações legais. Após esse período, podem ser anonimizados ou excluídos.
             </p>
@@ -104,7 +104,7 @@ function PoliticaPrivacidadePage() {
               <li>Autoridades competentes, quando houver exigência legal.</li>
             </ul>
             <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
-              A Cytrix utiliza provedores de nuvem e backend para hospedar o site e o banco de
+              A Opriun utiliza provedores de nuvem e backend para hospedar o site e o banco de
               dados. Esses provedores atuam como operadores de dados, sob contrato e com obrigações
               de confidencialidade e segurança.
             </p>
@@ -159,7 +159,7 @@ function PoliticaPrivacidadePage() {
           <section className="mb-10">
             <h2 className="text-xl font-semibold">10. Responsabilidades compartilhadas</h2>
             <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
-              A Cytrix é responsável pelos dados que coleta e processa em nome do seu negócio. A
+              A Opriun é responsável pelos dados que coleta e processa em nome do seu negócio. A
               plataforma de hospedagem e backend é responsável pela segurança da infraestrutura que
               disponibiliza. O visitante é responsável por fornecer informações verdadeiras e por
               utilizar o site de forma lícita.

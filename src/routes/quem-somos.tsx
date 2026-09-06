@@ -9,10 +9,10 @@ export const Route = createFileRoute("/quem-somos")({
   head: () =>
     pageHead({
       path: "/quem-somos",
-      title: "Quem Somos — Cytrix Data Consulting",
-      description: "Conheça a história da Cytrix Data Consulting: como nascemos em Curitiba para transformar dados, IA e automação em resultados reais para empresas.",
-      ogTitle: "Quem Somos — Cytrix Data Consulting",
-      ogDescription: "Da constatação à arquitetura de decisão: a trajetória da Cytrix Data Consulting.",
+      title: "Quem Somos — Opriun",
+      description: "Conheça a história da Opriun: como nascemos em Curitiba para transformar dados, IA e automação em resultados reais para empresas.",
+      ogTitle: "Quem Somos — Opriun",
+      ogDescription: "Da constatação à arquitetura de decisão: a trajetória da Opriun.",
     }),
   component: QuemSomosPage,
 });
@@ -21,12 +21,12 @@ const chapters = [
   {
     icon: Lightbulb,
     title: "A constatação",
-    text: "A Cytrix nasceu em Curitiba de uma pergunta provocativa: por que empresas investiam pesado em ferramentas de dados, mas continuavam decidindo no escuro? A resposta veio rápida. Existia uma falha estrutural — uma desconexão brutal entre tecnologia, processos e os objetivos reais de negócio. Dashboards bonitos, mas decisões frágeis. Dados abundantes, mas estratégias pobres.",
+    text: "A Opriun nasceu em Curitiba de uma pergunta provocativa: por que empresas investiam pesado em ferramentas de dados, mas continuavam decidindo no escuro? A resposta veio rápida. Existia uma falha estrutural — uma desconexão brutal entre tecnologia, processos e os objetivos reais de negócio. Dashboards bonitos, mas decisões frágeis. Dados abundantes, mas estratégias pobres.",
   },
   {
     icon: Puzzle,
     title: "A ruptura",
-    text: "Foi para romper com esse ciclo que criamos a Cytrix Data Consulting. Não nascemos para entregar telas coloridas. Nascemos para construir arquiteturas de decisão que realmente funcionam — ecossistemas onde Inteligência Artificial, Business Intelligence e automação se conectam para gerar resultados tangíveis, não apenas relatórios bonitos.",
+    text: "Foi para romper com esse ciclo que criamos a Opriun. Não nascemos para entregar telas coloridas. Nascemos para construir arquiteturas de decisão que realmente funcionam — ecossistemas onde Inteligência Artificial, Business Intelligence e automação se conectam para gerar resultados tangíveis, não apenas relatórios bonitos.",
   },
   {
     icon: Network,
@@ -51,7 +51,7 @@ const commitments = [
   {
     icon: Lock,
     title: "Governança total",
-    text: "Nossos parceiros atuam com e-mails @cytrix.com.br, NDAs rigorosos e proteção comercial — o cliente sempre tem um único ponto de contato: a Cytrix Data Consulting.",
+    text: "Nossos parceiros atuam com e-mails @cytrix.com.br, NDAs rigorosos e proteção comercial — o cliente sempre tem um único ponto de contato: a Opriun.",
   },
   {
     icon: Rocket,
@@ -79,7 +79,7 @@ function QuemSomosPage() {
             <span className="text-gradient-brand">arquitetura de decisão</span>
           </h1>
           <p className="text-muted-foreground mt-6 max-w-2xl text-base leading-relaxed md:text-lg">
-            A Cytrix Data Consulting nasceu em Curitiba para transformar tecnologia em vantagem
+            A Opriun nasceu em Curitiba para transformar tecnologia em vantagem
             competitiva. Em decisão. Em resultado.
           </p>
           <div className="mt-9 flex flex-wrap gap-3">
@@ -200,7 +200,7 @@ function QuemSomosPage() {
             <blockquote className="max-w-4xl">
               <p className="text-xl font-medium leading-relaxed md:text-2xl">
                 Se você está cansado de gastar com ferramentas que não entregam resultado… se quer
-                parar de apostar e começar a decidir com dados… a Cytrix Data Consulting é sua parceira estratégica.
+                parar de apostar e começar a decidir com dados… a Opriun é sua parceira estratégica.
               </p>
               <footer className="text-muted-foreground mt-6 text-sm">
                 Afinal, informação sem direção não é inteligência. É apenas barulho. E você merece
@@ -209,7 +209,7 @@ function QuemSomosPage() {
             </blockquote>
             <div className="mt-8">
               <p className="font-display text-2xl font-bold tracking-tight">
-                CYTRIX {"\u00a0"}<span className="text-brand-orange">|</span> Data Consulting
+                OPRIUN {"\u00a0"}<span className="text-brand-orange">|</span> Data Consulting
               </p>
               <p className="text-muted-foreground mt-2 text-sm">
                 Transformamos tecnologia em vantagem competitiva. Em decisão. Em resultado.

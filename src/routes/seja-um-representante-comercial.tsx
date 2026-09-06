@@ -14,10 +14,10 @@ export const Route = createFileRoute("/seja-um-representante-comercial")({
   head: () =>
     pageHead({
       path: "/seja-um-representante-comercial",
-      title: "Seja um Representante Comercial — Cytrix Data Consulting",
-      description: "Torne-se representante comercial da Cytrix Data Consulting e leve soluções de dados, BI e IA para o seu mercado.",
-      ogTitle: "Seja um Representante Comercial — Cytrix Data Consulting",
-      ogDescription: "Represente a Cytrix Data Consulting na sua região e construa oportunidades com dados, BI e agentes de IA.",
+      title: "Seja um Representante Comercial — Opriun",
+      description: "Torne-se representante comercial da Opriun e leve soluções de dados, BI e IA para o seu mercado.",
+      ogTitle: "Seja um Representante Comercial — Opriun",
+      ogDescription: "Represente a Opriun na sua região e construa oportunidades com dados, BI e agentes de IA.",
     }),
   component: SejaRepresentantePage,
 });
@@ -47,7 +47,7 @@ function SejaRepresentantePage() {
         <div className="grid gap-12 md:grid-cols-[1fr_1.2fr]">
           <div className="space-y-8">
             <div className="card-tech p-7">
-              <h2 className="text-base font-semibold">Por que representar a Cytrix?</h2>
+              <h2 className="text-base font-semibold">Por que representar a Opriun?</h2>
               <ul className="text-muted-foreground mt-4 list-inside list-disc space-y-2 text-sm leading-relaxed">
                 <li>Portfólio completo de dados, BI e IA para diferentes segmentos.</li>
                 <li>Suporte técnico e comercial durante todo o ciclo de venda.</li>

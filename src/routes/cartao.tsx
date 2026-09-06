@@ -7,12 +7,12 @@ export const Route = createFileRoute("/cartao")({
   head: () =>
     pageHead({
       path: "/cartao",
-      title: "Cytrix Data Consulting — Cartão digital",
+      title: "Opriun — Cartão digital",
       description:
-        "Cartão digital da Cytrix Data Consulting: quem somos, contatos, WhatsApp, e-mail e LinkedIn.",
-      ogTitle: "Cytrix Data Consulting — Cartão digital",
+        "Cartão digital da Opriun: quem somos, contatos, WhatsApp, e-mail e LinkedIn.",
+      ogTitle: "Opriun — Cartão digital",
       ogDescription:
-        "Dados, automação e agentes de IA aplicados à operação do seu negócio. Fale com a Cytrix.",
+        "Dados, automação e agentes de IA aplicados à operação do seu negócio. Fale com a Opriun.",
     }),
   component: CartaoPage,
 });
@@ -23,18 +23,18 @@ function CartaoPage() {
       <div className="mx-auto max-w-xl px-5 py-16 text-center">
         <img
           src={logo.url}
-          alt="Cytrix Data Consulting"
+          alt="Opriun"
           className="mx-auto h-16 w-auto"
           width={320}
           height={64}
         />
 
         <h1 className="mt-8 text-2xl font-bold md:text-3xl">
-          Cytrix <span className="text-gradient-brand">Data Consulting</span>
+          Opriun <span className="text-gradient-brand">Data Consulting</span>
         </h1>
 
         <p className="text-muted-foreground mx-auto mt-5 max-w-md text-sm leading-relaxed">
-          A Cytrix Data Consulting potencializa negócios com automação inteligente,
+          A Opriun potencializa negócios com automação inteligente,
           unificação de ecossistemas digitais e agentes autônomos de IA.
           Transformamos dados em decisões rápidas, integradas e escaláveis.
           Resultado: uma operação mais ágil, conectada e preparada para crescer.
@@ -58,7 +58,7 @@ function CartaoPage() {
                 href="https://project--06e41034-2559-4fbe-be9d-e7c5e5ff6e42.lovable.app/"
                 className="hover:text-foreground"
               >
-                Acessar o site da Cytrix Data Consulting
+                Acessar o site da Opriun
               </a>
             </li>
             <li className="flex items-center gap-2">

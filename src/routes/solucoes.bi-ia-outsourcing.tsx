@@ -15,9 +15,9 @@ export const Route = createFileRoute("/solucoes/bi-ia-outsourcing")({
   head: () =>
     pageHead({
       path: "/solucoes/bi-ia-outsourcing",
-      title: "BI & IA Outsourcing — Cytrix Data Consulting",
+      title: "BI & IA Outsourcing — Opriun",
       description: "Equipe especializada de dados e IA alocada no seu negócio para acelerar entregas sem aumentar a estrutura fixa.",
-      ogTitle: "BI & IA Outsourcing — Cytrix Data Consulting",
+      ogTitle: "BI & IA Outsourcing — Opriun",
       ogDescription: "Outsourcing de especialistas em BI, dados e IA para impulsionar projetos com agilidade.",
     }),
   component: BiIaOutsourcingPage,
@@ -65,7 +65,7 @@ const steps = [
   {
     n: "02",
     title: "Montar o squad",
-    text: "Selecionamos os especialistas da Cytrix mais alinhados ao desafio.",
+    text: "Selecionamos os especialistas da Opriun mais alinhados ao desafio.",
   },
   {
     n: "03",

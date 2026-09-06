@@ -1,6 +1,6 @@
-# Cytrix Data Consulting_Site Novo Agosto 2026
+# Opriun_Site Novo Agosto 2026
 
-Preciso que crie um site para a empresa Cytrix Data Consuting com a mesma estrutura do site da empresa https://rcostaconsulting.com.br/ utilize para o site a tipografia para sites de tecnologia e cores Azul, laranja, preto, roxo
+Preciso que crie um site para a empresa Opriun Data Consuting com a mesma estrutura do site da empresa https://rcostaconsulting.com.br/ utilize para o site a tipografia para sites de tecnologia e cores Azul, laranja, preto, roxo
 
 This project was built with [Lovable](https://lovable.dev).
 

@@ -6,9 +6,9 @@ export const Route = createFileRoute("/metodo")({
   head: () =>
     pageHead({
       path: "/metodo",
-      title: "Método Cytrix — Diagnóstico, arquitetura e escala",
-      description: "Conheça o método da Cytrix Data Consulting: diagnóstico, arquitetura, implementação, governança e escala em ciclos curtos.",
-      ogTitle: "Método Cytrix — Diagnóstico, arquitetura e escala",
+      title: "Método Opriun — Diagnóstico, arquitetura e escala",
+      description: "Conheça o método da Opriun: diagnóstico, arquitetura, implementação, governança e escala em ciclos curtos.",
+      ogTitle: "Método Opriun — Diagnóstico, arquitetura e escala",
       ogDescription: "Cinco etapas para transformar dados em resultado operacional.",
     }),
   component: MetodoPage,

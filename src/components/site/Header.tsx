@@ -64,7 +64,7 @@ export function Header() {
         <Link to="/" className="flex items-center">
           <img
             src={logo.url}
-            alt="Cytrix Data Consulting"
+            alt="Opriun"
             className="h-9 w-auto md:h-10"
             loading="eager"
           />

@@ -15,9 +15,9 @@ export const Route = createFileRoute("/solucoes/business-intelligence")({
   head: () =>
     pageHead({
       path: "/solucoes/business-intelligence",
-      title: "Business Intelligence (BI) — Cytrix Data Consulting",
+      title: "Business Intelligence (BI) — Opriun",
       description: "Painéis executivos, dashboards operacionais e indicadores em tempo real para decisões mais rápidas e assertivas.",
-      ogTitle: "Business Intelligence (BI) — Cytrix Data Consulting",
+      ogTitle: "Business Intelligence (BI) — Opriun",
       ogDescription: "Visualização de dados, KPIs e analytics que colocam o negócio no controle da operação.",
     }),
   component: BusinessIntelligencePage,

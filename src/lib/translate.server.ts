@@ -26,9 +26,9 @@ export async function translateTexts(texts: string[], target: string): Promise<s
         {
           role: "system",
           content:
-            `You are a professional website localizer for Cytrix Data Consulting, a data & AI consultancy. ` +
+            `You are a professional website localizer for Opriun, a data & AI consultancy. ` +
             `Translate each item's text from Portuguese into ${targetName}. Rules: keep the marketing tone; ` +
-            `keep brand names ("Cytrix", "Cytrix Data Consulting", "Cytrix Technologies"), emails, phone numbers, ` +
+            `keep brand names ("Opriun", "Opriun", "Opriun Technologies"), emails, phone numbers, ` +
             `URLs, CNPJ numbers, product names (Power BI, BI Platform, BI Data Quality) unchanged; ` +
             `preserve capitalization style (ALL CAPS stays ALL CAPS); preserve leading/trailing spaces and punctuation; ` +
             `never add explanations. Reply ONLY with JSON: {"items":[{"id":number,"text":string}]} covering every id.`,

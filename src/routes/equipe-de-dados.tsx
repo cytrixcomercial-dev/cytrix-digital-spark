@@ -6,9 +6,9 @@ export const Route = createFileRoute("/equipe-de-dados")({
   head: () =>
     pageHead({
       path: "/equipe-de-dados",
-      title: "Equipe de dados e IA — Cytrix Data Consulting",
+      title: "Equipe de dados e IA — Opriun",
       description: "Squads sob demanda de engenheiros de dados, analistas, cientistas de dados e especialistas em IA para acelerar a transformação digital da sua operação.",
-      ogTitle: "Equipe de dados e IA — Cytrix Data Consulting",
+      ogTitle: "Equipe de dados e IA — Opriun",
       ogDescription: "Monte um time de Dados & IA sob demanda, sem o custo de estrutura interna.",
     }),
   component: EquipePage,

@@ -5,10 +5,10 @@ export const Route = createFileRoute("/termos-de-uso")({
   head: () =>
     pageHead({
       path: "/termos-de-uso",
-      title: "Termos de Uso — Cytrix Data Consulting",
-      description: "Termos de Uso da Cytrix Data Consulting: condições para acesso e uso deste site.",
-      ogTitle: "Termos de Uso — Cytrix Data Consulting",
-      ogDescription: "Leia os Termos de Uso que regem o acesso e a utilização do site da Cytrix Data Consulting.",
+      title: "Termos de Uso — Opriun",
+      description: "Termos de Uso da Opriun: condições para acesso e uso deste site.",
+      ogTitle: "Termos de Uso — Opriun",
+      ogDescription: "Leia os Termos de Uso que regem o acesso e a utilização do site da Opriun.",
     }),
   component: TermosDeUsoPage,
 });
@@ -25,7 +25,7 @@ function TermosDeUsoPage() {
           <p className="text-muted-foreground mt-6 max-w-2xl text-sm leading-relaxed">
             Ao acessar este site, você concorda com as condições descritas abaixo. Recomendamos a
             leitura atenta destes termos. Eles podem ser atualizados periodicamente para refletir
-            mudanças na operação da Cytrix Data Consulting.
+            mudanças na operação da Opriun.
           </p>
         </div>
       </section>
@@ -36,8 +36,8 @@ function TermosDeUsoPage() {
             <h2 className="text-xl font-semibold">1. Aplicação dos termos</h2>
             <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
               Estes Termos de Uso se aplicam a todos os visitantes e usuários do site operado pela{" "}
-              <strong>CYTRIX TECHNOLOGIES LTDA</strong>, CNPJ nº{" "}
-              <strong>50.445.596.0001-01</strong>, marca Cytrix Data Consulting. O uso contínuo do
+              <strong>OPRIUN TECHNOLOGIES LTDA</strong>, CNPJ nº{" "}
+              <strong>50.445.596.0001-01</strong>, marca Opriun. O uso contínuo do
               site implica na aceitação das regras aqui estabelecidas.
             </p>
           </section>
@@ -46,7 +46,7 @@ function TermosDeUsoPage() {
             <h2 className="text-xl font-semibold">2. Objeto do site</h2>
             <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
               Este site tem como finalidade apresentar os serviços de consultoria em dados,
-              engenharia de dados, analytics, automação e agentes de IA oferecidos pela Cytrix,
+              engenharia de dados, analytics, automação e agentes de IA oferecidos pela Opriun,
               além de possibilitar o contato comercial por meio do formulário de contato.
             </p>
           </section>
@@ -70,7 +70,7 @@ function TermosDeUsoPage() {
             <h2 className="text-xl font-semibold">4. Propriedade intelectual</h2>
             <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
               Todo o conteúdo disponível neste site — textos, imagens, logotipos, ícones, layout,
-              código e materiais — é de propriedade da Cytrix ou de seus licenciadores, salvo indicação
+              código e materiais — é de propriedade da Opriun ou de seus licenciadores, salvo indicação
               em contrário. O acesso ao site não confere qualquer direito de uso comercial,
               reprodução ou distribuição não autorizada.
             </p>
@@ -80,7 +80,7 @@ function TermosDeUsoPage() {
             <h2 className="text-xl font-semibold">5. Formulário de contato</h2>
             <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
               Ao enviar uma mensagem pelo formulário de contato, o usuário declara que as informações
-              fornecidas são verdadeiras e autoriza a Cytrix a utilizá-las para responder sua
+              fornecidas são verdadeiras e autoriza a Opriun a utilizá-las para responder sua
               solicitação. O envio de mensagem não constitui contrato de prestação de serviços.
             </p>
           </section>
@@ -88,14 +88,14 @@ function TermosDeUsoPage() {
           <section className="mb-10">
             <h2 className="text-xl font-semibold">6. Limitação de responsabilidade</h2>
             <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
-              A Cytrix se empenha para manter o site disponível e as informações atualizadas, mas
+              A Opriun se empenha para manter o site disponível e as informações atualizadas, mas
               não garante acesso ininterrupto ou livre de erros. Não nos responsabilizamos por danos
               diretos ou indiretos decorrentes de indisponibilidade temporária, imprecisões de
               conteúdo ou uso indevido por parte de terceiros.
             </p>
             <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
               A operação do site depende também de provedores de infraestrutura, conectividade e
-              serviços de internet. A Cytrix não se responsabiliza por falhas originadas nessas
+              serviços de internet. A Opriun não se responsabiliza por falhas originadas nessas
               camadas externas.
             </p>
           </section>
@@ -104,7 +104,7 @@ function TermosDeUsoPage() {
             <h2 className="text-xl font-semibold">7. Links externos</h2>
             <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
               O site pode conter links para sites de terceiros, como redes sociais e canais de
-              comunicação. A Cytrix não controla esses sites e não se responsabiliza por seus
+              comunicação. A Opriun não controla esses sites e não se responsabiliza por seus
               conteúdos, políticas de privacidade ou práticas de segurança.
             </p>
           </section>
@@ -126,7 +126,7 @@ function TermosDeUsoPage() {
           <section className="mb-10">
             <h2 className="text-xl font-semibold">9. Alterações nos termos</h2>
             <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
-              A Cytrix pode atualizar estes Termos de Uso a qualquer momento. As alterações entram em
+              A Opriun pode atualizar estes Termos de Uso a qualquer momento. As alterações entram em
               vigor na data de publicação no site. O uso continuado do site após a publicação das
               alterações implica na aceitação dos novos termos.
             </p>

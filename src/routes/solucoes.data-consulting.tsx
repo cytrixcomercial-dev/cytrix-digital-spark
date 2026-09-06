@@ -15,9 +15,9 @@ export const Route = createFileRoute("/solucoes/data-consulting")({
   head: () =>
     pageHead({
       path: "/solucoes/data-consulting",
-      title: "Data Consulting — Cytrix Data Consulting",
+      title: "Data Consulting — Opriun",
       description: "Estratégia, arquitetura e governança de dados para empresas que querem transformar informação em vantagem competitiva.",
-      ogTitle: "Data Consulting — Cytrix Data Consulting",
+      ogTitle: "Data Consulting — Opriun",
       ogDescription: "Consultoria especializada em dados: modelagem, pipelines, data warehouse e governança.",
     }),
   component: DataConsultingPage,

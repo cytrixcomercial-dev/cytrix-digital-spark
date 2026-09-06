@@ -26,9 +26,9 @@ export const Route = createFileRoute("/")({
   head: () =>
     pageHead({
       path: "/",
-      title: "Cytrix Data Consulting — Dados e IA para sua operação",
-      description: "A Cytrix Data Consulting estrutura dados, automatiza processos e aplica IA para tornar a operação da sua empresa mais produtiva e escalável.",
-      ogTitle: "Cytrix Data Consulting — Dados e IA para sua operação",
+      title: "Opriun — Dados e IA para sua operação",
+      description: "A Opriun estrutura dados, automatiza processos e aplica IA para tornar a operação da sua empresa mais produtiva e escalável.",
+      ogTitle: "Opriun — Dados e IA para sua operação",
       ogDescription: "Engenharia de dados, analytics, governança e agentes de IA sob medida.",
     }),
   component: Index,
@@ -86,7 +86,7 @@ const metrics = [
 const heroSlides = [
   {
     src: heroSlide1,
-    alt: "Equipe da Cytrix Data Consulting trabalhando em escritório com painéis de dados e dashboards",
+    alt: "Equipe da Opriun trabalhando em escritório com painéis de dados e dashboards",
   },
   {
     src: heroSlide2,
@@ -186,7 +186,7 @@ function Index() {
               negócio
             </h1>
             <p className="text-muted-foreground mt-6 max-w-xl text-base leading-relaxed md:text-lg">
-              Na Cytrix Data Consulting, potencializamos negócios por meio da automação inteligente de
+              Na Opriun, potencializamos negócios por meio da automação inteligente de
               fluxos, da unificação de ecossistemas digitais e da implementação de agentes autônomos
               de IA. O resultado? Operações mais ágeis, insights mais precisos e um crescimento
               verdadeiramente escalável. Solicite agora um diagnóstico gratuito de IA.
