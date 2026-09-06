@@ -45,7 +45,7 @@ export function CtaSection({
           </div>
 
           <h2 className="mx-auto max-w-3xl text-3xl font-bold tracking-tight md:text-5xl md:leading-[1.1]">
-            <span className="text-gradient-brand">{title}</span>
+            <span className="text-gradient-orange-white">{title}</span>
           </h2>
 
           <p className="text-muted-foreground mx-auto mt-8 max-w-2xl text-base leading-relaxed md:text-lg">
