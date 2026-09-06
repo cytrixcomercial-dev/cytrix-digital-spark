@@ -104,6 +104,12 @@
     var(--brand-purple) 55%,
     var(--brand-orange)
   );
+  --gradient-logo: linear-gradient(
+    110deg,
+    var(--brand-orange) 0%,
+    oklch(0.12 0 0) 42%,
+    var(--brand-purple) 100%
+  );
   --gradient-glow: radial-gradient(
     60% 60% at 50% 0%,
     color-mix(in oklab, var(--brand-blue) 30%, transparent),
@@ -184,6 +190,13 @@
 
 @utility text-gradient-brand {
   background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility text-gradient-logo {
+  background: var(--gradient-logo);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
