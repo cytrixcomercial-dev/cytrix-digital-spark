@@ -180,7 +180,7 @@ function Index() {
         <HeroCarousel />
         <div className="mx-auto max-w-6xl px-5 py-24 md:py-36">
           <div className="max-w-2xl">
-            <p className="eyebrow">CONSULTORIA CONSULTIVA</p>
+          <p className="eyebrow">CONSULTORIA</p>
             <h1 className="mt-5 text-4xl leading-[1.08] font-bold md:text-5xl lg:text-6xl">
               Curadoria de Dados e IA aplicados à <span className="text-gradient-logo">operação</span> do seu
               negócio
