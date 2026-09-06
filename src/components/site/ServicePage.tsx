@@ -94,7 +94,7 @@ export function ServicePage({
                   key={f.title}
                   className="card-tech flex flex-col gap-4 p-6"
                 >
-                  <div className="flex size-11 items-center justify-center rounded-lg bg-brand-blue/10 text-brand-blue">
+                  <div className="flex size-11 items-center justify-center rounded-lg bg-brand-orange/10 text-brand-orange">
                     <Icon className="size-5" />
                   </div>
                   <div>

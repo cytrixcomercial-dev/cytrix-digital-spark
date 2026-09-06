@@ -251,7 +251,7 @@ function Index() {
           <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {solutions.map((s) => (
               <article key={s.title} className="card-tech flex h-full flex-col p-8">
-                <s.icon className="text-brand-blue size-6" />
+                <s.icon className="text-brand-orange size-6" />
                 <h3 className="mt-5 text-lg font-semibold">{s.title}</h3>
                 <p className="text-muted-foreground mt-3 text-sm leading-relaxed">{s.text}</p>
                 <Link
