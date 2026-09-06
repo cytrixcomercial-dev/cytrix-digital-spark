@@ -2,7 +2,7 @@ import { Link, useLocation } from "@tanstack/react-router";
 import { useState, useRef, useEffect } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import logo from "@/assets/opriun-logo.png.asset.json";
+import logo from "@/assets/opriun-logo-light.png.asset.json";
 import { LanguageSwitcher } from "@/components/site/LanguageSwitcher";
 import { useLanguage } from "@/lib/i18n";
 
