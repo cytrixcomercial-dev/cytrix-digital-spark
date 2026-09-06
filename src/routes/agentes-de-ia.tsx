@@ -7,9 +7,9 @@ export const Route = createFileRoute("/agentes-de-ia")({
   head: () =>
     pageHead({
       path: "/agentes-de-ia",
-      title: "Agentes de IA — Cytrix Data Consulting",
+      title: "Agentes de IA — Opriun",
       description: "Vitrine viva de agentes de IA em operação: comercial, financeiro, TI, atendimento, operações e dados, com casos de uso e integrações reais.",
-      ogTitle: "Agentes de IA — Cytrix Data Consulting",
+      ogTitle: "Agentes de IA — Opriun",
       ogDescription: "Agentes digitais com papel, caso de uso e integrações — IA operacional conectada aos sistemas da empresa.",
     }),
   component: AgentesPage,

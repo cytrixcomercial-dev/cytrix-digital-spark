@@ -21,7 +21,7 @@ export const Route = createFileRoute("/api/public/cytrix-contact.vcf")({
         const vcard = [
           "BEGIN:VCARD",
           "VERSION:3.0",
-          "FN:Cytrix Data Consulting",
+          "FN:Opriun",
           "ORG:CYTRIX TECHNOLOGIES LTDA",
           "TEL;TYPE=CELL,VOICE,WHATSAPP:+5541996890003",
           "EMAIL;TYPE=INTERNET,WORK:comercial@cytrix.com.br",
@@ -30,7 +30,7 @@ export const Route = createFileRoute("/api/public/cytrix-contact.vcf")({
           "X-SOCIALPROFILE;TYPE=linkedin:https://www.linkedin.com/company/cytrix-data-consulting",
           foldLine(`PHOTO;ENCODING=b;TYPE=JPEG:${OPRIUN_LOGO_BASE64}`),
           foldLine(`LOGO;ENCODING=b;TYPE=JPEG:${OPRIUN_LOGO_BASE64}`),
-          "NOTE:A Cytrix Data Consulting potencializa negócios com automação inteligente.\\nUnificamos ecossistemas digitais e implementamos agentes autônomos de IA.\\nTransformamos dados em decisões rápidas, integradas e escaláveis.\\nO resultado é uma operação ágil, conectada e preparada para crescer.",
+          "NOTE:A Opriun potencializa negócios com automação inteligente.\\nUnificamos ecossistemas digitais e implementamos agentes autônomos de IA.\\nTransformamos dados em decisões rápidas, integradas e escaláveis.\\nO resultado é uma operação ágil, conectada e preparada para crescer.",
           "END:VCARD",
           "",
         ].join("\r\n");

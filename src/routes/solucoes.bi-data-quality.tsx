@@ -15,9 +15,9 @@ export const Route = createFileRoute("/solucoes/bi-data-quality")({
   head: () =>
     pageHead({
       path: "/solucoes/bi-data-quality",
-      title: "BI Data Quality — Cytrix Data Consulting",
+      title: "BI Data Quality — Opriun",
       description: "Garanta a confiabilidade dos seus dados com regras de qualidade, monitoramento contínuo e governança aplicada.",
-      ogTitle: "BI Data Quality — Cytrix Data Consulting",
+      ogTitle: "BI Data Quality — Opriun",
       ogDescription: "Qualidade de dados, profiling, validação e governança para decisões sem surpresas.",
     }),
   component: BiDataQualityPage,

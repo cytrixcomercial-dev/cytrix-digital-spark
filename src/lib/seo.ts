@@ -26,7 +26,7 @@ export function pageHead(seo: PageSeo) {
     { property: "og:description", content: ogDescription },
     { property: "og:type", content: seo.ogType ?? "website" },
     { property: "og:url", content: seo.path },
-    { property: "og:site_name", content: "Cytrix Data Consulting" },
+    { property: "og:site_name", content: "Opriun" },
     { property: "og:locale", content: "pt_BR" },
     { name: "twitter:card", content: "summary_large_image" },
     { name: "twitter:title", content: ogTitle },

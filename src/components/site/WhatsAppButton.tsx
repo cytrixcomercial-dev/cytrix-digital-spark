@@ -1,7 +1,7 @@
 export function WhatsAppButton() {
   const phone = "5541996890003";
   const message = encodeURIComponent(
-    "Olá! Vim pelo site da Cytrix Data Consulting e gostaria de conversar."
+    "Olá! Vim pelo site da Opriun e gostaria de conversar."
   );
 
   return (

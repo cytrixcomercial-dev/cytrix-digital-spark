@@ -15,9 +15,9 @@ export const Route = createFileRoute("/contato")({
   head: () =>
     pageHead({
       path: "/contato",
-      title: "Contato — Cytrix Data Consulting",
-      description: "Fale com a Cytrix Data Consulting e solicite um diagnóstico de dados para a sua operação.",
-      ogTitle: "Contato — Cytrix Data Consulting",
+      title: "Contato — Opriun",
+      description: "Fale com a Opriun e solicite um diagnóstico de dados para a sua operação.",
+      ogTitle: "Contato — Opriun",
       ogDescription: "Solicite um diagnóstico de dados e IA para sua empresa.",
     }),
   component: ContatoPage,

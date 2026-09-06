@@ -15,9 +15,9 @@ export const Route = createFileRoute("/solucoes/bi-platform")({
   head: () =>
     pageHead({
       path: "/solucoes/bi-platform",
-      title: "BI Platform — Cytrix Data Consulting",
+      title: "BI Platform — Opriun",
       description: "Implantação, configuração e gestão de plataformas de BI modernas, escaláveis e integradas ao seu ecossistema.",
-      ogTitle: "BI Platform — Cytrix Data Consulting",
+      ogTitle: "BI Platform — Opriun",
       ogDescription: "Plataforma de BI sob medida: stack, segurança, governança e adoção pelo negócio.",
     }),
   component: BiPlatformPage,

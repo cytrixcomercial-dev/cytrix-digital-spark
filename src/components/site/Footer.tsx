@@ -10,12 +10,12 @@ export function Footer() {
         <div className="md:col-span-2">
           <img
             src={logo.url}
-            alt="Cytrix Data Consulting"
+            alt="Opriun"
             className="h-11 w-auto"
             loading="lazy"
           />
           <p className="text-muted-foreground mt-4 max-w-sm text-sm leading-relaxed">
-            Na Cytrix Data Consulting, não entregamos tecnologia isolada. Entregamos um ecossistema
+            Na Opriun, não entregamos tecnologia isolada. Entregamos um ecossistema
             de decisão — com automação, integração de sistemas e agentes de IA — que transforma
             processos em eficiência e dados em vantagem competitiva. Resultado: uma empresa mais
             ágil, conectada e preparada para crescer sem depender de ferramentas desconectadas.
@@ -162,14 +162,14 @@ export function Footer() {
           <div className="border-border/70 bg-surface/60 mt-6 inline-flex flex-col items-center rounded-xl border p-3">
             <img
               src={contatoQr.url}
-              alt="QR Code para adicionar o vCard completo da Cytrix Data Consulting aos contatos do celular"
+              alt="QR Code para adicionar o vCard completo da Opriun aos contatos do celular"
               width={160}
               height={160}
               loading="lazy"
               className="size-40 rounded-md bg-white p-2"
             />
             <span className="text-muted-foreground mt-2 max-w-[10rem] text-center text-[11px] leading-tight">
-              Aponte a câmera e salve o contato completo da Cytrix
+              Aponte a câmera e salve o contato completo da Opriun
             </span>
             <a
               href="/api/public/cytrix-contact.vcf"
@@ -185,7 +185,7 @@ export function Footer() {
       <div className="border-border/70 border-t px-5 py-5">
         <div className="mx-auto max-w-6xl text-center">
           <p className="text-muted-foreground text-xs">
-            © {new Date().getFullYear()} Cytrix Data Consulting. Todos os direitos reservados.
+            © {new Date().getFullYear()} Opriun. Todos os direitos reservados.
             Site desenvolvido por Cytrix Technologies Ltda — CNPJ 50.445.596.0001-01.
           </p>
         </div>
