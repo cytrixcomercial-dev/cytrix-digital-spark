@@ -36,7 +36,7 @@ function TermosDeUsoPage() {
             <h2 className="text-xl font-semibold">1. Aplicação dos termos</h2>
             <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
               Estes Termos de Uso se aplicam a todos os visitantes e usuários do site operado pela{" "}
-              <strong>OPRIUN TECHNOLOGIES LTDA</strong>, CNPJ nº{" "}
+              <strong>CYTRIX TECHNOLOGIES LTDA</strong>, CNPJ nº{" "}
               <strong>50.445.596.0001-01</strong>, marca Opriun. O uso contínuo do
               site implica na aceitação das regras aqui estabelecidas.
             </p>

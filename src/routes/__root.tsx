@@ -123,7 +123,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "@context": "https://schema.org",
           "@type": "Organization",
           name: "Opriun",
-          legalName: "OPRIUN TECHNOLOGIES LTDA",
+          legalName: "CYTRIX TECHNOLOGIES LTDA",
           taxID: "50.445.596/0001-01",
           description:
             "Consultoria de dados e IA: engenharia de dados, business intelligence, governança e agentes autônomos de IA.",

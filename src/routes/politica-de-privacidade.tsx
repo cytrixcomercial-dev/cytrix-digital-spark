@@ -36,7 +36,7 @@ function PoliticaPrivacidadePage() {
             <h2 className="text-xl font-semibold">1. Quem somos</h2>
             <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
               A presente Política de Privacidade é aplicável às atividades da{" "}
-              <strong>OPRIUN TECHNOLOGIES LTDA</strong>, inscrita no CNPJ sob o nº{" "}
+              <strong>CYTRIX TECHNOLOGIES LTDA</strong>, inscrita no CNPJ sob o nº{" "}
               <strong>50.445.596.0001-01</strong>, doravante denominada Opriun,
               responsável pela operação deste site.
             </p>

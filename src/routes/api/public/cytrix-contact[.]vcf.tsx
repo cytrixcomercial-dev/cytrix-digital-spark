@@ -22,7 +22,7 @@ export const Route = createFileRoute("/api/public/cytrix-contact.vcf")({
           "BEGIN:VCARD",
           "VERSION:3.0",
           "FN:Opriun",
-          "ORG:OPRIUN TECHNOLOGIES LTDA",
+          "ORG:CYTRIX TECHNOLOGIES LTDA",
           "TEL;TYPE=CELL,VOICE,WHATSAPP:+5541996890003",
           "EMAIL;TYPE=INTERNET,WORK:comercial@cytrix.com.br",
           "ADR;TYPE=WORK:;;Avenida Vicente Machado, 520 - Centro;Curitiba;PR;80420-010;Brasil",
