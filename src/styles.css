@@ -207,6 +207,13 @@
   color: transparent;
 }
 
+@utility text-gradient-orange-white {
+  background: var(--gradient-orange-white);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
 @utility bg-gradient-brand {
   background: var(--gradient-brand);
 }
