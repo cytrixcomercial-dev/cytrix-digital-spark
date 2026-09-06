@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Mail, Linkedin, MapPin, Phone, Globe, ContactRound } from "lucide-react";
 import { pageHead } from "@/lib/seo";
-import logo from "@/assets/cytrix-logo.png";
+import logo from "@/assets/opriun-logo.png.asset.json";
 
 export const Route = createFileRoute("/cartao")({
   head: () =>
@@ -22,7 +22,7 @@ function CartaoPage() {
     <section className="glow-top">
       <div className="mx-auto max-w-xl px-5 py-16 text-center">
         <img
-          src={logo}
+          src={logo.url}
           alt="Cytrix Data Consulting"
           className="mx-auto h-16 w-auto"
           width={320}
