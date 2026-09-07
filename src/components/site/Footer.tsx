@@ -127,8 +127,8 @@ export function Footer() {
           <ul className="text-muted-foreground mt-4 space-y-3 text-sm">
             <li className="flex items-center gap-2">
               <Mail className="text-brand-orange size-4" />
-              <a href="mailto:comercial@cytrix.com.br" className="hover:text-foreground">
-                comercial@cytrix.com.br
+              <a href="mailto:comercial@opriun.com.br" className="hover:text-foreground">
+                comercial@opriun.com.br
               </a>
             </li>
             <li className="flex items-center gap-2">
@@ -149,12 +149,12 @@ export function Footer() {
             <li className="flex items-center gap-2">
               <Linkedin className="text-brand-orange size-4" />
               <a
-                href="https://www.linkedin.com/company/cytrix-data-consulting"
+                href="https://www.linkedin.com/company/opriun"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-foreground"
               >
-                /cytrix-data-consulting
+                /opriun
               </a>
             </li>
           </ul>
@@ -173,7 +173,7 @@ export function Footer() {
             </span>
             <a
               href="/api/public/cytrix-contact.vcf"
-              download="cytrix-data-consulting.vcf"
+              download="opriun-contact.vcf"
               className="border-border/70 bg-surface hover:border-brand-orange hover:text-brand-orange mt-3 inline-flex items-center gap-2 rounded-md border px-3 py-2 text-[11px] font-semibold transition-colors"
             >
               <Download className="size-3.5" />

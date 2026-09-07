@@ -127,7 +127,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           taxID: "50.445.596/0001-01",
           description:
             "Consultoria de dados e IA: engenharia de dados, business intelligence, governança e agentes autônomos de IA.",
-          email: "comercial@cytrix.com.br",
+          email: "comercial@opriun.com.br",
           telephone: "+55 41 99689-0003",
           address: {
             "@type": "PostalAddress",
@@ -137,7 +137,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
             postalCode: "80420-010",
             addressCountry: "BR",
           },
-          sameAs: ["https://www.linkedin.com/company/cytrix-data-consulting"],
+          sameAs: ["https://www.linkedin.com/company/opriun"],
         }),
       },
     ],
