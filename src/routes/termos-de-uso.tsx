@@ -146,10 +146,10 @@ function TermosDeUsoPage() {
             <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
               Dúvidas sobre estes Termos de Uso podem ser enviadas para{" "}
               <a
-                href="mailto:comercial@cytrix.com.br"
+                href="mailto:comercial@opriun.com.br"
                 className="text-brand-orange hover:underline"
               >
-                comercial@cytrix.com.br
+                comercial@opriun.com.br
               </a>
               .
             </p>

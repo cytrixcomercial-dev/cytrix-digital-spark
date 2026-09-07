@@ -143,8 +143,8 @@ function ContatoPage() {
             <ul className="text-muted-foreground mt-4 space-y-3 text-sm">
               <li className="flex items-center gap-2.5">
                 <Mail className="text-brand-orange size-4" />
-                <a href="mailto:comercial@cytrix.com.br" className="hover:text-foreground transition-colors">
-                  comercial@cytrix.com.br
+                <a href="mailto:comercial@opriun.com.br" className="hover:text-foreground transition-colors">
+                  comercial@opriun.com.br
                 </a>
               </li>
               <li className="flex items-center gap-2.5">
@@ -165,12 +165,12 @@ function ContatoPage() {
               <li className="flex items-center gap-2.5">
                 <Linkedin className="text-brand-orange size-4" />
                 <a
-                  href="https://www.linkedin.com/company/cytrix-data-consulting"
+                  href="https://www.linkedin.com/company/opriun"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-foreground transition-colors"
                 >
-                  /cytrix-data-consulting
+                  /opriun
                 </a>
               </li>
             </ul>

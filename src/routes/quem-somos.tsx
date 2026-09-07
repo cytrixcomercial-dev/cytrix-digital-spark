@@ -51,7 +51,7 @@ const commitments = [
   {
     icon: Lock,
     title: "Governança total",
-    text: "Nossos parceiros atuam com e-mails @cytrix.com.br, NDAs rigorosos e proteção comercial — o cliente sempre tem um único ponto de contato: a Opriun.",
+    text: "Nossos parceiros atuam com e-mails @opriun.com.br, NDAs rigorosos e proteção comercial — o cliente sempre tem um único ponto de contato: a Opriun.",
   },
   {
     icon: Rocket,
