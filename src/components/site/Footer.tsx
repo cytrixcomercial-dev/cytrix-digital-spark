@@ -186,7 +186,7 @@ export function Footer() {
         <div className="mx-auto max-w-6xl text-center">
           <p className="text-muted-foreground text-xs">
             © {new Date().getFullYear()} Opriun. Todos os direitos reservados.
-            Site desenvolvido por Cytrix Technologies Ltda — CNPJ 50.445.596.0001-01.
+            Site desenvolvido por Opriun Technologies Ltda — CNPJ 50.445.596.0001-01.
           </p>
         </div>
       </div>
