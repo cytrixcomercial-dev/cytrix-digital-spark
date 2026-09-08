@@ -59,7 +59,7 @@ export function CtaSection({
             />
             <Link
               to="/contato"
-              className="bg-primary text-primary-foreground font-display hover:bg-primary/90 relative flex items-center gap-4 rounded-2xl px-10 py-5 font-bold tracking-wide transition-all duration-300 hover:-translate-y-1 active:scale-95"
+              className="bg-primary text-primary-foreground font-display hover:bg-brand-orange relative flex items-center gap-4 rounded-2xl px-10 py-5 font-bold tracking-wide transition-all duration-300 hover:-translate-y-1 active:scale-95"
             >
               Solicitar diagnóstico
               <ArrowRight className="size-5 transition-transform duration-300 group-hover:translate-x-1.5" />
