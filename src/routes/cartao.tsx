@@ -42,7 +42,7 @@ function CartaoPage() {
 
         <a
           href="/api/public/cytrix-contact.vcf"
-          className="bg-primary text-primary-foreground hover:bg-primary/90 mx-auto mt-7 inline-flex items-center justify-center gap-2 rounded-md px-5 py-3 text-sm font-semibold transition-colors"
+          className="bg-primary text-primary-foreground hover:bg-brand-orange mx-auto mt-7 inline-flex items-center justify-center gap-2 rounded-md px-5 py-3 text-sm font-semibold transition-colors"
           download
         >
           <ContactRound className="size-4" />
