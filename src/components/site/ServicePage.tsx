@@ -1,4 +1,5 @@
-import { Link } from "@tanstack/react-router";
+import { Link, useLocation } from "@tanstack/react-router";
+import { SERVICE_CONTENT } from "@/lib/service-faq";
 import { ArrowRight, LucideIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CtaSection } from "@/components/site/CtaSection";
@@ -37,6 +38,8 @@ export function ServicePage({
   features,
   steps,
 }: ServicePageProps) {
+  const { pathname } = useLocation();
+  const content = SERVICE_CONTENT[pathname.replace(/\/$/, "")];
   return (
     <>
       {/* Hero */}
@@ -56,11 +59,11 @@ export function ServicePage({
               <div className="mt-9 flex flex-wrap gap-3">
                 <Button asChild size="lg">
                   <Link to="/contato">
-                    Solicitar diagnóstico <ArrowRight className="size-4" />
+                    Agende uma conversa estratégica <ArrowRight className="size-4" />
                   </Link>
                 </Button>
                 <Button asChild size="lg" variant="outline">
-                  <Link to="/solucoes">Todas as soluções</Link>
+                  <Link to="/solucoes">Conheça nossas soluções de BI e IA</Link>
                 </Button>
               </div>
             </div>
@@ -128,6 +131,38 @@ export function ServicePage({
                   </p>
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {content && (
+        <section className="relative overflow-hidden border-t border-border/70">
+          <div className="mx-auto grid max-w-6xl gap-12 px-5 py-24 lg:grid-cols-2">
+            <div>
+              <p className="eyebrow">Entenda o serviço</p>
+              <h2 className="mt-4 text-3xl font-bold md:text-4xl">O que é e para quem é indicado</h2>
+              <p className="text-muted-foreground mt-5 text-base leading-relaxed">{content.what}</p>
+              <ul className="mt-6 space-y-3">
+                {content.forWho.map((w) => (
+                  <li key={w} className="text-muted-foreground flex gap-3 text-sm">
+                    <span className="bg-brand-orange mt-2 size-1.5 shrink-0 rounded-full" />
+                    {w}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <p className="eyebrow">Perguntas frequentes</p>
+              <h2 className="mt-4 text-3xl font-bold md:text-4xl">Dúvidas comuns</h2>
+              <div className="mt-6 space-y-3">
+                {content.faqs.map((f) => (
+                  <details key={f.q} className="card-tech group p-5">
+                    <summary className="cursor-pointer list-none font-semibold">{f.q}</summary>
+                    <p className="text-muted-foreground mt-3 text-sm leading-relaxed">{f.a}</p>
+                  </details>
+                ))}
+              </div>
             </div>
           </div>
         </section>
