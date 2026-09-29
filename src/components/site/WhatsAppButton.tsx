@@ -1,3 +1,5 @@
+import { trackEvent } from "@/lib/analytics";
+
 export function WhatsAppButton() {
   const phone = "5541996890003";
   const message = encodeURIComponent(

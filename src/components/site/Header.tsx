@@ -145,7 +145,12 @@ export function Header() {
             <LanguageSwitcher />
           </div>
           <Button asChild size="sm" className="hidden md:inline-flex">
-            <Link to="/contato">{t("cta.diagnostic")}</Link>
+            <Link
+              to="/contato"
+              onClick={() => trackEvent("cta_click", { cta: "solicitar_diagnostico", location: "header" })}
+            >
+              {t("cta.diagnostic")}
+            </Link>
           </Button>
           <button
             aria-label={mobileOpen ? t("menu.close") : t("menu.open")}

@@ -10,6 +10,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { sendContactMessage } from "@/lib/contact.functions";
 import { isCorporateEmail } from "@/lib/email-corporate";
+import { trackEvent } from "@/lib/analytics";
 
 export const Route = createFileRoute("/contato")({
   head: () =>
