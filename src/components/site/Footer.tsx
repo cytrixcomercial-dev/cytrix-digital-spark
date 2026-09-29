@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { Mail, Linkedin, MapPin, Phone, Download } from "lucide-react";
 import logo from "@/assets/opriun-logo-vector-transparent.svg.asset.json";
 import contatoQr from "@/assets/cytrix-vcard-qr.png.asset.json";
+import { trackEvent } from "@/lib/analytics";
 
 export function Footer() {
   return (
