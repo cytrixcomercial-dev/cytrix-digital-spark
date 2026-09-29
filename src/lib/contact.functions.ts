@@ -39,5 +39,33 @@ export const sendContactMessage = createServerFn({ method: "POST" })
       throw new Error("Não foi possível registrar sua mensagem.");
     }
 
+    // Envia o lead ao Opriun CRM (não bloqueia o formulário em caso de falha)
+    const crmUrl =
+      process.env["CRM_WEBHOOK_URL"] ||
+      "https://project--fd117f08-5d17-4e2f-a58b-205fea4b5c27.lovable.app/api/public/leads-intake";
+    const crmSecret = process.env["CRM_WEBHOOK_SECRET"];
+    if (crmSecret) {
+      try {
+        const res = await fetch(crmUrl, {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "x-webhook-secret": crmSecret },
+          body: JSON.stringify({
+            name: data.nome,
+            company_name: data.empresa,
+            email: data.email,
+            phone: data.telefone,
+            whatsapp: data.telefone,
+            notes: data.mensagem,
+            source: "Site Opriun - Formulário de Contato",
+          }),
+        });
+        if (!res.ok) console.error("[contato] CRM respondeu", res.status, await res.text());
+      } catch (e) {
+        console.error("[contato] falha ao enviar lead ao CRM", e);
+      }
+    } else {
+      console.warn("[contato] CRM_WEBHOOK_SECRET não configurado; lead não enviado ao CRM");
+    }
+
     return { ok: true as const };
   });
