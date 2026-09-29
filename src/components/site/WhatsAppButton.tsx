@@ -1,3 +1,5 @@
+import { trackEvent } from "@/lib/analytics";
+
 export function WhatsAppButton() {
   const phone = "5541996890003";
   const message = encodeURIComponent(
@@ -10,6 +12,7 @@ export function WhatsAppButton() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Fale conosco pelo WhatsApp"
+      onClick={() => trackEvent("whatsapp_click", { location: "floating_button" })}
       className="fixed bottom-5 right-5 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg shadow-black/30 transition-transform hover:scale-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
     >
       <svg

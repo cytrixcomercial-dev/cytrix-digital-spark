@@ -10,6 +10,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { sendContactMessage } from "@/lib/contact.functions";
 import { isCorporateEmail } from "@/lib/email-corporate";
+import { trackEvent } from "@/lib/analytics";
 
 export const Route = createFileRoute("/contato")({
   head: () =>
@@ -69,6 +70,7 @@ function ContatoPage() {
               });
               form.reset();
               setSent(true);
+              trackEvent("form_submit", { form: "contato" });
               toast.success("Mensagem enviada! Entraremos em contato em breve.");
             } catch (error) {
               console.error(error);

@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
+import { trackEvent } from "@/lib/analytics";
 
 export function CtaSection({
   eyebrow = "FASE EXPLORATÓRIA",
@@ -59,6 +60,7 @@ export function CtaSection({
             />
             <Link
               to="/contato"
+              onClick={() => trackEvent("cta_click", { cta: "solicitar_diagnostico", location: "cta_section" })}
               className="bg-primary text-primary-foreground font-display hover:bg-brand-orange relative flex items-center gap-4 rounded-2xl px-10 py-5 font-bold tracking-wide transition-all duration-300 hover:-translate-y-1 active:scale-95"
             >
               Solicitar diagnóstico

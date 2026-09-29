@@ -2,6 +2,7 @@ import { Link, useLocation } from "@tanstack/react-router";
 import { useState, useRef, useEffect } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { trackEvent } from "@/lib/analytics";
 import logo from "@/assets/opriun-logo-vector-transparent.svg.asset.json";
 import { LanguageSwitcher } from "@/components/site/LanguageSwitcher";
 import { useLanguage } from "@/lib/i18n";
@@ -145,7 +146,12 @@ export function Header() {
             <LanguageSwitcher />
           </div>
           <Button asChild size="sm" className="hidden md:inline-flex">
-            <Link to="/contato">{t("cta.diagnostic")}</Link>
+            <Link
+              to="/contato"
+              onClick={() => trackEvent("cta_click", { cta: "solicitar_diagnostico", location: "header" })}
+            >
+              {t("cta.diagnostic")}
+            </Link>
           </Button>
           <button
             aria-label={mobileOpen ? t("menu.close") : t("menu.open")}

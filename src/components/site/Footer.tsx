@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { Mail, Linkedin, MapPin, Phone, Download } from "lucide-react";
 import logo from "@/assets/opriun-logo-vector-transparent.svg.asset.json";
 import contatoQr from "@/assets/cytrix-vcard-qr.png.asset.json";
+import { trackEvent } from "@/lib/analytics";
 
 export function Footer() {
   return (
@@ -174,6 +175,7 @@ export function Footer() {
             <a
               href="/api/public/cytrix-contact.vcf"
               download="opriun-contact.vcf"
+              onClick={() => trackEvent("vcard_download", { location: "footer" })}
               className="border-border/70 bg-surface hover:border-brand-orange hover:bg-brand-orange hover:text-primary-foreground mt-3 inline-flex items-center gap-2 rounded-md border px-3 py-2 text-[11px] font-semibold transition-colors"
             >
               <Download className="size-3.5" />
