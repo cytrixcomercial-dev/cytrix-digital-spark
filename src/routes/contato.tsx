@@ -70,6 +70,7 @@ function ContatoPage() {
               });
               form.reset();
               setSent(true);
+              trackEvent("form_submit", { form: "contato" });
               toast.success("Mensagem enviada! Entraremos em contato em breve.");
             } catch (error) {
               console.error(error);
