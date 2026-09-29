@@ -184,6 +184,15 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const router = useRouter();
+
+  useEffect(() => {
+    void initAnalytics();
+    const unsubscribe = router.subscribe("onResolved", ({ toLocation }) => {
+      trackPageView(toLocation.pathname);
+    });
+    return unsubscribe;
+  }, [router]);
 
   return (
     <QueryClientProvider client={queryClient}>
