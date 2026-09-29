@@ -18,6 +18,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { LanguageProvider } from "@/lib/i18n";
 import { AutoTranslate } from "@/lib/auto-translate";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { initAnalytics, trackPageView } from "../lib/analytics";
 
 function NotFoundComponent() {
   return (
@@ -183,6 +184,15 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const router = useRouter();
+
+  useEffect(() => {
+    void initAnalytics();
+    const unsubscribe = router.subscribe("onResolved", ({ toLocation }) => {
+      trackPageView(toLocation.pathname);
+    });
+    return unsubscribe;
+  }, [router]);
 
   return (
     <QueryClientProvider client={queryClient}>
