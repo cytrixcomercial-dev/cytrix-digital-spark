@@ -7,11 +7,9 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineConfig({
   plugins: [
     tanstackStart(),
-    nitro({ preset: 'node-server' }),
+    tailwindcss(),
     viteReact(),
-    tailwindcss({
-      optimize: false,
-    }),
+    nitro({ preset: 'node-server' }),
   ],
   css: {
     lightningcss: false,
