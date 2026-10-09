@@ -13,12 +13,7 @@ export async function initAnalytics() {
   if (initialized || typeof window === "undefined") return;
   initialized = true;
 
-  let measurementId: string | null = null;
-  try {
-    measurementId = await getGaMeasurementId();
-  } catch {
-    return; // server unavailable (e.g. static hosting) — never break the page
-  }
+  const measurementId = await getGaMeasurementId();
   if (!measurementId) return;
 
   const script = document.createElement("script");
