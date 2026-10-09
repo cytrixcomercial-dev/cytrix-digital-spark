@@ -11,9 +11,6 @@ export default defineConfig({
     viteReact(),
     nitro({ preset: 'node-server' }),
   ],
-  css: {
-    lightningcss: false,
-  },
   build: {
     cssMinify: false,
   },
