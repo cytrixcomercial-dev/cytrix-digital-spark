@@ -1,24 +1,32 @@
-# Opriun_Site Novo Agosto 2026
+# Site Opriun — www.opriun.com.br
 
-Preciso que crie um site para a empresa Opriun Data Consuting com a mesma estrutura do site da empresa https://rcostaconsulting.com.br/ utilize para o site a tipografia para sites de tecnologia e cores Azul, laranja, preto, roxo
+Site institucional da Opriun (TanStack Start + React 19 + Vite + Tailwind v4).
 
-This project was built with [Lovable](https://lovable.dev).
-
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/06e41034-2559-4fbe-be9d-e7c5e5ff6e42).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
-
-## Development
-
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+## Desenvolvimento local
 
 ```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
+npm install
 npm run dev
 ```
+
+## Hospedagem na Hostinger (Node.js Web App)
+
+1. No painel da Hostinger: **Websites → Adicionar site → Node.js Web App** e conecte este repositório do GitHub.
+2. Configurações de build:
+   - Versão do Node: **22**
+   - Comando de instalação: `npm install`
+   - Comando de build: `npm run build:node`
+   - Comando de início: `npm start`
+   - Pasta de saída: `.output`
+3. Variáveis de ambiente (veja `.env.example`): `SUPABASE_URL`, `SUPABASE_PUBLISHABLE_KEY`,
+   `VITE_SUPABASE_URL`, `VITE_SUPABASE_PUBLISHABLE_KEY`, `VITE_SUPABASE_PROJECT_ID`,
+   `GOOGLE_ANALYTICS_MEASUREMENT_ID`, `CRM_WEBHOOK_SECRET` (e opcional `CRM_WEBHOOK_URL`).
+4. Aponte o domínio `www.opriun.com.br` para o app na Hostinger.
+
+O servidor escuta na porta definida por `PORT` (padrão 3000).
+
+## Observações
+
+- O formulário de contato envia os leads ao Opriun CRM. A cópia no banco do site só é gravada se `SUPABASE_SERVICE_ROLE_KEY` estiver configurada.
+- A tradução automática usa a IA do Lovable e só funciona quando hospedado no Lovable; fora dele, as páginas aparecem no idioma original.
+- O arquivo `.env` real não deve ser enviado ao GitHub com segredos.
