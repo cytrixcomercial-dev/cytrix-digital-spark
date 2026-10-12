@@ -24,19 +24,20 @@ const contactSchema = z.object({
 export const sendContactMessage = createServerFn({ method: "POST" })
   .inputValidator((data: unknown) => contactSchema.parse(data))
   .handler(async ({ data }) => {
-    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
-
-    const { error } = await supabaseAdmin.from("contact_messages").insert({
-      nome: data.nome,
-      empresa: data.empresa || null,
-      email: data.email,
-      telefone: data.telefone || null,
-      mensagem: data.mensagem,
-    });
-
-    if (error) {
-      console.error("[contato] falha ao salvar mensagem", error);
-      throw new Error("Não foi possível registrar sua mensagem.");
+    // Em hospedagens externas (ex.: Hostinger) a chave de serviço do banco pode
+    // não existir; nesse caso o lead segue apenas para o CRM.
+    let savedLocally = false;
+    if (process.env["SUPABASE_SERVICE_ROLE_KEY"]) {
+      const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+      const { error } = await supabaseAdmin.from("contact_messages").insert({
+        nome: data.nome,
+        empresa: data.empresa || null,
+        email: data.email,
+        telefone: data.telefone || null,
+        mensagem: data.mensagem,
+      });
+      if (error) console.error("[contato] falha ao salvar mensagem", error);
+      else savedLocally = true;
     }
 
     // Envia o lead ao Opriun CRM (não bloqueia o formulário em caso de falha)
