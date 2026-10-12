@@ -45,6 +45,7 @@ export const sendContactMessage = createServerFn({ method: "POST" })
       process.env["CRM_WEBHOOK_URL"] ||
       "https://project--fd117f08-5d17-4e2f-a58b-205fea4b5c27.lovable.app/api/public/leads-intake";
     const crmSecret = process.env["CRM_WEBHOOK_SECRET"];
+    let sentToCrm = false;
     if (crmSecret) {
       try {
         const res = await fetch(crmUrl, {
@@ -61,11 +62,16 @@ export const sendContactMessage = createServerFn({ method: "POST" })
           }),
         });
         if (!res.ok) console.error("[contato] CRM respondeu", res.status, await res.text());
+        else sentToCrm = true;
       } catch (e) {
         console.error("[contato] falha ao enviar lead ao CRM", e);
       }
     } else {
       console.warn("[contato] CRM_WEBHOOK_SECRET não configurado; lead não enviado ao CRM");
+    }
+
+    if (!savedLocally && !sentToCrm) {
+      throw new Error("Não foi possível registrar sua mensagem.");
     }
 
     return { ok: true as const };
