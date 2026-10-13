@@ -137,7 +137,7 @@ const KEYWORDS: Record<string, string[]> = {
   "/solucoes/data-consulting": ["data consulting", "consultoria de dados", "consultoria de inteligência artificial", "estratégia de dados", "transformação digital"],
   "/solucoes/business-intelligence": ["Business Intelligence", "consultoria de BI", "BI e analytics", "KPIs", "dashboards executivos"],
   "/solucoes/bi-data-quality": ["qualidade de dados", "data quality", "governança de dados", "Business Intelligence"],
-  "/solucoes/bi-platform": ["dashboards empresariais", "plataforma de BI", "BI e analytics", "Power BI"],
+  "/solucoes/bi-platform": ["dashboards empresariais", "plataforma de BI", "BI e analytics", "desenvolvimento de dashboards"],
   "/solucoes/bi-ia-outsourcing": ["outsourcing de BI", "outsourcing de IA", "time de dados", "BI e analytics"],
   "/agentes-de-ia": ["agentes de IA", "agentes autônomos", "automação com IA", "IA para empresas"],
   "/solucoes": ["automação de processos com IA", "integração de sistemas", "Business Intelligence", "agentes de IA"],
