@@ -1,4 +1,4 @@
-export const SITE_URL = "https://cytrix-digital-spark.lovable.app";
+export const SITE_URL = "https://www.opriun.com.br";
 
 export type PageSeo = {
   /** Caminho canônico da página, ex: "/solucoes/bi-platform" */
@@ -34,94 +34,94 @@ const SEO: Record<string, Override> = {
     crumb: "Quem Somos",
   },
   "/solucoes": {
-    title: "Automação de Processos com IA e Dados | Opriun",
+    title: "Automação de Processos com IA e Dados | OPRIUN",
     description:
       "Soluções de automação de processos com IA, integração de sistemas, BI e agentes autônomos desenhadas para a operação real da sua empresa.",
     crumb: "Soluções",
   },
   "/solucoes/data-consulting": {
-    title: "Consultoria de Inteligência Artificial e Dados | Opriun",
+    title: "Consultoria de Inteligência Artificial e Dados | OPRIUN",
     description:
       "Consultoria de dados e inteligência artificial: diagnóstico, arquitetura e roadmap para transformar dados dispersos em decisões.",
     crumb: "Data Consulting",
     service: "Consultoria de dados e inteligência artificial",
   },
   "/solucoes/business-intelligence": {
-    title: "Business Intelligence para Empresas | Opriun",
+    title: "Business Intelligence para Empresas | OPRIUN",
     description:
       "Consultoria de Business Intelligence: KPIs, modelagem de dados e dashboards executivos para decisões mais rápidas e rastreáveis.",
     crumb: "Business Intelligence",
     service: "Consultoria de Business Intelligence",
   },
   "/solucoes/bi-data-quality": {
-    title: "Qualidade de Dados para BI (Data Quality) | Opriun",
+    title: "Qualidade de Dados para BI (Data Quality) | OPRIUN",
     description:
       "Validação, padronização e monitoramento da qualidade de dados para que relatórios e dashboards de BI sejam confiáveis.",
     crumb: "BI Data Quality",
     service: "Qualidade de dados para Business Intelligence",
   },
   "/solucoes/bi-platform": {
-    title: "Desenvolvimento de Dashboards Empresariais | Opriun",
+    title: "Desenvolvimento de Dashboards Empresariais | OPRIUN",
     description:
       "Desenvolvimento de dashboards empresariais e plataformas de BI integradas aos seus sistemas, com governança e acesso seguro.",
     crumb: "BI Platform",
     service: "Desenvolvimento de dashboards empresariais",
   },
   "/solucoes/bi-ia-outsourcing": {
-    title: "Outsourcing de BI e IA | Opriun",
+    title: "Outsourcing de BI e IA | OPRIUN",
     description:
       "Time dedicado de BI e IA para sustentar, evoluir e operar suas soluções de dados sem aumentar a estrutura interna.",
     crumb: "BI & IA Outsourcing",
     service: "Outsourcing de BI e inteligência artificial",
   },
   "/agentes-de-ia": {
-    title: "Agentes de IA para Empresas | Opriun",
+    title: "Agentes de IA para Empresas | OPRIUN",
     description:
       "Agentes autônomos de IA para atendimento, triagem, qualificação e extração de documentos, integrados aos seus sistemas.",
     crumb: "Agentes de IA",
     service: "Agentes de IA para empresas",
   },
   "/equipe-de-dados": {
-    title: "Equipe de Dados e IA | Opriun",
+    title: "Equipe de Dados e IA | OPRIUN",
     description:
       "Engenheiros de dados, analistas de BI e especialistas em IA que atuam como extensão do seu time, do diagnóstico à operação.",
     crumb: "Equipe de Dados e IA",
   },
   "/metodo": {
-    title: "Metodologia de Projetos de BI e IA | Opriun",
+    title: "Metodologia de Projetos de BI e IA | OPRIUN",
     description:
       "Metodologia Opriun: diagnóstico, arquitetura, implementação, governança e escala em ciclos curtos com entregas mensuráveis.",
     crumb: "Metodologia",
   },
   "/contato": {
-    title: "Fale com um Especialista em BI e IA | Opriun",
+    title: "Fale com um Especialista em BI e IA | OPRIUN",
     description:
       "Agende uma conversa estratégica com a Opriun e avalie oportunidades de BI, dados e automação com IA na sua empresa.",
     crumb: "Contato",
   },
   "/seja-um-representante-comercial": {
-    title: "Seja um Representante Comercial | Opriun",
+    title: "Seja um Representante Comercial | OPRIUN",
     description:
       "Represente soluções de BI, dados e IA da Opriun na sua região. Envie seus dados e conheça o programa de parceria comercial.",
     crumb: "Representante Comercial",
   },
   "/politica-de-privacidade": {
-    title: "Política de Privacidade | Opriun",
+    title: "Política de Privacidade | OPRIUN",
     description: "Como a Opriun coleta, utiliza e protege dados pessoais, em conformidade com a LGPD.",
     crumb: "Política de Privacidade",
   },
   "/politica-de-cookies": {
-    title: "Política de Cookies | Opriun",
+    title: "Política de Cookies | OPRIUN",
     description: "Saiba como a Opriun utiliza cookies e tecnologias semelhantes neste site.",
     crumb: "Política de Cookies",
   },
   "/termos-de-uso": {
-    title: "Termos de Uso | Opriun",
+    title: "Termos de Uso | OPRIUN",
     description: "Condições de acesso e uso do site da Opriun.",
     crumb: "Termos de Uso",
   },
   "/cartao": {
-    title: "Cartão Digital | Opriun",
+    title: "Cartão Digital | OPRIUN",
     description: "Cartão digital da Opriun com contatos, WhatsApp, e-mail e LinkedIn.",
     noindex: true,
   },
