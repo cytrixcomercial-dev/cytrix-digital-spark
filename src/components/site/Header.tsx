@@ -3,7 +3,7 @@ import { useState, useRef, useEffect } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { trackEvent } from "@/lib/analytics";
-import logo from "@/assets/opriun-logo-vector-transparent.svg.asset.json";
+import logo from "@/assets/opriun-logo.svg";
 import { LanguageSwitcher } from "@/components/site/LanguageSwitcher";
 import { useLanguage } from "@/lib/i18n";
 
@@ -64,7 +64,7 @@ export function Header() {
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5">
         <Link to="/" className="flex items-center">
           <img
-            src={logo.url}
+            src={logo}
             alt="Opriun"
             className="h-9 w-auto md:h-10"
             loading="eager"
