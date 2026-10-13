@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { SITE_ROUTES } from "@/lib/seo";
+import { SITE_ROUTES, SITE_URL } from "@/lib/seo";
 
 function buildSitemap(origin: string) {
   const lastmod = new Date().toISOString().slice(0, 10);
@@ -13,11 +13,8 @@ function buildSitemap(origin: string) {
 export const Route = createFileRoute("/sitemap.xml")({
   server: {
     handlers: {
-      GET: ({ request }) => {
-        const url = new URL(request.url);
-        const proto = request.headers.get("x-forwarded-proto") ?? url.protocol.replace(":", "");
-        const host = request.headers.get("host") ?? url.host;
-        const xml = buildSitemap(`${proto}://${host}`);
+      GET: () => {
+        const xml = buildSitemap(SITE_URL);
         return new Response(xml, {
           headers: {
             "Content-Type": "application/xml; charset=utf-8",

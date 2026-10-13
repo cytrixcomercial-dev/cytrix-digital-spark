@@ -221,6 +221,27 @@ export function pageHead(seo: PageSeo) {
       }),
     });
   }
+  const PAGE_TYPES: Record<string, string> = {
+    "/quem-somos": "AboutPage",
+    "/contato": "ContactPage",
+    "/solucoes": "CollectionPage",
+  };
+  if (PAGE_TYPES[seo.path]) {
+    scripts.push({
+      type: "application/ld+json",
+      children: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": PAGE_TYPES[seo.path],
+        name: title,
+        description,
+        url,
+        inLanguage: "pt-BR",
+        about: { "@id": ORG_ID },
+        isPartOf: { "@id": `${SITE_URL}/#website` },
+        ...(seo.path === "/contato" ? { mainEntity: { "@id": `${SITE_URL}/#localbusiness` } } : {}),
+      }),
+    });
+  }
 
   return {
     meta,
