@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { pageHead } from "@/lib/seo";
 import { useState } from "react";
-import { Linkedin, Mail, MapPin, Phone } from "lucide-react";
+import { Clock, Linkedin, Mail, MapPin, Phone } from "lucide-react";
 import { toast } from "sonner";
 import { useServerFn } from "@tanstack/react-start";
 import { Button } from "@/components/ui/button";
@@ -163,6 +163,10 @@ function ContatoPage() {
               <li className="flex items-start gap-2.5">
                 <MapPin className="text-brand-orange mt-0.5 size-4 shrink-0" />
                 <span>Avenida Vicente Machado, 520 - Centro, Curitiba - PR, CEP 80.420-010</span>
+              </li>
+              <li className="flex items-center gap-2.5">
+                <Clock className="text-brand-orange size-4" />
+                <span>Segunda a sexta, das 09h00 às 18h00</span>
               </li>
               <li className="flex items-center gap-2.5">
                 <Linkedin className="text-brand-orange size-4" />
