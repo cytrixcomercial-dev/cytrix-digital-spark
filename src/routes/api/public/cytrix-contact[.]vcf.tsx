@@ -26,7 +26,7 @@ export const Route = createFileRoute("/api/public/cytrix-contact.vcf")({
           "TEL;TYPE=CELL,VOICE,WHATSAPP:+5541996890003",
           "EMAIL;TYPE=INTERNET,WORK:comercial@opriun.com.br",
           "ADR;TYPE=WORK:;;Avenida Vicente Machado, 520 - Centro;Curitiba;PR;80420-010;Brasil",
-          "URL:https://project--06e41034-2559-4fbe-be9d-e7c5e5ff6e42-dev.lovable.app/",
+          "URL:https://www.opriun.com.br/",
           "X-SOCIALPROFILE;TYPE=linkedin:https://www.linkedin.com/company/opriun",
           foldLine(`PHOTO;ENCODING=b;TYPE=PNG:${OPRIUN_LOGO_BASE64}`),
           foldLine(`LOGO;ENCODING=b;TYPE=PNG:${OPRIUN_LOGO_BASE64}`),

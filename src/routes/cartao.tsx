@@ -57,7 +57,7 @@ function CartaoPage() {
             <li className="flex items-center gap-2">
               <Globe className="text-brand-orange size-4 shrink-0" />
               <a
-                href="https://project--06e41034-2559-4fbe-be9d-e7c5e5ff6e42.lovable.app/"
+                href="https://www.opriun.com.br/"
                 className="hover:text-foreground"
               >
                 Acessar o site da Opriun

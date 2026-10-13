@@ -3,4 +3,4 @@ Allow: /
 Disallow: /api/
 Disallow: /cartao
 
-Sitemap: https://cytrix-digital-spark.lovable.app/sitemap.xml
+Sitemap: https://www.opriun.com.br/sitemap.xml
