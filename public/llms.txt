@@ -1,0 +1,35 @@
+# OPRIUN
+
+> Consultoria de dados, Business Intelligence e inteligência artificial para empresas. Sede em Curitiba, PR, Brasil. Atendimento em português, inglês, espanhol e francês.
+
+## Páginas principais
+
+- [Home](https://www.opriun.com.br/): Visão geral dos serviços de consultoria de dados, BI e IA.
+- [Quem Somos](https://www.opriun.com.br/quem-somos): Nossa história, equipe e posicionamento.
+- [Soluções](https://www.opriun.com.br/solucoes): Portfólio completo de serviços de consultoria.
+- [Contato](https://www.opriun.com.br/contato): Fale conosco — comercial@opriun.com.br, WhatsApp +55 41 99689-0003, segunda a sexta das 09h00 às 18h00.
+
+## Soluções
+
+- [Data Consulting](https://www.opriun.com.br/solucoes/data-consulting): Consultoria de dados e inteligência artificial — diagnóstico, arquitetura e roadmap.
+- [Business Intelligence](https://www.opriun.com.br/solucoes/business-intelligence): KPIs, modelagem de dados e dashboards executivos.
+- [BI Data Quality](https://www.opriun.com.br/solucoes/bi-data-quality): Validação, padronização e monitoramento da qualidade de dados.
+- [BI Platform](https://www.opriun.com.br/solucoes/bi-platform): Plataforma de BI e analytics para a operação.
+- [BI & IA Outsourcing](https://www.opriun.com.br/solucoes/bi-ia-outsourcing): Terceirização de equipes de dados e IA.
+- [Agentes de IA](https://www.opriun.com.br/agentes-de-ia): Agentes autônomos de IA para automatizar processos.
+- [Equipe de Dados e IA](https://www.opriun.com.br/equipe-de-dados): Especialistas dedicados em dados e IA.
+
+## Institucional
+
+- [Metodologia](https://www.opriun.com.br/metodo): Como trabalhamos, do diagnóstico à operação.
+- [Seja um Representante Comercial](https://www.opriun.com.br/seja-um-representante-comercial): Programa de parceria comercial.
+- [Política de Privacidade](https://www.opriun.com.br/politica-de-privacidade)
+- [Política de Cookies](https://www.opriun.com.br/politica-de-cookies)
+- [Termos de Uso](https://www.opriun.com.br/termos-de-uso)
+
+## Empresa
+
+- Razão social: CYTRIX TECHNOLOGIES LTDA — CNPJ 50.445.596/0001-01
+- Endereço: Avenida Vicente Machado, 520 - Centro, Curitiba - PR, CEP 80.420-010
+- LinkedIn: https://www.linkedin.com/company/opriun
+- Instagram: https://www.instagram.com/opriun
