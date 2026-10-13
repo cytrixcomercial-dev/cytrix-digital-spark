@@ -156,6 +156,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "WebSite",
+          "@id": "https://www.opriun.com.br/#website",
           name: "Opriun",
           url: "https://www.opriun.com.br/",
           inLanguage: "pt-BR",
