@@ -1,6 +1,12 @@
 import { useEffect, useRef } from "react";
 import { useLanguage, type LanguageCode } from "@/lib/i18n";
-import { translateContent } from "@/lib/translate.functions";
+const LOCALES = import.meta.glob<{ default: Record<string, string> }>("../locales/*.json");
+
+async function loadLocale(lang: LanguageCode): Promise<Record<string, string>> {
+  const loader = LOCALES[`../locales/${lang}.json`];
+  if (!loader) return {};
+  return (await loader()).default;
+}
 
 const SKIP_TAGS = new Set([
   "SCRIPT",
@@ -13,42 +19,12 @@ const SKIP_TAGS = new Set([
   "PATH",
 ]);
 
-const MAX_BATCH = 40;
 const NO_TRANSLATE = /^[\s\d\W]*$/; // números, símbolos, pontuação isolada
 
-type Cache = Record<string, string>;
-
-const memoryCache: Partial<Record<LanguageCode, Cache>> = {};
 const originalText = new WeakMap<Text, string>();
 const originalAttr = new WeakMap<Element, Record<string, string>>();
 
 const ATTRS = ["placeholder", "aria-label", "title", "alt"] as const;
-
-function storageKey(lang: LanguageCode) {
-  return `cytrix-tr-${lang}`;
-}
-
-function loadCache(lang: LanguageCode): Cache {
-  if (memoryCache[lang]) return memoryCache[lang]!;
-  let cache: Cache = {};
-  try {
-    const raw = window.localStorage.getItem(storageKey(lang));
-    if (raw) cache = JSON.parse(raw) as Cache;
-  } catch {
-    cache = {};
-  }
-  memoryCache[lang] = cache;
-  return cache;
-}
-
-function saveCache(lang: LanguageCode, cache: Cache) {
-  memoryCache[lang] = cache;
-  try {
-    window.localStorage.setItem(storageKey(lang), JSON.stringify(cache));
-  } catch {
-    /* quota — segue apenas em memória */
-  }
-}
 
 function collectTextNodes(): Text[] {
   const nodes: Text[] = [];
@@ -136,7 +112,8 @@ export function AutoTranslate() {
           return;
         }
 
-        const cache = loadCache(lang);
+        const cache = await loadLocale(lang);
+        if (langRef.current !== lang) return;
 
         const applyAll = () => {
           for (const node of textNodes) {
@@ -155,34 +132,6 @@ export function AutoTranslate() {
         };
 
         applyAll();
-
-        const missing = new Set<string>();
-        for (const node of textNodes) {
-          const key = (originalText.get(node) ?? "").trim();
-          if (key && !cache[key]) missing.add(key);
-        }
-        for (const { el, attr } of attrTargets) {
-          const key = (originalAttr.get(el)?.[attr] ?? "").trim();
-          if (key && !cache[key]) missing.add(key);
-        }
-
-        const queue = [...missing];
-        for (let i = 0; i < queue.length; i += MAX_BATCH) {
-          const batch = queue.slice(i, i + MAX_BATCH);
-          try {
-            const result = await translateContent({ data: { target: lang, texts: batch } });
-            batch.forEach((source, idx) => {
-              const value = result.texts[idx];
-              if (value) cache[source] = value;
-            });
-            saveCache(lang, cache);
-            if (langRef.current !== lang) return;
-            applyAll();
-          } catch (error) {
-            console.error("auto-translate batch failed", error);
-            break;
-          }
-        }
       } finally {
         runningRef.current = false;
         observerRef.current?.observe(document.body, {
