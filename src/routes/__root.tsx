@@ -119,7 +119,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
-          "@type": "Organization",
+          "@type": "LocalBusiness",
+          priceRange: "$$",
+          currenciesAccepted: "BRL",
+          paymentAccepted: "Credit Card, Bank Transfer, PIX",
           name: "OPRIUN",
           legalName: "CYTRIX TECHNOLOGIES LTDA",
           taxID: "50.445.596/0001-01",
