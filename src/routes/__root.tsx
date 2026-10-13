@@ -140,6 +140,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           logo: "https://www.opriun.com.br/logo.png",
           image: "https://www.opriun.com.br/og-image.png",
           areaServed: "BR",
+          openingHoursSpecification: {
+            "@type": "OpeningHoursSpecification",
+            dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            opens: "09:00",
+            closes: "18:00",
+          },
           knowsAbout: ["Business Intelligence", "Qualidade de dados", "Dashboards empresariais", "Agentes de IA", "Automação de processos com IA", "Engenharia de dados"],
           sameAs: ["https://www.linkedin.com/company/opriun", "https://www.instagram.com/opriun"],
           contactPoint: {
