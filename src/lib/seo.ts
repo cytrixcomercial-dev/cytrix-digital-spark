@@ -127,6 +127,24 @@ const SEO: Record<string, Override> = {
   },
 };
 
+const DEFAULT_OG_IMAGE = `${SITE_URL}/og-image.png`;
+
+const BASE_KEYWORDS = [
+  "consultoria de dados", "Business Intelligence", "análise de dados empresariais",
+  "transformação digital", "agentes de IA", "data consulting", "BI e analytics",
+];
+const KEYWORDS: Record<string, string[]> = {
+  "/solucoes/data-consulting": ["data consulting", "consultoria de dados", "consultoria de inteligência artificial", "estratégia de dados", "transformação digital"],
+  "/solucoes/business-intelligence": ["Business Intelligence", "consultoria de BI", "BI e analytics", "KPIs", "dashboards executivos"],
+  "/solucoes/bi-data-quality": ["qualidade de dados", "data quality", "governança de dados", "Business Intelligence"],
+  "/solucoes/bi-platform": ["dashboards empresariais", "plataforma de BI", "BI e analytics", "Power BI"],
+  "/solucoes/bi-ia-outsourcing": ["outsourcing de BI", "outsourcing de IA", "time de dados", "BI e analytics"],
+  "/agentes-de-ia": ["agentes de IA", "agentes autônomos", "automação com IA", "IA para empresas"],
+  "/solucoes": ["automação de processos com IA", "integração de sistemas", "Business Intelligence", "agentes de IA"],
+  "/contato": ["consultoria de dados", "especialista em BI", "orçamento Business Intelligence"],
+  "/seja-um-representante-comercial": ["representante comercial", "parceria comercial", "consultoria de dados"],
+};
+
 const ORG_ID = `${SITE_URL}/#organization`;
 
 function breadcrumbs(path: string) {
@@ -175,11 +193,14 @@ export function pageHead(seo: PageSeo) {
     { name: "twitter:title", content: ogTitle },
     { name: "twitter:description", content: ogDescription },
   ];
-  if (noindex) meta.push({ name: "robots", content: "noindex, follow" });
-  if (seo.image) {
-    meta.push({ property: "og:image", content: seo.image });
-    meta.push({ name: "twitter:image", content: seo.image });
-  }
+  meta.push({ name: "robots", content: noindex ? "noindex, follow" : "index, follow" });
+  meta.push({ name: "keywords", content: (KEYWORDS[seo.path] ?? BASE_KEYWORDS).join(", ") });
+  const image = seo.image ?? DEFAULT_OG_IMAGE;
+  meta.push({ property: "og:image", content: image });
+  meta.push({ property: "og:image:width", content: "1200" });
+  meta.push({ property: "og:image:height", content: "630" });
+  meta.push({ property: "og:image:alt", content: "OPRIUN — Consultoria de Business Intelligence, Dados e IA" });
+  meta.push({ name: "twitter:image", content: image });
 
   const scripts: Array<{ type: string; children: string }> = [];
   if (seo.path !== "/" && !noindex) {
@@ -195,7 +216,7 @@ export function pageHead(seo: PageSeo) {
         serviceType: o.service,
         description,
         url,
-        areaServed: { "@type": "Country", name: "Brasil" },
+        areaServed: ["BR", "PT", "US", "FR", "ES"],
         provider: { "@type": "Organization", "@id": ORG_ID, name: "Opriun" },
       }),
     });
