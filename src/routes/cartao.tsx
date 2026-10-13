@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Mail, Linkedin, MapPin, Phone, Globe, ContactRound } from "lucide-react";
 import { pageHead } from "@/lib/seo";
-import logo from "@/assets/opriun-logo-transparent.png.asset.json";
+import logo from "@/assets/opriun-logo-transparent.png";
 import { trackEvent } from "@/lib/analytics";
 
 export const Route = createFileRoute("/cartao")({
@@ -23,7 +23,7 @@ function CartaoPage() {
     <section className="glow-top">
       <div className="mx-auto max-w-xl px-5 py-16 text-center">
         <img
-          src={logo.url}
+          src={logo}
           alt="Opriun"
           className="mx-auto h-16 w-auto"
           width={320}

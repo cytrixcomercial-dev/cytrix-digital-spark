@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Mail, Linkedin, MapPin, Phone, Download } from "lucide-react";
-import logo from "@/assets/opriun-logo-vector-transparent.svg.asset.json";
+import logo from "@/assets/opriun-logo.svg";
 import contatoQr from "@/assets/cytrix-vcard-qr.png.asset.json";
 import { trackEvent } from "@/lib/analytics";
 
@@ -10,7 +10,7 @@ export function Footer() {
       <div className="mx-auto grid max-w-6xl gap-10 px-5 py-14 md:grid-cols-5">
         <div className="md:col-span-2">
           <img
-            src={logo.url}
+            src={logo}
             alt="Opriun"
             className="h-11 w-auto"
             loading="lazy"
