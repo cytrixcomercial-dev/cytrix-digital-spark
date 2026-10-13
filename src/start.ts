@@ -25,7 +25,24 @@ const csrfMiddleware = createCsrfMiddleware({
   filter: (ctx) => ctx.handlerType === "serverFn",
 });
 
+// Security headers on every response (works on Cloudflare and Node/Hostinger).
+const securityHeadersMiddleware = createMiddleware().server(async ({ next }) => {
+  const result = await next();
+  const res = (result as { response?: Response }).response ?? (result as unknown as Response);
+  if (res && res.headers && typeof res.headers.set === "function") {
+    try {
+      res.headers.set("Strict-Transport-Security", "max-age=31536000; includeSubDomains");
+      res.headers.set("X-Content-Type-Options", "nosniff");
+      res.headers.set("X-Frame-Options", "DENY");
+      res.headers.set("Referrer-Policy", "strict-origin-when-cross-origin");
+    } catch {
+      // immutable headers — ignore
+    }
+  }
+  return result;
+});
+
 export const startInstance = createStart(() => ({
   functionMiddleware: [attachSupabaseAuth],
-  requestMiddleware: [errorMiddleware, csrfMiddleware],
+  requestMiddleware: [securityHeadersMiddleware, errorMiddleware, csrfMiddleware],
 }));
