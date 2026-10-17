@@ -2,6 +2,7 @@ import { createStart, createCsrfMiddleware, createMiddleware } from "@tanstack/r
 
 import { renderErrorPage } from "./lib/error-page";
 import { attachSupabaseAuth } from "@/integrations/supabase/auth-attacher";
+import { getRequestId, safeErrorDetails } from "./lib/request-diagnostics.server";
 
 const errorMiddleware = createMiddleware().server(async ({ next, request }) => {
   try {
@@ -11,10 +12,11 @@ const errorMiddleware = createMiddleware().server(async ({ next, request }) => {
       throw error;
     }
     const url = new URL(request.url);
-    console.error(`[${new Date().toISOString()}] ${request.method} ${url.origin}${url.pathname} - ERROR:`, error);
+    const requestId = getRequestId(request);
+    console.error(`[${new Date().toISOString()}] [requestId=${requestId}] ${request.method} ${url.origin}${url.pathname} - ERROR:`, safeErrorDetails(error));
     return new Response(renderErrorPage(), {
       status: 500,
-      headers: { "content-type": "text/html; charset=utf-8" },
+      headers: { "content-type": "text/html; charset=utf-8", "X-Request-ID": requestId },
     });
   }
 });
@@ -46,15 +48,24 @@ const securityHeadersMiddleware = createMiddleware().server(async ({ next }) => 
 // Global request logging: method, URL, status and duration for every request.
 const requestLoggerMiddleware = createMiddleware().server(async ({ next, request }) => {
   const start = Date.now();
+  // Always generated here, never accepted from a caller-controlled header.
+  const requestId = getRequestId(request);
   // Query strings can contain personal data or authentication tokens.
   const url = new URL(request.url);
   const requestUrl = `${url.origin}${url.pathname}`;
   try {
     const result = await next();
-    console.log(`[${new Date().toISOString()}] ${request.method} ${requestUrl} - ${result.response.status} (${Date.now() - start}ms)`);
-    return result;
+    console.log(`[${new Date().toISOString()}] [requestId=${requestId}] ${request.method} ${requestUrl} - ${result.response.status} (${Date.now() - start}ms)`);
+    // Clone to support responses with immutable headers.
+    const headers = new Headers(result.response.headers);
+    headers.set("X-Request-ID", requestId);
+    return { ...result, response: new Response(result.response.body, {
+      status: result.response.status,
+      statusText: result.response.statusText,
+      headers,
+    }) };
   } catch (error) {
-    console.error(`[${new Date().toISOString()}] ${request.method} ${requestUrl} - ERROR (${Date.now() - start}ms):`, error);
+    console.error(`[${new Date().toISOString()}] [requestId=${requestId}] ${request.method} ${requestUrl} - ERROR (${Date.now() - start}ms):`, safeErrorDetails(error));
     throw error;
   }
 });
