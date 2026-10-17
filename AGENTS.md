@@ -12,5 +12,6 @@
 ## Hosting
 - Self-hosting on Node (Hostinger) uses `npm run build:node` + `npm start` (nitro `node-server` preset); keep server code runtime-agnostic so both Lovable (Cloudflare) and Node builds work.
 - Contact form must succeed if either the local DB insert or the CRM webhook succeeds — external hosts may lack the service-role key.
+- Contact database writes use the server-only contact-leads helper with deployment SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY, inserting only name, company, email, phone and message into leads; the external deployment schema is independent of generated Cloud types.
 - Keep global request logging in `src/start.ts` with ISO timestamps, method, query-free URL, status, duration and a server-generated UUID shared through `request-diagnostics.server.ts` with form responses and the `X-Request-ID` header; this correlates failures across Cloudflare and Node without retaining requests.
 - Log only allowlisted error codes and channel statuses, never raw errors, stacks, provider bodies or submitted data; return safe form errors with the request ID so diagnostics cannot expose personal data or secrets.

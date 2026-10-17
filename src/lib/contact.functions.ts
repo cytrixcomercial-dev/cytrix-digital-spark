@@ -34,17 +34,17 @@ export const sendContactMessage = createServerFn({ method: "POST" })
       // Validate inside the catch boundary so validation failures also return an ID.
       const data = contactSchema.parse(input);
       let savedLocally = false;
-      if (process.env["SUPABASE_SERVICE_ROLE_KEY"] && process.env["SUPABASE_URL"]) {
-        const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
-        const { error } = await supabaseAdmin.from("contact_messages").insert({
-          nome: data.nome,
-          empresa: data.empresa || null,
-          email: data.email,
-          telefone: data.telefone || null,
-          mensagem: data.mensagem,
-        });
-        if (error) console.error(`${logPrefix} falha ao salvar mensagem`, safeErrorDetails(error));
-        else savedLocally = true;
+      const databaseUrl = process.env["SUPABASE_URL"];
+      const serviceRoleKey = process.env["SUPABASE_SERVICE_ROLE_KEY"];
+      if (serviceRoleKey && databaseUrl) {
+        try {
+          const { insertContactLead } = await import("./contact-leads.server");
+          const { error } = await insertContactLead(data, databaseUrl, serviceRoleKey);
+          if (error) console.error(`${logPrefix} falha ao salvar lead`, safeErrorDetails(error));
+          else savedLocally = true;
+        } catch (error) {
+          console.error(`${logPrefix} falha ao salvar lead`, safeErrorDetails(error));
+        }
       } else {
         console.warn(`${logPrefix} banco local não configurado; seguindo com outros canais`);
       }
