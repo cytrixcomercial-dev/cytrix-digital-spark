@@ -24,14 +24,19 @@ export const sendContactMessage = createServerFn({ method: "POST" })
       const serviceRoleKey = process.env["SUPABASE_SERVICE_ROLE_KEY"];
       if (serviceRoleKey && databaseUrl) {
         try {
-          const { insertContactLead } = await import("./contact-leads.server");
-          const { error } = await insertContactLead(data, databaseUrl, serviceRoleKey);
-          if (error) {
-            channels.banco = safeErrorDetails(error).code;
-            console.error(`${logPrefix} falha ao salvar lead`, safeErrorDetails(error));
+          const { insertContactLead, leadStatusToken, checkDatabaseUrl } = await import("./contact-leads.server");
+          const urlProblem = checkDatabaseUrl(databaseUrl);
+          if (urlProblem) {
+            channels.banco = urlProblem;
+            console.error(`${logPrefix} SUPABASE_URL inválida`, { code: urlProblem });
           } else {
-            savedLocally = true;
-            channels.banco = "ok";
+            const result = await insertContactLead(data, databaseUrl, serviceRoleKey);
+            channels.banco = leadStatusToken(result);
+            if (channels.banco === "ok") {
+              savedLocally = true;
+            } else {
+              console.error(`${logPrefix} falha ao salvar lead`, { code: channels.banco });
+            }
           }
         } catch (error) {
           channels.banco = safeErrorDetails(error).code;
@@ -84,10 +89,10 @@ export const sendContactMessage = createServerFn({ method: "POST" })
         try {
           const nodemailer = await import("nodemailer");
           const transporter = nodemailer.createTransport({
-            host: process.env["SMTP_HOST"],
+            host: smtpHost.trim(),
             port: Number(process.env["SMTP_PORT"] || 465),
             secure: true,
-            auth: { user: process.env["SMTP_USER"], pass: process.env["SMTP_PASS"] },
+            auth: { user: smtpUser.trim(), pass: smtpPass },
           });
           await transporter.sendMail({
             from: `Site Opriun <${smtpUser}>`,
