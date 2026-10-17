@@ -48,7 +48,7 @@ const requestLoggerMiddleware = createMiddleware().server(async ({ next, request
   try {
     const result = await next();
     const res = (result as { response?: Response }).response ?? (result as unknown as Response);
-    const status = res && typeof res.status === "function" ? res.status() : 200;
+    const status = res?.status ?? 200;
     console.log(`[request] ${request.method} ${request.url} -> ${status} (${Date.now() - start}ms)`);
     return result;
   } catch (error) {
