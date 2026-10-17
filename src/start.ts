@@ -42,7 +42,22 @@ const securityHeadersMiddleware = createMiddleware().server(async ({ next }) => 
   return result;
 });
 
+// Global request logging: method, URL, status and duration for every request.
+const requestLoggerMiddleware = createMiddleware().server(async ({ next, request }) => {
+  const start = Date.now();
+  try {
+    const result = await next();
+    const res = (result as { response?: Response }).response ?? (result as unknown as Response);
+    const status = res?.status ?? 200;
+    console.log(`[request] ${request.method} ${request.url} -> ${status} (${Date.now() - start}ms)`);
+    return result;
+  } catch (error) {
+    console.error(`[request] ${request.method} ${request.url} falhou (${Date.now() - start}ms)`, error);
+    throw error;
+  }
+});
+
 export const startInstance = createStart(() => ({
   functionMiddleware: [attachSupabaseAuth],
-  requestMiddleware: [securityHeadersMiddleware, errorMiddleware, csrfMiddleware],
+  requestMiddleware: [requestLoggerMiddleware, securityHeadersMiddleware, errorMiddleware, csrfMiddleware],
 }));
