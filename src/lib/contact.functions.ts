@@ -89,10 +89,10 @@ export const sendContactMessage = createServerFn({ method: "POST" })
         try {
           const nodemailer = await import("nodemailer");
           const transporter = nodemailer.createTransport({
-            host: process.env["SMTP_HOST"],
+            host: smtpHost.trim(),
             port: Number(process.env["SMTP_PORT"] || 465),
             secure: true,
-            auth: { user: process.env["SMTP_USER"], pass: process.env["SMTP_PASS"] },
+            auth: { user: smtpUser.trim(), pass: smtpPass },
           });
           await transporter.sendMail({
             from: `Site Opriun <${smtpUser}>`,
