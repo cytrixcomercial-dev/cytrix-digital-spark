@@ -3,14 +3,15 @@ import { createStart, createCsrfMiddleware, createMiddleware } from "@tanstack/r
 import { renderErrorPage } from "./lib/error-page";
 import { attachSupabaseAuth } from "@/integrations/supabase/auth-attacher";
 
-const errorMiddleware = createMiddleware().server(async ({ next }) => {
+const errorMiddleware = createMiddleware().server(async ({ next, request }) => {
   try {
     return await next();
   } catch (error) {
     if (error != null && typeof error === "object" && "statusCode" in error) {
       throw error;
     }
-    console.error(error);
+    const url = new URL(request.url);
+    console.error(`[${new Date().toISOString()}] ${request.method} ${url.origin}${url.pathname} - ERROR:`, error);
     return new Response(renderErrorPage(), {
       status: 500,
       headers: { "content-type": "text/html; charset=utf-8" },
@@ -45,14 +46,15 @@ const securityHeadersMiddleware = createMiddleware().server(async ({ next }) => 
 // Global request logging: method, URL, status and duration for every request.
 const requestLoggerMiddleware = createMiddleware().server(async ({ next, request }) => {
   const start = Date.now();
+  // Query strings can contain personal data or authentication tokens.
+  const url = new URL(request.url);
+  const requestUrl = `${url.origin}${url.pathname}`;
   try {
     const result = await next();
-    const res = (result as { response?: Response }).response ?? (result as unknown as Response);
-    const status = res?.status ?? 200;
-    console.log(`[request] ${request.method} ${request.url} -> ${status} (${Date.now() - start}ms)`);
+    console.log(`[${new Date().toISOString()}] ${request.method} ${requestUrl} - ${result.response.status} (${Date.now() - start}ms)`);
     return result;
   } catch (error) {
-    console.error(`[request] ${request.method} ${request.url} falhou (${Date.now() - start}ms)`, error);
+    console.error(`[${new Date().toISOString()}] ${request.method} ${requestUrl} - ERROR (${Date.now() - start}ms):`, error);
     throw error;
   }
 });
