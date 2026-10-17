@@ -71,9 +71,45 @@ export const sendContactMessage = createServerFn({ method: "POST" })
         console.warn("[contato] CRM_WEBHOOK_SECRET não configurado; lead não enviado ao CRM");
       }
 
-      console.log("[contato] resultado", { savedLocally, sentToCrm, crmUrl });
-      if (!savedLocally && !sentToCrm) {
-        throw new Error("Não foi possível registrar sua mensagem (banco e CRM falharam).");
+      let sentByEmail = false;
+      const smtpHost = process.env["SMTP_HOST"];
+      const smtpUser = process.env["SMTP_USER"];
+      const smtpPass = process.env["SMTP_PASS"];
+      if (smtpHost && smtpUser && smtpPass) {
+        try {
+          const nodemailer = await import("nodemailer");
+          const transporter = nodemailer.createTransport({
+            host: smtpHost,
+            port: Number(process.env["SMTP_PORT"] || 465),
+            secure: (process.env["SMTP_PORT"] || "465") === "465",
+            auth: { user: smtpUser, pass: smtpPass },
+          });
+          await transporter.sendMail({
+            from: `Site Opriun <${smtpUser}>`,
+            to: process.env["CONTACT_EMAIL_TO"] || "contato@opriun.com.br",
+            replyTo: data.email,
+            subject: `Novo contato pelo site: ${data.nome} (${data.empresa})`,
+            text: [
+              `Nome: ${data.nome}`,
+              `Empresa: ${data.empresa}`,
+              `E-mail: ${data.email}`,
+              `Telefone: ${data.telefone}`,
+              "",
+              "Mensagem:",
+              data.mensagem,
+            ].join("\n"),
+          });
+          sentByEmail = true;
+        } catch (e) {
+          console.error("[contato] falha ao enviar e-mail via SMTP", e);
+        }
+      } else {
+        console.warn("[contato] SMTP não configurado (SMTP_HOST/SMTP_USER/SMTP_PASS); e-mail não enviado");
+      }
+
+      console.log("[contato] resultado", { savedLocally, sentToCrm, sentByEmail, crmUrl });
+      if (!savedLocally && !sentToCrm && !sentByEmail) {
+        throw new Error("Não foi possível registrar sua mensagem (banco, CRM e e-mail falharam).");
       }
 
       return { ok: true as const };
