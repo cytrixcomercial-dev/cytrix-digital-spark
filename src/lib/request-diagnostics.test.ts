@@ -22,13 +22,21 @@ describe("request diagnostics", () => {
       error: "Não foi possível enviar. Tente novamente em instantes.",
       requestId: id,
       fields: [],
+      channels: {},
     });
     assert.deepEqual(formErrorResponse(id, true), {
       success: false,
       error: "Confira os campos do formulário e tente novamente.",
       requestId: id,
       fields: [],
+      channels: {},
     });
+  });
+  test("channel diagnostics carry only status tokens", () => {
+    const id = getRequestId(new Request("https://www.opriun.com.br/contato"));
+    const res = formErrorResponse(id, false, [], { banco: "nao_configurado", crm: "http_404", email: "EAUTH" });
+    assert.deepEqual(res.channels, { banco: "nao_configurado", crm: "http_404", email: "EAUTH" });
+    assert.deepEqual(safeErrorDetails({ code: "PGRST205" }), { code: "PGRST205" });
   });
   test("validation failures may include field names, never submitted values", () => {
     const id = getRequestId(new Request("https://www.opriun.com.br/contato"));
@@ -37,6 +45,7 @@ describe("request diagnostics", () => {
       error: "Confira os campos do formulário e tente novamente.",
       requestId: id,
       fields: ["telefone"],
+      channels: {},
     });
   });
 });

@@ -79,9 +79,9 @@ function ContatoPage() {
                 data: validated.data,
               });
               if (!result?.success) {
-                console.error("[contato] falha no envio", { requestId: result.requestId, fields: result.fields });
+                console.error("[contato] falha no envio", { requestId: result.requestId, fields: result.fields, channels: result.channels });
                 toast.error(
-                  `${result.error}${result.fields?.length ? ` (campo: ${result.fields.join(", ")})` : ""} Código de atendimento: ${result.requestId}`
+                  `${result.error}${result.fields?.length ? ` (campo: ${result.fields.join(", ")})` : ""} Código de atendimento: ${result.requestId}${result.channels && Object.keys(result.channels).length ? ` Diagnóstico: ${Object.entries(result.channels).map(([k, v]) => `${k}=${v}`).join(", ")}` : ""}`
                 );
               } else {
                 form.reset();

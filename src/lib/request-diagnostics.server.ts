@@ -13,12 +13,21 @@ export function getRequestId(request: Request): string {
 export function safeErrorDetails(error: unknown) {
   // Never log messages, stacks, response bodies or arbitrary provider fields:
   // they can contain names, addresses, credentials or submitted content.
-  const allowedCodes = new Set(["ECONNREFUSED", "ETIMEDOUT", "ENOTFOUND", "EAUTH", "ESOCKET", "ECONNECTION", "23505", "42501"]);
+  const allowedCodes = new Set(["ECONNREFUSED", "ETIMEDOUT", "ENOTFOUND", "EAUTH", "ESOCKET", "ECONNECTION", "23505", "42501", "42P01", "42703", "23502", "22P02", "PGRST204", "PGRST205", "PGRST301"]);
   const code = error && typeof error === "object" && "code" in error ? error.code : undefined;
   return { code: typeof code === "string" && allowedCodes.has(code) ? code : "UNCLASSIFIED" };
 }
 
-export function formErrorResponse(requestId: string, validation = false, fields?: string[]) {
+// Channel statuses are fixed tokens ("ok", "nao_configurado", "http_404", allowlisted
+// codes) so visitors can report them without exposing data or secrets.
+export type ChannelStatuses = Partial<Record<"banco" | "crm" | "email", string>>;
+
+export function formErrorResponse(
+  requestId: string,
+  validation = false,
+  fields?: string[],
+  channels: ChannelStatuses = {},
+) {
   return {
     success: false as const,
     error: validation
@@ -27,5 +36,6 @@ export function formErrorResponse(requestId: string, validation = false, fields?
     requestId,
     // Field names only — never the submitted values, which can be personal data.
     fields: validation ? fields ?? [] : [],
+    channels,
   };
 }

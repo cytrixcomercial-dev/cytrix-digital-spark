@@ -14,6 +14,11 @@ export const sendContactMessage = createServerFn({ method: "POST" })
     try {
       // Validate inside the catch boundary so validation failures also return an ID.
       const data = contactSchema.parse(input);
+      const channels: Record<"banco" | "crm" | "email", string> = {
+        banco: "nao_configurado",
+        crm: "nao_configurado",
+        email: "nao_configurado",
+      };
       let savedLocally = false;
       const databaseUrl = process.env["SUPABASE_URL"];
       const serviceRoleKey = process.env["SUPABASE_SERVICE_ROLE_KEY"];
@@ -21,9 +26,15 @@ export const sendContactMessage = createServerFn({ method: "POST" })
         try {
           const { insertContactLead } = await import("./contact-leads.server");
           const { error } = await insertContactLead(data, databaseUrl, serviceRoleKey);
-          if (error) console.error(`${logPrefix} falha ao salvar lead`, safeErrorDetails(error));
-          else savedLocally = true;
+          if (error) {
+            channels.banco = safeErrorDetails(error).code;
+            console.error(`${logPrefix} falha ao salvar lead`, safeErrorDetails(error));
+          } else {
+            savedLocally = true;
+            channels.banco = "ok";
+          }
         } catch (error) {
+          channels.banco = safeErrorDetails(error).code;
           console.error(`${logPrefix} falha ao salvar lead`, safeErrorDetails(error));
         }
       } else {
@@ -50,9 +61,15 @@ export const sendContactMessage = createServerFn({ method: "POST" })
               source: "Site Opriun - Formulário de Contato",
             }),
           });
-          if (!res.ok) console.error(`${logPrefix} CRM respondeu`, { status: res.status });
-          else sentToCrm = true;
+          if (!res.ok) {
+            channels.crm = `http_${res.status}`;
+            console.error(`${logPrefix} CRM respondeu`, { status: res.status });
+          } else {
+            sentToCrm = true;
+            channels.crm = "ok";
+          }
         } catch (e) {
+          channels.crm = safeErrorDetails(e).code;
           console.error(`${logPrefix} falha ao enviar lead ao CRM`, safeErrorDetails(e));
         }
       } else {
@@ -88,16 +105,19 @@ export const sendContactMessage = createServerFn({ method: "POST" })
             ].join("\n"),
           });
           sentByEmail = true;
+          channels.email = "ok";
         } catch (e) {
+          channels.email = safeErrorDetails(e).code;
           console.error(`${logPrefix} falha ao enviar e-mail via SMTP`, safeErrorDetails(e));
         }
       } else {
         console.warn(`${logPrefix} SMTP não configurado; e-mail não enviado`);
       }
 
-      console.log(`${logPrefix} resultado`, { savedLocally, sentToCrm, sentByEmail });
+      console.log(`${logPrefix} resultado`, { savedLocally, sentToCrm, sentByEmail, channels });
       if (!savedLocally && !sentToCrm && !sentByEmail) {
-        throw new Error("Não foi possível registrar sua mensagem (banco, CRM e e-mail falharam).");
+        console.error(`${logPrefix} [SERVER ERROR] todos os canais falharam`, channels);
+        return formErrorResponse(requestId, false, [], channels);
       }
 
       return { success: true as const, requestId };
