@@ -18,12 +18,15 @@ export function safeErrorDetails(error: unknown) {
   return { code: typeof code === "string" && allowedCodes.has(code) ? code : "UNCLASSIFIED" };
 }
 
-export function formErrorResponse(requestId: string, validation = false) {
-  return {
+export function formErrorResponse(requestId: string, validation = false, fields?: string[]) {
+  const base = {
     success: false as const,
     error: validation
       ? "Confira os campos do formulário e tente novamente."
       : "Não foi possível enviar. Tente novamente em instantes.",
     requestId,
   };
+  // Field names only — never the submitted values, which can be personal data.
+  if (validation && fields?.length) return { ...base, fields };
+  return base;
 }

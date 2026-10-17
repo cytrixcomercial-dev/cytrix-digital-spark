@@ -103,6 +103,10 @@ export const sendContactMessage = createServerFn({ method: "POST" })
       return { success: true as const, requestId };
     } catch (error) {
       console.error(`${logPrefix} [SERVER ERROR]`, safeErrorDetails(error));
-      return formErrorResponse(requestId, error instanceof z.ZodError);
+      const fields =
+        error instanceof z.ZodError
+          ? error.issues.flatMap((issue) => issue.path.map(String)).filter(Boolean)
+          : undefined;
+      return formErrorResponse(requestId, error instanceof z.ZodError, fields);
     }
   });
