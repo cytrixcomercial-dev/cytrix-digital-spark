@@ -59,7 +59,7 @@ function ContatoPage() {
 
             setSending(true);
             try {
-              await submit({
+              const result = await submit({
                 data: {
                   nome: String(fd.get("nome") ?? ""),
                   empresa: String(fd.get("empresa") ?? ""),
@@ -68,10 +68,15 @@ function ContatoPage() {
                   mensagem: String(fd.get("mensagem") ?? ""),
                 },
               });
-              form.reset();
-              setSent(true);
-              trackEvent("form_submit", { form: "contato" });
-              toast.success("Mensagem enviada! Entraremos em contato em breve.");
+              if (!result?.success) {
+                console.error("[contato] erro do servidor:", result?.error);
+                toast.error(result?.error || "Não foi possível enviar. Tente novamente em instantes.");
+              } else {
+                form.reset();
+                setSent(true);
+                trackEvent("form_submit", { form: "contato" });
+                toast.success("Mensagem enviada! Entraremos em contato em breve.");
+              }
             } catch (error) {
               console.error(error);
               toast.error("Não foi possível enviar. Tente novamente em instantes.");
