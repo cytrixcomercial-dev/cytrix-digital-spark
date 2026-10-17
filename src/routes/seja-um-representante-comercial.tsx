@@ -86,7 +86,7 @@ function SejaRepresentantePage() {
 
               setSending(true);
               try {
-                await submit({
+                const result = await submit({
                   data: {
                     nome: String(fd.get("nome") ?? ""),
                     empresa: String(fd.get("empresa") ?? ""),
@@ -95,9 +95,14 @@ function SejaRepresentantePage() {
                     mensagem,
                   },
                 });
-                form.reset();
-                setSent(true);
-                toast.success("Solicitação enviada! Nossa equipe entrará em contato em breve.");
+                if (!result?.success) {
+                  console.error("[representante] erro do servidor:", result?.error);
+                  toast.error(result?.error || "Não foi possível enviar. Tente novamente em instantes.");
+                } else {
+                  form.reset();
+                  setSent(true);
+                  toast.success("Solicitação enviada! Nossa equipe entrará em contato em breve.");
+                }
               } catch (error) {
                 console.error(error);
                 toast.error("Não foi possível enviar. Tente novamente em instantes.");

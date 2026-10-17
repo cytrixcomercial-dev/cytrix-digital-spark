@@ -112,10 +112,13 @@ export const sendContactMessage = createServerFn({ method: "POST" })
         throw new Error("Não foi possível registrar sua mensagem (banco, CRM e e-mail falharam).");
       }
 
-      return { ok: true as const };
+      return { success: true as const };
     } catch (error) {
-      console.error("ERRO FATAL NO FORMULÁRIO:", error);
+      console.error("[SERVER ERROR]:", error);
       console.error("STACK TRACE:", error instanceof Error ? error.stack : undefined);
-      throw error;
+      return {
+        success: false as const,
+        error: error instanceof Error ? error.message : String(error),
+      };
     }
   });
