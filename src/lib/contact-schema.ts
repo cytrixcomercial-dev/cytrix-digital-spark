@@ -30,5 +30,5 @@ export const contactSchema = z.object({
       },
       { message: "Informe um telefone válido com DDD (pode ser apenas números)." }
     ),
-  mensagem: z.string().trim().min(10, "Descreva melhor o desafio").max(2000),
+  mensagem: z.string().trim().min(10, "A mensagem deve ter pelo menos 10 caracteres.").max(2000),
 });

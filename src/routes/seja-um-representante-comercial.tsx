@@ -9,6 +9,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { sendContactMessage } from "@/lib/contact.functions";
 import { isCorporateEmail } from "@/lib/email-corporate";
+import { contactSchema } from "@/lib/contact-schema";
 
 export const Route = createFileRoute("/seja-um-representante-comercial")({
   head: () =>
@@ -79,6 +80,21 @@ function SejaRepresentantePage() {
                 return;
               }
 
+              const validated = contactSchema.safeParse({
+                nome: String(fd.get("nome") ?? ""),
+                empresa: String(fd.get("empresa") ?? ""),
+                email,
+                telefone: String(fd.get("telefone") ?? ""),
+                mensagem: String(fd.get("mensagem") ?? ""),
+              });
+              if (!validated.success) {
+                const issue = validated.error.issues[0];
+                toast.error(issue?.message ?? "Confira os campos do formulário.");
+                const field = form.elements.namedItem(String(issue?.path[0] ?? ""));
+                if (field instanceof HTMLElement) field.focus();
+                return;
+              }
+
               const origem = "[Seja um Representante Comercial]";
               const mensagem = `${origem}\n\nRegião de atuação: ${String(
                 fd.get("regiao") ?? ""
@@ -88,10 +104,7 @@ function SejaRepresentantePage() {
               try {
                 const result = await submit({
                   data: {
-                    nome: String(fd.get("nome") ?? ""),
-                    empresa: String(fd.get("empresa") ?? ""),
-                    email,
-                    telefone: String(fd.get("telefone") ?? ""),
+                    ...validated.data,
                     mensagem,
                   },
                 });
@@ -172,6 +185,8 @@ function SejaRepresentantePage() {
                 id="mensagem"
                 name="mensagem"
                 required
+                  minLength={10}
+                  maxLength={1800}
                 rows={5}
                 placeholder="Conte um pouco sobre sua experiência comercial e o mercado que você atua"
               />

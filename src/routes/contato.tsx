@@ -11,6 +11,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { sendContactMessage } from "@/lib/contact.functions";
 import { isCorporateEmail } from "@/lib/email-corporate";
 import { trackEvent } from "@/lib/analytics";
+import { contactSchema } from "@/lib/contact-schema";
 
 export const Route = createFileRoute("/contato")({
   head: () =>
@@ -57,16 +58,25 @@ function ContatoPage() {
               return;
             }
 
+            const validated = contactSchema.safeParse({
+              nome: String(fd.get("nome") ?? ""),
+              empresa: String(fd.get("empresa") ?? ""),
+              email,
+              telefone: String(fd.get("telefone") ?? ""),
+              mensagem: String(fd.get("mensagem") ?? ""),
+            });
+            if (!validated.success) {
+              const issue = validated.error.issues[0];
+              toast.error(issue?.message ?? "Confira os campos do formulário.");
+              const field = form.elements.namedItem(String(issue?.path[0] ?? ""));
+              if (field instanceof HTMLElement) field.focus();
+              return;
+            }
+
             setSending(true);
             try {
               const result = await submit({
-                data: {
-                  nome: String(fd.get("nome") ?? ""),
-                  empresa: String(fd.get("empresa") ?? ""),
-                  email,
-                  telefone: String(fd.get("telefone") ?? ""),
-                  mensagem: String(fd.get("mensagem") ?? ""),
-                },
+                data: validated.data,
               });
               if (!result?.success) {
                 console.error("[contato] falha no envio", { requestId: result.requestId, fields: result.fields });
@@ -128,6 +138,8 @@ function ContatoPage() {
               id="mensagem"
               name="mensagem"
               required
+              minLength={10}
+              maxLength={2000}
               rows={5}
               placeholder="Descreva o desafio de dados da sua operação"
             />
