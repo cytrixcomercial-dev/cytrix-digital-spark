@@ -25,3 +25,26 @@ describe("contact lead database contract", () => {
     assert.equal(result.error, null);
   });
 });
+import { checkDatabaseUrl, leadStatusToken } from "./contact-leads.server";
+
+describe("contact lead diagnostics", () => {
+  test("network failures report a network token instead of UNCLASSIFIED", async () => {
+    const fetcher: typeof fetch = async () => {
+      throw Object.assign(new TypeError("fetch failed"), { cause: { code: "ENOTFOUND" } });
+    };
+    const result = await insertContactLead({ nome: "a", empresa: "b", email: "c@d.com", telefone: "41999990000", mensagem: "mensagem de teste" },
+      "https://wrong.example.com", "sb_secret_test_only", fetcher);
+    assert.equal(leadStatusToken(result), "ENOTFOUND");
+  });
+  test("invalid server key reports chave_invalida", () => {
+    assert.equal(leadStatusToken({ error: { message: "Invalid API key" }, status: 401 }), "chave_invalida");
+  });
+  test("missing table keeps its database code", () => {
+    assert.equal(leadStatusToken({ error: { code: "PGRST205" }, status: 404 }), "PGRST205");
+  });
+  test("dashboard address is rejected, project address accepted", () => {
+    assert.equal(checkDatabaseUrl("https://supabase.com/dashboard/project/abc"), "url_do_painel");
+    assert.equal(checkDatabaseUrl("abc.supabase.co"), "url_invalida");
+    assert.equal(checkDatabaseUrl("https://abc.supabase.co"), null);
+  });
+});
