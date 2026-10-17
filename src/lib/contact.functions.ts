@@ -24,55 +24,62 @@ const contactSchema = z.object({
 export const sendContactMessage = createServerFn({ method: "POST" })
   .inputValidator((data: unknown) => contactSchema.parse(data))
   .handler(async ({ data }) => {
-    // Em hospedagens externas (ex.: Hostinger) a chave de serviço do banco pode
-    // não existir; nesse caso o lead segue apenas para o CRM.
-    let savedLocally = false;
-    if (process.env["SUPABASE_SERVICE_ROLE_KEY"]) {
-      const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
-      const { error } = await supabaseAdmin.from("contact_messages").insert({
-        nome: data.nome,
-        empresa: data.empresa || null,
-        email: data.email,
-        telefone: data.telefone || null,
-        mensagem: data.mensagem,
-      });
-      if (error) console.error("[contato] falha ao salvar mensagem", error);
-      else savedLocally = true;
-    }
-
-    // Envia o lead ao Opriun CRM (não bloqueia o formulário em caso de falha)
-    const crmUrl =
-      process.env["CRM_WEBHOOK_URL"] ||
-      "https://project--fd117f08-5d17-4e2f-a58b-205fea4b5c27.lovable.app/api/public/leads-intake";
-    const crmSecret = process.env["CRM_WEBHOOK_SECRET"];
-    let sentToCrm = false;
-    if (crmSecret) {
-      try {
-        const res = await fetch(crmUrl, {
-          method: "POST",
-          headers: { "Content-Type": "application/json", "x-webhook-secret": crmSecret },
-          body: JSON.stringify({
-            name: data.nome,
-            company_name: data.empresa,
-            email: data.email,
-            phone: data.telefone,
-            whatsapp: data.telefone,
-            notes: data.mensagem,
-            source: "Site Opriun - Formulário de Contato",
-          }),
+    console.log("--- INICIANDO ENVIO DO FORMULÁRIO ---");
+    try {
+      let savedLocally = false;
+      if (process.env["SUPABASE_SERVICE_ROLE_KEY"] && process.env["SUPABASE_URL"]) {
+        const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+        const { error } = await supabaseAdmin.from("contact_messages").insert({
+          nome: data.nome,
+          empresa: data.empresa || null,
+          email: data.email,
+          telefone: data.telefone || null,
+          mensagem: data.mensagem,
         });
-        if (!res.ok) console.error("[contato] CRM respondeu", res.status, await res.text());
-        else sentToCrm = true;
-      } catch (e) {
-        console.error("[contato] falha ao enviar lead ao CRM", e);
+        if (error) console.error("[contato] falha ao salvar mensagem", error);
+        else savedLocally = true;
+      } else {
+        console.warn("[contato] banco local não configurado (SUPABASE_URL/SUPABASE_SERVICE_ROLE_KEY); seguindo só com o CRM");
       }
-    } else {
-      console.warn("[contato] CRM_WEBHOOK_SECRET não configurado; lead não enviado ao CRM");
-    }
 
-    if (!savedLocally && !sentToCrm) {
-      throw new Error("Não foi possível registrar sua mensagem.");
-    }
+      const crmUrl =
+        process.env["CRM_WEBHOOK_URL"] ||
+        "https://project--fd117f08-5d17-4e2f-a58b-205fea4b5c27.lovable.app/api/public/leads-intake";
+      const crmSecret = process.env["CRM_WEBHOOK_SECRET"];
+      let sentToCrm = false;
+      if (crmSecret) {
+        try {
+          const res = await fetch(crmUrl, {
+            method: "POST",
+            headers: { "Content-Type": "application/json", "x-webhook-secret": crmSecret },
+            body: JSON.stringify({
+              name: data.nome,
+              company_name: data.empresa,
+              email: data.email,
+              phone: data.telefone,
+              whatsapp: data.telefone,
+              notes: data.mensagem,
+              source: "Site Opriun - Formulário de Contato",
+            }),
+          });
+          if (!res.ok) console.error("[contato] CRM respondeu", res.status, await res.text());
+          else sentToCrm = true;
+        } catch (e) {
+          console.error("[contato] falha ao enviar lead ao CRM", e);
+        }
+      } else {
+        console.warn("[contato] CRM_WEBHOOK_SECRET não configurado; lead não enviado ao CRM");
+      }
 
-    return { ok: true as const };
+      console.log("[contato] resultado", { savedLocally, sentToCrm, crmUrl });
+      if (!savedLocally && !sentToCrm) {
+        throw new Error("Não foi possível registrar sua mensagem (banco e CRM falharam).");
+      }
+
+      return { ok: true as const };
+    } catch (error) {
+      console.error("ERRO FATAL NO FORMULÁRIO:", error);
+      console.error("STACK TRACE:", error instanceof Error ? error.stack : undefined);
+      throw error;
+    }
   });
