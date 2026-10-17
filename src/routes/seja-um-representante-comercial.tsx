@@ -96,8 +96,10 @@ function SejaRepresentantePage() {
                   },
                 });
                 if (!result?.success) {
-                  console.error("[representante] falha no envio", { requestId: result.requestId });
-                  toast.error(`${result.error} Código de atendimento: ${result.requestId}`);
+                  console.error("[representante] falha no envio", { requestId: result.requestId, fields: result.fields });
+                  toast.error(
+                    `${result.error}${result.fields?.length ? ` (campo: ${result.fields.join(", ")})` : ""} Código de atendimento: ${result.requestId}`
+                  );
                 } else {
                   form.reset();
                   setSent(true);

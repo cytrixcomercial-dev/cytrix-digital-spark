@@ -1,26 +1,7 @@
 import { createServerFn } from "@tanstack/react-start";
 import { getRequest, setResponseHeader } from "@tanstack/react-start/server";
 import { z } from "zod";
-import { blockedFreeDomains } from "./email-corporate";
-
-const contactSchema = z.object({
-  nome: z.string().trim().min(1, "Informe seu nome").max(100),
-  empresa: z.string().trim().min(1, "Informe o nome da empresa").max(120),
-  email: z
-    .string()
-    .trim()
-    .email("E-mail inválido")
-    .max(255)
-    .refine(
-      (value) => {
-        const domain = value.split("@")[1]?.toLowerCase();
-        return !domain || !blockedFreeDomains.has(domain);
-      },
-      { message: "Utilize um e-mail corporativo (Gmail, Hotmail, etc. não são aceitos)." }
-    ),
-  telefone: z.string().trim().min(1, "Informe o telefone").max(40),
-  mensagem: z.string().trim().min(10, "Descreva melhor o desafio").max(2000),
-});
+import { contactSchema } from "./contact-schema";
 
 export const sendContactMessage = createServerFn({ method: "POST" })
   .inputValidator((data: unknown) => data)
@@ -122,6 +103,10 @@ export const sendContactMessage = createServerFn({ method: "POST" })
       return { success: true as const, requestId };
     } catch (error) {
       console.error(`${logPrefix} [SERVER ERROR]`, safeErrorDetails(error));
-      return formErrorResponse(requestId, error instanceof z.ZodError);
+      const fields =
+        error instanceof z.ZodError
+          ? error.issues.flatMap((issue) => issue.path.map(String)).filter(Boolean)
+          : undefined;
+      return formErrorResponse(requestId, error instanceof z.ZodError, fields);
     }
   });
