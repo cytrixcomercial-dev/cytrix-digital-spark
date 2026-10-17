@@ -96,15 +96,15 @@ function SejaRepresentantePage() {
                   },
                 });
                 if (!result?.success) {
-                  console.error("[representante] erro do servidor:", result?.error);
-                  toast.error(result?.error || "Não foi possível enviar. Tente novamente em instantes.");
+                  console.error("[representante] falha no envio", { requestId: result.requestId });
+                  toast.error(`${result.error} Código de atendimento: ${result.requestId}`);
                 } else {
                   form.reset();
                   setSent(true);
                   toast.success("Solicitação enviada! Nossa equipe entrará em contato em breve.");
                 }
-              } catch (error) {
-                console.error(error);
+              } catch {
+                console.error("[representante] falha de comunicação; resposta indisponível");
                 toast.error("Não foi possível enviar. Tente novamente em instantes.");
               } finally {
                 setSending(false);

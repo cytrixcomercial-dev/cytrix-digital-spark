@@ -69,16 +69,16 @@ function ContatoPage() {
                 },
               });
               if (!result?.success) {
-                console.error("[contato] erro do servidor:", result?.error);
-                toast.error(result?.error || "Não foi possível enviar. Tente novamente em instantes.");
+                console.error("[contato] falha no envio", { requestId: result.requestId });
+                toast.error(`${result.error} Código de atendimento: ${result.requestId}`);
               } else {
                 form.reset();
                 setSent(true);
                 trackEvent("form_submit", { form: "contato" });
                 toast.success("Mensagem enviada! Entraremos em contato em breve.");
               }
-            } catch (error) {
-              console.error(error);
+            } catch {
+              console.error("[contato] falha de comunicação; resposta indisponível");
               toast.error("Não foi possível enviar. Tente novamente em instantes.");
             } finally {
               setSending(false);

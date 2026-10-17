@@ -1,4 +1,5 @@
 import { createServerFn } from "@tanstack/react-start";
+import { getRequest, setResponseHeader } from "@tanstack/react-start/server";
 import { z } from "zod";
 import { blockedFreeDomains } from "./email-corporate";
 
@@ -22,10 +23,16 @@ const contactSchema = z.object({
 });
 
 export const sendContactMessage = createServerFn({ method: "POST" })
-  .inputValidator((data: unknown) => contactSchema.parse(data))
-  .handler(async ({ data }) => {
-    console.log("--- INICIANDO ENVIO DO FORMULÁRIO ---");
+  .inputValidator((data: unknown) => data)
+  .handler(async ({ data: input }) => {
+    const { getRequestId, safeErrorDetails, formErrorResponse } = await import("./request-diagnostics.server");
+    const requestId = getRequestId(getRequest());
+    setResponseHeader("X-Request-ID", requestId);
+    const logPrefix = `[contato] [requestId=${requestId}]`;
+    console.log(`${logPrefix} --- INICIANDO ENVIO DO FORMULÁRIO ---`);
     try {
+      // Validate inside the catch boundary so validation failures also return an ID.
+      const data = contactSchema.parse(input);
       let savedLocally = false;
       if (process.env["SUPABASE_SERVICE_ROLE_KEY"] && process.env["SUPABASE_URL"]) {
         const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
@@ -36,10 +43,10 @@ export const sendContactMessage = createServerFn({ method: "POST" })
           telefone: data.telefone || null,
           mensagem: data.mensagem,
         });
-        if (error) console.error("[contato] falha ao salvar mensagem", error);
+        if (error) console.error(`${logPrefix} falha ao salvar mensagem`, safeErrorDetails(error));
         else savedLocally = true;
       } else {
-        console.warn("[contato] banco local não configurado (SUPABASE_URL/SUPABASE_SERVICE_ROLE_KEY); seguindo só com o CRM");
+        console.warn(`${logPrefix} banco local não configurado; seguindo com outros canais`);
       }
 
       const crmUrl =
@@ -62,13 +69,13 @@ export const sendContactMessage = createServerFn({ method: "POST" })
               source: "Site Opriun - Formulário de Contato",
             }),
           });
-          if (!res.ok) console.error("[contato] CRM respondeu", res.status, await res.text());
+          if (!res.ok) console.error(`${logPrefix} CRM respondeu`, { status: res.status });
           else sentToCrm = true;
         } catch (e) {
-          console.error("[contato] falha ao enviar lead ao CRM", e);
+          console.error(`${logPrefix} falha ao enviar lead ao CRM`, safeErrorDetails(e));
         }
       } else {
-        console.warn("[contato] CRM_WEBHOOK_SECRET não configurado; lead não enviado ao CRM");
+        console.warn(`${logPrefix} CRM não configurado; lead não enviado ao CRM`);
       }
 
       let sentByEmail = false;
@@ -101,24 +108,20 @@ export const sendContactMessage = createServerFn({ method: "POST" })
           });
           sentByEmail = true;
         } catch (e) {
-          console.error("[contato] falha ao enviar e-mail via SMTP", e);
+          console.error(`${logPrefix} falha ao enviar e-mail via SMTP`, safeErrorDetails(e));
         }
       } else {
-        console.warn("[contato] SMTP não configurado (SMTP_HOST/SMTP_USER/SMTP_PASS); e-mail não enviado");
+        console.warn(`${logPrefix} SMTP não configurado; e-mail não enviado`);
       }
 
-      console.log("[contato] resultado", { savedLocally, sentToCrm, sentByEmail, crmUrl });
+      console.log(`${logPrefix} resultado`, { savedLocally, sentToCrm, sentByEmail });
       if (!savedLocally && !sentToCrm && !sentByEmail) {
         throw new Error("Não foi possível registrar sua mensagem (banco, CRM e e-mail falharam).");
       }
 
-      return { success: true as const };
+      return { success: true as const, requestId };
     } catch (error) {
-      console.error("[SERVER ERROR]:", error);
-      console.error("STACK TRACE:", error instanceof Error ? error.stack : undefined);
-      return {
-        success: false as const,
-        error: error instanceof Error ? error.message : String(error),
-      };
+      console.error(`${logPrefix} [SERVER ERROR]`, safeErrorDetails(error));
+      return formErrorResponse(requestId, error instanceof z.ZodError);
     }
   });
