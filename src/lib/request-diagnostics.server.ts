@@ -19,14 +19,13 @@ export function safeErrorDetails(error: unknown) {
 }
 
 export function formErrorResponse(requestId: string, validation = false, fields?: string[]) {
-  const base = {
+  return {
     success: false as const,
     error: validation
       ? "Confira os campos do formulário e tente novamente."
       : "Não foi possível enviar. Tente novamente em instantes.",
     requestId,
+    // Field names only — never the submitted values, which can be personal data.
+    fields: validation ? fields ?? [] : [],
   };
-  // Field names only — never the submitted values, which can be personal data.
-  if (validation && fields?.length) return { ...base, fields };
-  return base;
 }
