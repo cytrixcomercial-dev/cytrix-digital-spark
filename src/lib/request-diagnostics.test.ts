@@ -20,4 +20,13 @@ describe("request diagnostics", () => {
     assert.deepEqual(formErrorResponse(id), { success: false, error: "Não foi possível enviar. Tente novamente em instantes.", requestId: id });
     assert.deepEqual(formErrorResponse(id, true), { success: false, error: "Confira os campos do formulário e tente novamente.", requestId: id });
   });
+  test("validation failures may include field names, never submitted values", () => {
+    const id = getRequestId(new Request("https://www.opriun.com.br/contato"));
+    assert.deepEqual(formErrorResponse(id, true, ["telefone"]), {
+      success: false,
+      error: "Confira os campos do formulário e tente novamente.",
+      requestId: id,
+      fields: ["telefone"],
+    });
+  });
 });
