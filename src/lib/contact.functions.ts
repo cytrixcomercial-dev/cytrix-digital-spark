@@ -2,6 +2,7 @@ import { createServerFn } from "@tanstack/react-start";
 import { getRequest, setResponseHeader } from "@tanstack/react-start/server";
 import { z } from "zod";
 import { contactSchema } from "./contact-schema";
+import { shouldSendContactEmail, isContactDelivered } from "./contact-delivery-policy";
 
 export const sendContactMessage = createServerFn({ method: "POST" })
   .inputValidator((data: unknown) => data)
@@ -85,7 +86,10 @@ export const sendContactMessage = createServerFn({ method: "POST" })
       const smtpHost = process.env["SMTP_HOST"];
       const smtpUser = process.env["SMTP_USER"];
       const smtpPass = process.env["SMTP_PASS"];
-      if (smtpHost && smtpUser && smtpPass) {
+      if (!shouldSendContactEmail(savedLocally)) {
+        channels.email = "nao_enviado_banco_falhou";
+        console.warn(`${logPrefix} e-mail não enviado; lead não salvo no banco`);
+      } else if (smtpHost && smtpUser && smtpPass) {
         try {
           const nodemailer = await import("nodemailer");
           const transporter = nodemailer.createTransport({
@@ -120,8 +124,8 @@ export const sendContactMessage = createServerFn({ method: "POST" })
       }
 
       console.log(`${logPrefix} resultado`, { savedLocally, sentToCrm, sentByEmail, channels });
-      if (!savedLocally && !sentToCrm && !sentByEmail) {
-        console.error(`${logPrefix} [SERVER ERROR] todos os canais falharam`, channels);
+      if (!isContactDelivered(savedLocally, sentToCrm)) {
+        console.error(`${logPrefix} [SERVER ERROR] lead não salvo no banco nem no CRM`, channels);
         return formErrorResponse(requestId, false, [], channels);
       }
 
