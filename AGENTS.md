@@ -11,7 +11,7 @@
 
 ## Hosting
 - Self-hosting on Node (Hostinger) uses `npm run build:node` + `npm start` (nitro `node-server` preset); keep server code runtime-agnostic so both Lovable (Cloudflare) and Node builds work.
-- Contact form must succeed if either the local DB insert or the CRM webhook succeeds — external hosts may lack the service-role key.
+- Contact form inserts into leads first and fails if that insert fails; CRM and email run only afterwards as best-effort notifications, so every reported success is a persisted lead.
 - Gate email notifications on confirmed local database persistence; email alone cannot mark a contact as delivered, so failed inserts never produce misleading email-only success.
 - Contact database writes use the server-only contact-leads helper with deployment SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY, inserting only name, company, email, phone and message into leads; the external deployment schema is independent of generated Cloud types.
 - Keep global request logging in `src/start.ts` with ISO timestamps, method, query-free URL, status, duration and a server-generated UUID shared through `request-diagnostics.server.ts` with form responses and the `X-Request-ID` header; this correlates failures across Cloudflare and Node without retaining requests.
