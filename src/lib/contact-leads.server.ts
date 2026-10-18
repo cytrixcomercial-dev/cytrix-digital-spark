@@ -55,13 +55,18 @@ export async function insertContactLead(
       },
     },
   });
-  const result = await client.from("leads").insert({
-    name: data.nome,
-    company: data.empresa,
-    email: data.email,
-    phone: data.telefone,
-    message: data.mensagem,
-  });
+  const result = await client
+    .from("leads")
+    .insert([
+      {
+        name: data.nome,
+        company: data.empresa,
+        email: data.email,
+        phone: data.telefone,
+        message: data.mensagem,
+      },
+    ])
+    .select();
   return { ...result, networkCode };
 }
 

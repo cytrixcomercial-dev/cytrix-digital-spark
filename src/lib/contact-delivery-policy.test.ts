@@ -7,8 +7,7 @@ test("a failed database insert must not send email", () => {
   assert.equal(shouldSendContactEmail(true), true);
 });
 
-test("database or CRM persistence is required for success", () => {
-  assert.equal(isContactDelivered(false, false), false);
-  assert.equal(isContactDelivered(true, false), true);
-  assert.equal(isContactDelivered(false, true), true);
+test("the form succeeds only when the leads insert succeeds", () => {
+  assert.equal(isContactDelivered(false), false);
+  assert.equal(isContactDelivered(true), true);
 });

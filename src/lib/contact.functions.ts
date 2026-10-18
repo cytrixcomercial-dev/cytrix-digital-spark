@@ -4,6 +4,15 @@ import { z } from "zod";
 import { contactSchema } from "./contact-schema";
 import { shouldSendContactEmail, isContactDelivered } from "./contact-delivery-policy";
 
+type Channels = Record<"banco" | "crm" | "email", string>;
+
+// Thrown when the mandatory leads insert fails; carries only safe status tokens.
+class DatabaseSaveError extends Error {
+  constructor(public channels: Channels) {
+    super("Falha ao salvar no banco de dados.");
+  }
+}
+
 export const sendContactMessage = createServerFn({ method: "POST" })
   .inputValidator((data: unknown) => data)
   .handler(async ({ data: input }) => {
@@ -12,46 +21,46 @@ export const sendContactMessage = createServerFn({ method: "POST" })
     setResponseHeader("X-Request-ID", requestId);
     const logPrefix = `[contato] [requestId=${requestId}]`;
     console.log(`${logPrefix} --- INICIANDO ENVIO DO FORMULÁRIO ---`);
+    const channels: Channels = { banco: "nao_configurado", crm: "nao_enviado", email: "nao_enviado" };
     try {
       // Validate inside the catch boundary so validation failures also return an ID.
       const data = contactSchema.parse(input);
-      const channels: Record<"banco" | "crm" | "email", string> = {
-        banco: "nao_configurado",
-        crm: "nao_configurado",
-        email: "nao_configurado",
-      };
-      let savedLocally = false;
+
+      // 1) PRIMEIRO: salvar na tabela leads (obrigatório).
       const databaseUrl = process.env["SUPABASE_URL"];
       const serviceRoleKey = process.env["SUPABASE_SERVICE_ROLE_KEY"];
-      if (serviceRoleKey && databaseUrl) {
-        try {
-          const { insertContactLead, leadStatusToken, checkDatabaseUrl } = await import("./contact-leads.server");
-          const urlProblem = checkDatabaseUrl(databaseUrl);
-          if (urlProblem) {
-            channels.banco = urlProblem;
-            console.error(`${logPrefix} SUPABASE_URL inválida`, { code: urlProblem });
-          } else {
-            const result = await insertContactLead(data, databaseUrl, serviceRoleKey);
-            channels.banco = leadStatusToken(result);
-            if (channels.banco === "ok") {
-              savedLocally = true;
-            } else {
-              console.error(`${logPrefix} falha ao salvar lead`, { code: channels.banco });
-            }
-          }
-        } catch (error) {
-          channels.banco = safeErrorDetails(error).code;
-          console.error(`${logPrefix} falha ao salvar lead`, safeErrorDetails(error));
-        }
-      } else {
-        console.warn(`${logPrefix} banco local não configurado; seguindo com outros canais`);
+      if (!databaseUrl || !serviceRoleKey) {
+        console.error(`${logPrefix} ERRO AO SALVAR NO BANCO`, { code: "nao_configurado" });
+        throw new DatabaseSaveError(channels);
       }
+      const { insertContactLead, leadStatusToken, checkDatabaseUrl } = await import("./contact-leads.server");
+      const urlProblem = checkDatabaseUrl(databaseUrl);
+      if (urlProblem) {
+        channels.banco = urlProblem;
+        console.error(`${logPrefix} ERRO AO SALVAR NO BANCO`, { code: urlProblem });
+        throw new DatabaseSaveError(channels);
+      }
+      let result;
+      try {
+        result = await insertContactLead(data, databaseUrl, serviceRoleKey);
+      } catch (error) {
+        channels.banco = safeErrorDetails(error).code;
+        console.error(`${logPrefix} ERRO AO SALVAR NO BANCO`, { code: channels.banco });
+        throw new DatabaseSaveError(channels);
+      }
+      channels.banco = leadStatusToken(result);
+      if (result.error) {
+        // Only the safe code is logged; raw errors may contain submitted data.
+        console.error(`${logPrefix} ERRO AO SALVAR NO BANCO`, { code: channels.banco });
+        throw new DatabaseSaveError(channels);
+      }
+      const savedLocally = true;
 
+      // 2) CRM (opcional, só após o lead estar salvo).
       const crmUrl =
         process.env["CRM_WEBHOOK_URL"] ||
         "https://project--fd117f08-5d17-4e2f-a58b-205fea4b5c27.lovable.app/api/public/leads-intake";
       const crmSecret = process.env["CRM_WEBHOOK_SECRET"];
-      let sentToCrm = false;
       if (crmSecret) {
         try {
           const res = await fetch(crmUrl, {
@@ -67,29 +76,21 @@ export const sendContactMessage = createServerFn({ method: "POST" })
               source: "Site Opriun - Formulário de Contato",
             }),
           });
-          if (!res.ok) {
-            channels.crm = `http_${res.status}`;
-            console.error(`${logPrefix} CRM respondeu`, { status: res.status });
-          } else {
-            sentToCrm = true;
-            channels.crm = "ok";
-          }
+          channels.crm = res.ok ? "ok" : `http_${res.status}`;
+          if (!res.ok) console.error(`${logPrefix} CRM respondeu`, { status: res.status });
         } catch (e) {
           channels.crm = safeErrorDetails(e).code;
           console.error(`${logPrefix} falha ao enviar lead ao CRM`, safeErrorDetails(e));
         }
       } else {
-        console.warn(`${logPrefix} CRM não configurado; lead não enviado ao CRM`);
+        channels.crm = "nao_configurado";
       }
 
-      let sentByEmail = false;
+      // 3) E-mail de notificação (só após o lead estar salvo).
       const smtpHost = process.env["SMTP_HOST"];
       const smtpUser = process.env["SMTP_USER"];
       const smtpPass = process.env["SMTP_PASS"];
-      if (!shouldSendContactEmail(savedLocally)) {
-        channels.email = "nao_enviado_banco_falhou";
-        console.warn(`${logPrefix} e-mail não enviado; lead não salvo no banco`);
-      } else if (smtpHost && smtpUser && smtpPass) {
+      if (shouldSendContactEmail(savedLocally) && smtpHost && smtpUser && smtpPass) {
         try {
           const nodemailer = await import("nodemailer");
           const transporter = nodemailer.createTransport({
@@ -99,7 +100,7 @@ export const sendContactMessage = createServerFn({ method: "POST" })
             auth: { user: smtpUser.trim(), pass: smtpPass },
           });
           await transporter.sendMail({
-            from: `Site Opriun <${smtpUser}>`,
+            from: `Site Opriun <${smtpUser.trim()}>`,
             to: process.env["CONTACT_EMAIL_TO"] || "contato@opriun.com.br",
             replyTo: data.email,
             subject: `Novo contato pelo site: ${data.nome} (${data.empresa})`,
@@ -113,24 +114,24 @@ export const sendContactMessage = createServerFn({ method: "POST" })
               data.mensagem,
             ].join("\n"),
           });
-          sentByEmail = true;
           channels.email = "ok";
         } catch (e) {
           channels.email = safeErrorDetails(e).code;
           console.error(`${logPrefix} falha ao enviar e-mail via SMTP`, safeErrorDetails(e));
         }
       } else {
-        console.warn(`${logPrefix} SMTP não configurado; e-mail não enviado`);
+        channels.email = "nao_configurado";
       }
 
-      console.log(`${logPrefix} resultado`, { savedLocally, sentToCrm, sentByEmail, channels });
-      if (!isContactDelivered(savedLocally, sentToCrm)) {
-        console.error(`${logPrefix} [SERVER ERROR] lead não salvo no banco nem no CRM`, channels);
+      console.log(`${logPrefix} resultado`, { channels });
+      if (!isContactDelivered(savedLocally)) {
         return formErrorResponse(requestId, false, [], channels);
       }
-
       return { success: true as const, requestId };
     } catch (error) {
+      if (error instanceof DatabaseSaveError) {
+        return formErrorResponse(requestId, false, [], error.channels);
+      }
       console.error(`${logPrefix} [SERVER ERROR]`, safeErrorDetails(error));
       const fields =
         error instanceof z.ZodError

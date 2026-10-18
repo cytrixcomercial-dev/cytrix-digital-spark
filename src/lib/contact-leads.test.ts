@@ -7,15 +7,15 @@ describe("contact lead database contract", () => {
     let calls = 0;
     const fetcher: typeof fetch = async (input, init) => {
       calls++;
-      assert.equal(String(input), "https://database.example.com/rest/v1/leads");
+      assert.equal(new URL(String(input)).origin + new URL(String(input)).pathname, "https://database.example.com/rest/v1/leads");
       assert.equal(init?.method, "POST");
       assert.equal(new Headers(init?.headers).get("apikey"), "sb_secret_test_only");
       assert.equal(new Headers(init?.headers).has("Authorization"), false);
-      assert.deepEqual(JSON.parse(String(init?.body)), {
+      assert.deepEqual(JSON.parse(String(init?.body)), [{
         name: "Test Name", company: "Test Company", email: "test@example.com",
         phone: "41999990000", message: "Test message for database mapping",
-      });
-      return new Response(null, { status: 201 });
+      }]);
+      return new Response("[]", { status: 201, headers: { "content-type": "application/json" } });
     };
     const result = await insertContactLead({
       nome: "Test Name", empresa: "Test Company", email: "test@example.com",
